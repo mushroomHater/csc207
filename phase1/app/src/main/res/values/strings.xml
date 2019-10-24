@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UofT Life</string>
+    <string name="wake_up">Wake Up!</string>
+    <string name="level_1">Level 1</string>
 </resources>
