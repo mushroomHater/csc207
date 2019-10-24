@@ -119,7 +119,7 @@ public class LevelOne extends AppCompatActivity implements Terminable {
      */
     @Override
     public boolean isPassed() {
-        return clickAmount >= TARGETCLICK;
+        return this.getClickAmount() >= TARGETCLICK;
     }
 
     /**

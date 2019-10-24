@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,8 +16,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btnLevelOne = (Button) findViewById(R.id.btnLevelOne);
-        btnLevelOne.setOnClickListener(new View.OnClickListener() {
+        ImageView homeView = (ImageView) findViewById(R.id.homeView);
 
+        btnLevelOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, LevelOne.class));
