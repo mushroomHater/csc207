@@ -1,11 +1,16 @@
 package com.example.uoftlife;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Text;
 
 import java.util.Timer;
 
@@ -14,7 +19,7 @@ public class LevelOne extends AppCompatActivity implements Terminable {
     /**
      * The target number of click to pass the game level.
      */
-    private static int TARGETCLICK;
+    private static int TARGETCLICK = 45;
 
     /**
      * The tag of the game level.
@@ -24,7 +29,22 @@ public class LevelOne extends AppCompatActivity implements Terminable {
     /**
      * The timer of the game level.
      */
-    private Timer timer;
+    private CountDownTimer timer;
+
+    /**
+     * Indicates if the timer is running.
+     */
+    private boolean timing = true;
+
+    /**
+     * The timer text view of the game level.
+     */
+    private TextView timerText;
+
+    /**
+     * The time left in this game level in milliseconds.
+     */
+    private long timeLeftInMilliseconds = 16000; // 10 seconds
 
     /**
      * The number of clicks entered by the user.
@@ -35,6 +55,7 @@ public class LevelOne extends AppCompatActivity implements Terminable {
      * The GameConfiguration instance passed into the game level.
      */
     private GameConfiguration config;
+
 
     /**
      * The wake up button clicked by the user.
@@ -56,18 +77,76 @@ public class LevelOne extends AppCompatActivity implements Terminable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_one);
 
-        btnWakeUp = (Button) findViewById(R.id.btnWakeUp);
+        btnWakeUp = findViewById(R.id.btnWakeUp);
         btnWakeUp.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 clickAmount++;
                 System.out.println(clickAmount);
-                //Toast.makeText(getApplicationContext(), "Keep Tapping!", Toast.LENGTH_SHORT)
-                //.show();
+                if (clickAmount == 1) {
+                    Toast.makeText(getApplicationContext(), "Keep Tapping!", Toast.LENGTH_SHORT)
+                            .show();
+                }
             }
         });
+
+        timerText = findViewById(R.id.levelOneCountDown);
+        startTimer();
     }
+
+
+    /**
+     * Starts the countdown timer.
+     */
+    public void startTimer() {
+        timer = new CountDownTimer(timeLeftInMilliseconds, 1000) {
+            @Override
+            public void onTick(long l) {
+                timeLeftInMilliseconds = l;
+                updateTimer();
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+        }.start();
+
+        timing = true;
+    }
+
+    /**
+     * Stops the countdown timer.
+     */
+    public void stopTimer() {
+        timer.cancel();
+        timing = false;
+    }
+
+    /**
+     * Updates the countdown timer.
+     */
+    public void updateTimer() {
+        int seconds = (int) timeLeftInMilliseconds / 1000;
+
+        String timeLeftText;
+        timeLeftText = "00:";
+        if (seconds < 10) {
+            timeLeftText += "0";
+        }
+        timeLeftText += seconds;
+
+        timerText.setText(timeLeftText);
+
+        if (seconds == 0) {
+            stopTimer();
+            System.out.println(getScore());
+        }
+    }
+
 
     /**
      * @return the number of clicks a user has entered.
@@ -86,30 +165,44 @@ public class LevelOne extends AppCompatActivity implements Terminable {
     /**
      * @return the timer of the game level.
      */
-    Timer getTimer() {
+    CountDownTimer getTimer() {
         return timer;
     }
 
     /**
      * Sets the timer of the game level.
      */
-    void setTimer(Timer timer) {
+    void setTimer(CountDownTimer timer) {
         this.timer = timer;
 
     }
 
     /**
      * @return the score of the user within the range of 0 - 100.
-     * If the user passes the game level, return a score within the range 1 - 100.
+     * If the user passes the game level, return a score within the range 1 - 100,
+     * depending on the performance/ click amount of the user.
      * If the user fails the game level, return 0.
      */
     @Override
     public int getScore() {
         if (isPassed()) {
-            return 60;
-        } else {
-            return 0;
+            if (clickAmount >= TARGETCLICK &&
+                    clickAmount < TARGETCLICK * 1.2) {
+                return 60;
+            } else if (clickAmount >= TARGETCLICK * 1.2 &&
+                    clickAmount < TARGETCLICK * 1.3) {
+                return 70;
+            } else if (clickAmount >= TARGETCLICK * 1.3 &&
+                    clickAmount < TARGETCLICK * 1.4) {
+                return 80;
+            } else if (clickAmount >= TARGETCLICK * 1.4 &&
+                    clickAmount < TARGETCLICK * 1.5) {
+                return 90;
+            } else if (clickAmount >= TARGETCLICK * 1.5) {
+                return 100;
+            }
         }
+        return 0;
     }
 
     /**

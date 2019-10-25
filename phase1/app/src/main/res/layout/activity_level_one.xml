@@ -16,4 +16,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/levelOneCountDown"
+        android:layout_width="74dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="56dp"
+        android:text="@string/_00_15"
+        android:textColor="#F44336"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

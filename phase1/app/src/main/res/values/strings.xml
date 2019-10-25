@@ -3,4 +3,6 @@
     <string name="wake_up">Wake Up!</string>
     <string name="level_1">Level 1</string>
     <string name="home_screen">Home screen</string>
+    <string name="_0_10">0:10</string>
+    <string name="_00_15">00:15</string>
 </resources>
