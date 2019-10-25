@@ -1,5 +1,5 @@
 package com.example.uoftlife;
-
+// test
 class GameConfiguration {
     /**
      * The difficulty level of the game ranging from 1 - 3
