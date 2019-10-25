@@ -7,8 +7,6 @@ class GameConfiguration {
      */
     private byte difficulty;
 
-    // test comment
-
 
     /**
      * The language setting of the game,
