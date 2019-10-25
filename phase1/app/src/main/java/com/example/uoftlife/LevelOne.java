@@ -10,9 +10,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.w3c.dom.Text;
-
-import java.util.Timer;
 
 public class LevelOne extends AppCompatActivity implements Terminable {
 
@@ -88,6 +85,10 @@ public class LevelOne extends AppCompatActivity implements Terminable {
                     Toast.makeText(getApplicationContext(), "Keep Tapping!", Toast.LENGTH_SHORT)
                             .show();
                 }
+                //hide the button when time is up.
+                if (timing == false) {
+                    btnWakeUp.setVisibility(View.GONE);
+                }
             }
         });
 
@@ -143,10 +144,22 @@ public class LevelOne extends AppCompatActivity implements Terminable {
 
         if (seconds == 0) {
             stopTimer();
+            showOutcome();
+            timing = false;
             System.out.println(getScore());
         }
     }
 
+    /**
+     * Shows the outcome of the game level after hidding the elements from display
+     */
+    void showOutcome() {
+        //hide the button when time is up.
+        btnWakeUp.setVisibility(View.GONE);
+        timerText.setVisibility(View.GONE);
+
+
+    }
 
     /**
      * @return the number of clicks a user has entered.
