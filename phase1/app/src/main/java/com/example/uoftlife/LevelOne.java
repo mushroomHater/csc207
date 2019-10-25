@@ -86,10 +86,6 @@ public class LevelOne extends AppCompatActivity implements Terminable {
                     Toast.makeText(getApplicationContext(), "Keep Tapping!", Toast.LENGTH_SHORT)
                             .show();
                 }
-                //hide the button when time is up.
-                if (!timing) {
-                    btnWakeUp.setVisibility(View.GONE);
-                }
             }
         });
 
@@ -154,7 +150,7 @@ public class LevelOne extends AppCompatActivity implements Terminable {
     }
 
     /**
-     * Shows the outcome of the game level after hidding the elements from display
+     * Shows the outcome of the game level after hiding the elements from display
      */
     void showOutcome() {
         //hide the button when time is up.
