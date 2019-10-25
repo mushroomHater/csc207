@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -80,20 +81,22 @@ public class LevelOne extends AppCompatActivity implements Terminable {
             @Override
             public void onClick(View view) {
                 clickAmount++;
-                System.out.println(clickAmount);
+                System.out.println("ClickAmount:" + clickAmount);
                 if (clickAmount == 1) {
                     Toast.makeText(getApplicationContext(), "Keep Tapping!", Toast.LENGTH_SHORT)
                             .show();
                 }
                 //hide the button when time is up.
-                if (timing == false) {
+                if (!timing) {
                     btnWakeUp.setVisibility(View.GONE);
                 }
             }
         });
 
+        ImageView levelOneView = findViewById(R.id.levelOneView);
         timerText = findViewById(R.id.levelOneCountDown);
         startTimer();
+
     }
 
 
@@ -146,7 +149,7 @@ public class LevelOne extends AppCompatActivity implements Terminable {
             stopTimer();
             showOutcome();
             timing = false;
-            System.out.println(getScore());
+            System.out.println("Score:" + getScore());
         }
     }
 

@@ -1,31 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LevelOne">
+
+    <ImageView
+        android:id="@+id/levelOneView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/leveloneview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/levelone" />
 
     <Button
         android:id="@+id/btnWakeUp"
         android:layout_width="114dp"
         android:layout_height="62dp"
         android:layout_marginStart="136dp"
-        android:layout_marginTop="480dp"
+        android:layout_marginTop="524dp"
         android:text="@string/wake_up"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/levelOneCountDown"
-        android:layout_width="74dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="172dp"
-        android:layout_marginTop="56dp"
+        android:layout_width="140dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="16dp"
         android:text="@string/_00_15"
-        android:textColor="#F44336"
-        android:textSize="25sp"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
