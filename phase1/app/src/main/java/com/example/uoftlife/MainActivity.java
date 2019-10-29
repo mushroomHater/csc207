@@ -22,8 +22,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, LevelOne.class));
-
             }
+        });
+    }
+
+    private void setLevelThreeBtn() {
+        findViewById(R.id.LevelThreeBtn).setOnClickListener((view) -> {
+            Intent i = new Intent(this, GameLevelThree.class);
+            startActivity(i);
         });
     }
 }
