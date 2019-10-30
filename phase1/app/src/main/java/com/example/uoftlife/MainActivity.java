@@ -15,14 +15,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnLevelOne = (Button) findViewById(R.id.btnLevelOne);
-        ImageView homeView = (ImageView) findViewById(R.id.homeView);
+        ImageView homeView = findViewById(R.id.homeView);
+        setLevelOneBtn();
+        setLevelThreeBtn();
 
-        btnLevelOne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, LevelOne.class));
-            }
+    }
+
+    private void setLevelOneBtn() {
+        findViewById(R.id.btnLevelOne).setOnClickListener((view) -> {
+            startActivity(new Intent(MainActivity.this, LevelOne.class));
         });
     }
 
@@ -31,5 +32,6 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(this, GameLevelThree.class);
             startActivity(i);
         });
+
     }
 }

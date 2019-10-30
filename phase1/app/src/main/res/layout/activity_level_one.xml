@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/levelone" />
 
+
     <Button
         android:id="@+id/btnWakeUp"
         android:layout_width="114dp"
@@ -23,6 +24,7 @@
         android:layout_marginStart="136dp"
         android:layout_marginTop="524dp"
         android:text="@string/wake_up"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,8 +37,10 @@
         android:text="@string/_00_15"
         android:textColor="#FFFFFF"
         android:textSize="40sp"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,7 +22,7 @@ public class LevelOne extends AppCompatActivity implements Terminable {
     /**
      * The tag of the game level.
      */
-    private static String TAG = "LevelOne";
+    private static final String TAG = "LevelOne";
 
     /**
      * The timer of the game level.
@@ -54,11 +54,16 @@ public class LevelOne extends AppCompatActivity implements Terminable {
      */
     private GameConfiguration config;
 
+    /**
+     * The start button clicked by the user.
+     */
+    private Button btnStartLevelOne;
 
     /**
      * The wake up button clicked by the user.
      */
     private Button btnWakeUp;
+
 
     /**
      * Creates a LevelOne instance.
@@ -74,8 +79,11 @@ public class LevelOne extends AppCompatActivity implements Terminable {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_one);
+        ImageView levelOneView = findViewById(R.id.levelOneView);
+        timerText = findViewById(R.id.levelOneCountDown);
 
         btnWakeUp = findViewById(R.id.btnWakeUp);
+
         btnWakeUp.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -88,11 +96,7 @@ public class LevelOne extends AppCompatActivity implements Terminable {
                 }
             }
         });
-
-        ImageView levelOneView = findViewById(R.id.levelOneView);
-        timerText = findViewById(R.id.levelOneCountDown);
         startTimer();
-
     }
 
 
@@ -145,7 +149,7 @@ public class LevelOne extends AppCompatActivity implements Terminable {
             stopTimer();
             showOutcome();
             timing = false;
-            System.out.println("Score:" + getScore());
+            System.out.println("Score:" + getScore() + "/100");
         }
     }
 
@@ -153,7 +157,7 @@ public class LevelOne extends AppCompatActivity implements Terminable {
      * Shows the outcome of the game level after hiding the elements from display
      */
     void showOutcome() {
-        //hide the button when time is up.
+        //hide the button and timer when time is up.
         btnWakeUp.setVisibility(View.GONE);
         timerText.setVisibility(View.GONE);
 
