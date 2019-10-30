@@ -1,9 +1,12 @@
 package com.example.uoftlife;
 
+
 import android.content.Context;
 import android.util.Log;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -12,17 +15,16 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 
 public class UserManager {
-    private HashMap<String, User> users;
-    private Context context;
+    private static HashMap<String, User> users;
     private static final String FILENAME = "users.dat";
+    private static User currentUser;
+    private UserManager() {
 
-
-    public UserManager(Context context) {
-        this.context = context;
-        loadUsers();
     }
 
-    private void loadUsers(){
+
+
+    public static void loadUsers(Context context){
         try {
             InputStream inputStream = context.openFileInput(FILENAME);
             if (inputStream != null) {
@@ -42,10 +44,10 @@ public class UserManager {
         }
     }
 
-    private void SaveToFile(){
+    public static void saveToFile(Context context){
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(
-                    context.openFileOutput(FILENAME, context.MODE_PRIVATE));
+                    context.openFileOutput(FILENAME, Context.MODE_PRIVATE));
             outputStream.writeObject(users);
             outputStream.close();
         } catch (IOException e) {
@@ -53,27 +55,31 @@ public class UserManager {
         }
     }
 
-
-    public User getUser(String username, String password){
-        User result = users.get(username);
-        if(result.getPassword() != null && result.getPassword().equals(password)){
-            return result;
-        }
-        return null;
-    }
-
-    User authenticate(String username, String password){
-        if(!users.containsKey(username)) {
-            throw new InputMismatchException();
-        }
-
-        if(!users.get(username).checkPassword(password)) {
-            throw new InputMismatchException();
-        }
-
-        return users.get(username);
+    public static boolean checkUserExist(String username) {
+        return users.containsKey(username);
     }
 
     //login
+    public static User authenticate(String username, String password){
+        if (!checkUserExist(username)) {
+            return null;
+        }
+        if(!users.get(username).checkPassword(password)) {
+            return null;
+        }
+        currentUser = users.get(username);
+        return currentUser;
+    }
+
+    // sign in
+    public static User signIn(String username, String password) {
+        if (checkUserExist(username)) {
+            return null;
+        }
+        currentUser= new User(username, password, username.hashCode());
+        users.put(currentUser.getUsername(), currentUser);
+        return currentUser;
+    }
+
 
 }

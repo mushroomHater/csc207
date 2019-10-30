@@ -7,4 +7,20 @@
     <string name="_00_15">00:15</string>
     <string name="leveloneview">levelOneView</string>
     <string name="start">Start</string>
+    <string name="login">login</string>
+    <string name="hint_username">hint_username</string>
+    <string name="hint_password">hint_password</string>
+    <string name="sign_in">sign_in</string>
+    <string name="username_empty" />
+    <string name="username_exist_error" />
+    <string name="password_empty" />
+    <string name="unknown_error" />
+    <string name="sign_in_success" />
+    <string name="username_not_exist_error" />
+    <string name="password_not_right" />
+    <string name="login_success" />
+    <string name="logout_info" />
+    <string name="logout" />
+    <string name="signup">SignUp</string>
+
 </resources>

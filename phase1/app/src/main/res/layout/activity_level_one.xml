@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".LevelOne">
 
+
     <ImageView
         android:id="@+id/levelOneView"
         android:layout_width="wrap_content"
@@ -15,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/levelone" />
-
 
     <Button
         android:id="@+id/btnWakeUp"
@@ -41,6 +41,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="256dp"
+        android:layout_height="345dp"
+        android:layout_marginStart="44dp"
+
+        android:layout_marginTop="144dp"
+        android:rotation="-23"
+        app:layout_constraintStart_toStartOf="@+id/levelOneView"
+        app:layout_constraintTop_toTopOf="@+id/levelOneView"
+        app:srcCompat="@drawable/xiaoming1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
