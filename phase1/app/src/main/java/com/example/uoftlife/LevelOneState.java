@@ -19,6 +19,11 @@ class LevelOneState {
     private int clickAmount = 0;
 
     /**
+     * The score the user gets in this game level
+     */
+    private int score;
+
+    /**
      * The GameConfiguration instance passed into the game level.
      */
     private GameConfiguration config;
@@ -57,21 +62,23 @@ class LevelOneState {
         if (isPassed()) {
             if (clickAmount >= TARGETCLICK &&
                     clickAmount < TARGETCLICK * 1.2) {
-                return 60;
+                score = 60;
             } else if (clickAmount >= TARGETCLICK * 1.2 &&
                     clickAmount < TARGETCLICK * 1.3) {
-                return 70;
+                score = 70;
             } else if (clickAmount >= TARGETCLICK * 1.3 &&
                     clickAmount < TARGETCLICK * 1.4) {
-                return 80;
+                score = 80;
             } else if (clickAmount >= TARGETCLICK * 1.4 &&
                     clickAmount < TARGETCLICK * 1.5) {
-                return 90;
+                score = 90;
             } else if (clickAmount >= TARGETCLICK * 1.5) {
-                return 100;
+                score = 100;
             }
+        } else {
+            score = 0;
         }
-        return 0;
+        return score;
     }
 
     /**
