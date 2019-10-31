@@ -51,7 +51,8 @@
         android:rotation="-23"
         app:layout_constraintStart_toStartOf="@+id/levelOneView"
         app:layout_constraintTop_toTopOf="@+id/levelOneView"
-        app:srcCompat="@drawable/xiaoming1" />
+        app:srcCompat="@drawable/xiaoming1"
+        android:contentDescription="@string/todo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
