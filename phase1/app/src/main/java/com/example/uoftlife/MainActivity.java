@@ -36,9 +36,10 @@ public class MainActivity extends AppCompatActivity {
 //        Intent intent = new Intent(this, LoginActivity.class);
 //        startActivity(intent);
         ImageView homeView = findViewById(R.id.homeView);
-        setLevelOneBtn();
-        setLevelThreeBtn();
-        setLevelTwoBtn();
+
+        setBtnStart();
+        setBtnSetting();
+        setBtnRanking();
 
     }
 
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }).show();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -74,25 +76,26 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setLevelOneBtn() {
-        findViewById(R.id.btnLevelOne).setOnClickListener((view) -> {
+    private void setBtnStart() {
+        findViewById(R.id.btnStart).setOnClickListener((view) -> {
             startActivity(new Intent(MainActivity.this, LevelOne.class));
         });
+
     }
 
-    private void setLevelTwoBtn() {
-        findViewById(R.id.levelTwoBtn).setOnClickListener((view) -> {
+
+    private void setBtnSetting() {
+        findViewById(R.id.btnSetting).setOnClickListener((view) -> {
             Intent intent = new Intent(this, PauseDialogConfig.class);
 //            intent.putExtra("from", 'G');
             startActivity(intent);
         });
     }
-    private void setLevelThreeBtn() {
-        findViewById(R.id.LevelThreeBtn).setOnClickListener((view) -> {
-            Intent i = new Intent(this, GameLevelThree.class);
-            startActivity(i);
-        });
 
+    private void setBtnRanking() {
+        findViewById(R.id.btnRanking).setOnClickListener((view) -> {
+            startActivity(new Intent(MainActivity.this, GameLevelThree.class));
+        });
     }
 }
 

@@ -15,23 +15,32 @@ public class GameLevelThree extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_level_three);
 
-
+        // setup the textView of the riddle and the button
         game = new LevelThree(new Score(0, "Fan"));
         setScorePrompt();
         setRiddlePrompt();
         setdoneBtn();
     }
 
+    /**
+     * set the textView of current riddle
+     */
     void setRiddlePrompt(){
         TextView prompt = findViewById(R.id.riddle);
         prompt.setText(game.getCurrentRiddle());
     }
 
+    /**
+     * set the textview of the score.
+     */
     void setScorePrompt(){
         TextView the_score = findViewById(R.id.the_score);
         the_score.setText("Your score is " + String.valueOf(game.getScore()));
     }
 
+    /**
+     * set up the guessing button
+     */
     void setdoneBtn(){
         findViewById(R.id.doneBtn).setOnClickListener(v -> {
             EditText playerInput = findViewById(R.id.playerInput);
@@ -42,7 +51,7 @@ public class GameLevelThree extends AppCompatActivity {
                 game.updateScore(10);
             }
             else{
-                Toast.makeText(getApplicationContext(), "Wrong Answer", Toast.LENGTH_SHORT)
+                Toast.makeText(getApplicationContext(), "Wrong Answer,", Toast.LENGTH_SHORT)
                         .show();
             }
             setRiddlePrompt();

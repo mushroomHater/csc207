@@ -2,6 +2,8 @@ package com.example.uoftlife;
 
 import android.os.CountDownTimer;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -13,10 +15,11 @@ class LevelThree implements Terminable{
 
     private Score score;
 
-    private Iterator mapIterator;
+    private Iterator<String> riddleIterator;
 
-    //TODO: change is back to private
-    Map<String, String> riddles = new HashMap<String, String>(){{
+    private List<String> riddleKeys;
+
+    private Map<String, String> riddles = new HashMap<String, String>(){{
         put("The more you take, the more you leave behind. What am I?", "footsteps");
         put("What has a head, a tail, is brown, and has no legs?", "penny");
         put("David's father has three sons : Snap, Crackle and _____ ?", "David");
@@ -29,26 +32,40 @@ class LevelThree implements Terminable{
     private String currentRiddle;
 
     // TODO: Add parameter config later
-    public LevelThree(Score score) {
+    LevelThree(Score score) {
 //        initialize(config);
         this.score = score;
-        mapIterator = riddles.entrySet().iterator();
+        riddleKeys = new ArrayList<>(riddles.keySet());
+        Collections.shuffle(riddleKeys);
+        riddleIterator = riddleKeys.iterator();
     }
 
+    /**
+     * get which riddle is the player gueesting right now
+     * @return the current riddle
+     */
     String getCurrentRiddle() {
-        if (mapIterator.hasNext())
-            currentRiddle = (String) ((Map.Entry) mapIterator.next()).getKey();
+        if (riddleIterator.hasNext())
+            currentRiddle = riddleIterator.next();
         return currentRiddle;
     }
 
+    /**
+     * get how many score does player have right now
+     * @return the score
+     */
     @Override
     public int getScore() {
         return score.getScore();
     }
 
+    /**
+     * check if the player passes this level
+     * @return always return true.
+     */
     @Override
     public boolean isPassed() {
-        return false;
+        return true;
     }
 
     @Override
@@ -65,12 +82,23 @@ class LevelThree implements Terminable{
     public void clear() {
     }
 
+
+    /**
+     * check if the player's guess matches the actual answer.
+     * @param answer
+     * @return true if matches false otherwise.
+     */
     boolean checkIfMatch(String answer){
         if ((riddles.get(currentRiddle)).equals(answer)){
             return true;
         }
         else return false;
     }
+
+    /**
+     *  add or delete the score of the player.
+     * @param amount
+     */
     void updateScore(int amount){
         score.addScore(amount);
     }
