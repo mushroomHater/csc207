@@ -15,8 +15,7 @@ class LevelThree implements Terminable{
 
     private Iterator mapIterator;
 
-    //TODO: change is back to private
-    Map<String, String> riddles = new HashMap<String, String>(){{
+    private Map<String, String> riddles = new HashMap<String, String>(){{
         put("The more you take, the more you leave behind. What am I?", "footsteps");
         put("What has a head, a tail, is brown, and has no legs?", "penny");
         put("David's father has three sons : Snap, Crackle and _____ ?", "David");
@@ -29,26 +28,38 @@ class LevelThree implements Terminable{
     private String currentRiddle;
 
     // TODO: Add parameter config later
-    public LevelThree(Score score) {
+    LevelThree(Score score) {
 //        initialize(config);
         this.score = score;
         mapIterator = riddles.entrySet().iterator();
     }
 
+    /**
+     * get which riddle is the player gueesting right now
+     * @return the current riddle
+     */
     String getCurrentRiddle() {
         if (mapIterator.hasNext())
             currentRiddle = (String) ((Map.Entry) mapIterator.next()).getKey();
         return currentRiddle;
     }
 
+    /**
+     * get how many score does player have right now
+     * @return the score
+     */
     @Override
     public int getScore() {
         return score.getScore();
     }
 
+    /**
+     * check if the player passes this level
+     * @return always return true.
+     */
     @Override
     public boolean isPassed() {
-        return false;
+        return true;
     }
 
     @Override
@@ -65,12 +76,23 @@ class LevelThree implements Terminable{
     public void clear() {
     }
 
+
+    /**
+     * check if the player's guess matches the actual answer.
+     * @param answer
+     * @return true if matches false otherwise.
+     */
     boolean checkIfMatch(String answer){
         if ((riddles.get(currentRiddle)).equals(answer)){
             return true;
         }
         else return false;
     }
+
+    /**
+     *  add or delete the score of the player.
+     * @param amount
+     */
     void updateScore(int amount){
         score.addScore(amount);
     }
