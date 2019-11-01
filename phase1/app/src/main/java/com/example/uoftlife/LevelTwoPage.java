@@ -28,15 +28,23 @@ public class LevelTwoPage extends AppCompatActivity{
         okBtn();
         showCurrStep();
         showGoal();
-        showStepLimit();
+//        showStepLimit();
+        showInstruction();
     }
 
 
-    private void showStepLimit() {
-        TextView steplimit = (TextView) findViewById(R.id.StepLimit);
-        steplimit.setText("minimum step is" + LevelTwo.get_min() + "maximum step is" + LevelTwo.get_max());
-    }
+//    private void showStepLimit() {
+//        TextView steplimit = (TextView) findViewById(R.id.StepLimit);
+//        steplimit.setText("minimum step is" + LevelTwo.get_min() + "maximum step is" + LevelTwo.get_max());
+//    }
 
+    private void showInstruction() {
+        TextView instruction = (TextView) findViewById(R.id.Instruction);
+        instruction.setText("XiaoMing and his neighbour XiaoGang are late for school, so they need to run. " +
+                "Each of them can take one step per time, and the maximum is 2 steps. " +
+                "The first one reached 20 steps wins! Control XiaoMing to compete with XiaoGang!" +
+                "٩(๑•̀ω•́๑)۶");
+    }
 
     private void showCurrStep(){
         TextView currstep = (TextView)findViewById(R.id.CurrStep);
@@ -45,7 +53,7 @@ public class LevelTwoPage extends AppCompatActivity{
 
     private void showGoal(){
         TextView goal = (TextView)findViewById(R.id.Goal);
-        goal.setText("Target Step =" + LevelTwo.get_goal());
+        goal.setText("Target Step :" + LevelTwo.get_goal());
     }
 
     public void getInputStep(){
@@ -71,18 +79,18 @@ public class LevelTwoPage extends AppCompatActivity{
             }
             if (LevelTwo.curr_step > LevelTwo.get_goal()){
                 TextView prompt = (TextView)findViewById(R.id.CurrStep);
-                prompt.setText("You win");
+                prompt.setText("You win! (* ॑ᐜ ॑*)");
 
             }}
 
             else{
             LevelTwo.addstep(LevelTwo.AI_move());
             TextView prompt = (TextView)findViewById(R.id.CurrStep);
-            prompt.setText("AI is at step" + LevelTwo.curr_step);
+            prompt.setText("XiaoGang is at step" + LevelTwo.curr_step);
 
             if (LevelTwo.curr_step > LevelTwo.get_goal()){
                 TextView promp = (TextView)findViewById(R.id.CurrStep);
-                promp.setText("AI win");
+                promp.setText("XiaoGang wins (｡•́︿•̀｡)");
 
             }}
             i++;
