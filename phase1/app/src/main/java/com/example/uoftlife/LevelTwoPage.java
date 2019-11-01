@@ -21,18 +21,23 @@ public class LevelTwoPage extends AppCompatActivity{
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("fucl");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_level_two);
 //        ImageView levelTwoView = findViewById(R.id.levelTwoView);
 
         okBtn();
-        setPrompt();
+        showCurrStep();
+        showGoal();
     }
 
-    private void setPrompt(){
-        TextView prompt = (TextView)findViewById(R.id.step_AI);
-        prompt.setText("You'are at step" + LevelTwo.curr_step);
+    private void showCurrStep(){
+        TextView currstep = (TextView)findViewById(R.id.step_AI);
+        currstep.setText("You'are at step" + LevelTwo.curr_step);
+    }
+
+    private void showGoal(){
+        TextView goal = (TextView)findViewById(R.id.Goal);
+        goal.setText("Target Step =" + LevelTwo.get_goal());
     }
 
     public void getInputStep(){
@@ -69,8 +74,10 @@ public class LevelTwoPage extends AppCompatActivity{
             if (LevelTwo.curr_step > LevelTwo.get_goal()){
                 TextView promp = (TextView)findViewById(R.id.step_AI);
                 promp.setText("AI win");
+
             }}
             i++;
+
 
         });
         }
