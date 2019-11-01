@@ -59,6 +59,9 @@ public class LevelOne extends AppCompatActivity {
         setWakeUpBtn();
         setTimer();
         startTimer();
+        Toast.makeText(getApplicationContext(), "Wake up XiaoMing by tapping the button! ",
+                Toast.LENGTH_LONG)
+                .show();
 
     }
 
@@ -97,7 +100,7 @@ public class LevelOne extends AppCompatActivity {
         findViewById(R.id.btnWakeUp).setOnClickListener((view) -> {
             levelOneState.addClickAmount();
             System.out.println("ClickAmount:" + levelOneState.getClickAmount());
-            if (levelOneState.getClickAmount() == 1) {
+            if (levelOneState.getClickAmount() == 4) {
                 Toast.makeText(getApplicationContext(), "Keep Tapping!", Toast.LENGTH_SHORT)
                         .show();
             }
@@ -192,7 +195,6 @@ public class LevelOne extends AppCompatActivity {
         //hide the button and timer when time is up.
         findViewById(R.id.btnWakeUp).setVisibility(View.GONE);
         findViewById(R.id.levelOneCountDown).setVisibility(View.GONE);
-
 
     }
 
