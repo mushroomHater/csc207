@@ -77,12 +77,14 @@ public abstract class LevelTwo extends AppCompatActivity {
     }
 
     static int AI_move(){
-        int i = min_step + (int) (Math.random() * ((
-                max_step - min_step) + 1));
-        return i;
+        if (GameConfiguration.getConfig().getDifficulty() == 1){
+            return LevelTwoPlayerAI.leveleasy(min_step, max_step, curr_step); }
+        else if (GameConfiguration.getConfig().getDifficulty() == 2){
+            return LevelTwoPlayerAI.levelmid(min_step, max_step, curr_step, goal); }
+        else return LevelTwoPlayerAI.levelhard(min_step, max_step, curr_step, goal); }
     }
 
 
 
 
-}
+
