@@ -28,10 +28,18 @@ public class LevelTwoPage extends AppCompatActivity{
         okBtn();
         showCurrStep();
         showGoal();
+        showStepLimit();
     }
 
+
+    private void showStepLimit() {
+        TextView steplimit = (TextView) findViewById(R.id.StepLimit);
+        steplimit.setText("minimum step is" + LevelTwo.get_min() + "maximum step is" + LevelTwo.get_max());
+    }
+
+
     private void showCurrStep(){
-        TextView currstep = (TextView)findViewById(R.id.step_AI);
+        TextView currstep = (TextView)findViewById(R.id.CurrStep);
         currstep.setText("You'are at step" + LevelTwo.curr_step);
     }
 
@@ -54,7 +62,7 @@ public class LevelTwoPage extends AppCompatActivity{
             if (i % 2 == 0){
             if (number >= LevelTwo.get_min() && number <= LevelTwo.get_max()) {
                 LevelTwo.addstep(number);
-                TextView prompt = (TextView)findViewById(R.id.step_AI);
+                TextView prompt = (TextView)findViewById(R.id.CurrStep);
                 prompt.setText("You'are at step" + LevelTwo.curr_step);
 
             } else {
@@ -62,21 +70,23 @@ public class LevelTwoPage extends AppCompatActivity{
                         .show();
             }
             if (LevelTwo.curr_step > LevelTwo.get_goal()){
-                TextView prompt = (TextView)findViewById(R.id.step_AI);
+                TextView prompt = (TextView)findViewById(R.id.CurrStep);
                 prompt.setText("You win");
+
             }}
 
             else{
             LevelTwo.addstep(LevelTwo.AI_move());
-            TextView prompt = (TextView)findViewById(R.id.step_AI);
+            TextView prompt = (TextView)findViewById(R.id.CurrStep);
             prompt.setText("AI is at step" + LevelTwo.curr_step);
 
             if (LevelTwo.curr_step > LevelTwo.get_goal()){
-                TextView promp = (TextView)findViewById(R.id.step_AI);
+                TextView promp = (TextView)findViewById(R.id.CurrStep);
                 promp.setText("AI win");
 
             }}
             i++;
+
 
 
         });
