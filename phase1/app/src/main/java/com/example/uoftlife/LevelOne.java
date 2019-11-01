@@ -48,7 +48,7 @@ public class LevelOne extends AppCompatActivity {
     }
 
     /**
-     * Specifies the activities.
+     * Specifies the activity lifecycle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +58,11 @@ public class LevelOne extends AppCompatActivity {
 
         setWakeUpBtn();
         setTimer();
+        setXiaoMing();
         startTimer();
-        Toast.makeText(getApplicationContext(), "Wake up XiaoMing by tapping the button! ",
+        Toast.makeText(getApplicationContext(), "Wake up Xiao Ming by tapping the button! ",
                 Toast.LENGTH_LONG)
                 .show();
-
     }
 
     @Override
@@ -87,9 +87,6 @@ public class LevelOne extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        timer = null;
-        timing = false;
-        levelOneState.setClickAmount(0);
         System.out.println("Exit Level One");
     }
 
@@ -125,6 +122,17 @@ public class LevelOne extends AppCompatActivity {
                 System.out.println("1visible");
             }
         });
+    }
+
+    /**
+     * Sets Xiao Ming's appearance in the game level.
+     */
+    private void setXiaoMing() {
+        findViewById(R.id.xiaoming1).setVisibility(View.INVISIBLE);
+        findViewById(R.id.xiaoming1l).setVisibility(View.VISIBLE);
+        findViewById(R.id.xiaoming2).setVisibility(View.VISIBLE);
+        findViewById(R.id.xiaoming3).setVisibility(View.VISIBLE);
+        findViewById(R.id.xiaoming4).setVisibility(View.VISIBLE);
     }
 
     /**
