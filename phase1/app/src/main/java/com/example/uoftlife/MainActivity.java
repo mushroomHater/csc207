@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         ImageView homeView = findViewById(R.id.homeView);
-        setLevelOneBtn();
-        setLevelThreeBtn();
-
+        setBtnStart();
+        setBtnSetting();
+        setBtnRanking();
 
     }
 
@@ -70,18 +70,23 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setLevelOneBtn() {
-        findViewById(R.id.btnLevelOne).setOnClickListener((view) -> {
+    private void setBtnStart() {
+        findViewById(R.id.btnStart).setOnClickListener((view) -> {
             startActivity(new Intent(MainActivity.this, LevelOne.class));
+        });
+
+    }
+
+    private void setBtnSetting() {
+        findViewById(R.id.btnSetting).setOnClickListener((view) -> {
+            startActivity(new Intent(MainActivity.this, LevelTwoPage.class));
         });
     }
 
-    private void setLevelThreeBtn() {
-        findViewById(R.id.LevelThreeBtn).setOnClickListener((view) -> {
-            Intent i = new Intent(this, GameLevelThree.class);
-            startActivity(i);
+    private void setBtnRanking() {
+        findViewById(R.id.btnRanking).setOnClickListener((view) -> {
+            startActivity(new Intent(MainActivity.this, GameLevelThree.class));
         });
-
     }
 }
 
