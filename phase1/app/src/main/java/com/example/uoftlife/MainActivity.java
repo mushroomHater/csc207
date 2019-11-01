@@ -27,14 +27,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        UserManager.loadUsers(this);
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+//        Intent pause = new Intent(this, PauseDialogConfig.class);
+//        System.out.println(pause);
+//        startActivity(pause);
+//        System.out.println("!!!!!!");
+//
+//        UserManager.loadUsers(this);
+//        Intent intent = new Intent(this, LoginActivity.class);
+//        startActivity(intent);
         ImageView homeView = findViewById(R.id.homeView);
         setLevelOneBtn();
         setLevelThreeBtn();
-
+        setLevelTwoBtn();
 
     }
 
@@ -76,6 +80,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void setLevelTwoBtn() {
+        findViewById(R.id.levelTwoBtn).setOnClickListener((view) -> {
+            Intent intent = new Intent(this, PauseDialogConfig.class);
+//            intent.putExtra("from", 'G');
+            startActivity(intent);
+        });
+    }
     private void setLevelThreeBtn() {
         findViewById(R.id.LevelThreeBtn).setOnClickListener((view) -> {
             Intent i = new Intent(this, GameLevelThree.class);

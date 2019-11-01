@@ -1,26 +1,89 @@
 <resources>
     <string name="app_name">UofT Life</string>
+    <string name="app_name_cn">UofT校园生活</string>
     <string name="wake_up">Wake Up!</string>
+    <string name="wake_up_cn">起床啦!</string>
+
+    <string name="homeview">homeview</string>
     <string name="level_1">Level 1</string>
+    <string name="level_1_cn">关卡 1</string>
     <string name="home_screen">Home screen</string>
+    <string name="home_screen_cn">主界面</string>
     <string name="_0_10">0:10</string>
     <string name="_00_15">00:15</string>
     <string name="leveloneview">levelOneView</string>
-    <string name="start">Start</string>
-    <string name="login">Login</string>
+    <string name="leveloneview_cn">关卡1背景</string>
+
+    <string name="login">LogIn</string>
+    <string name="login_cn">登陆</string>
     <string name="sign_up">SignUp</string>
+    <string name="sign_up_cn">注册</string>
     <string name="username_empty">username can not be empty</string>
+    <string name="username_empty_cn">用户名不能为空</string>
     <string name="username_exist_error">username has existed</string>
+    <string name="username_exist_error_cn">用户名已存在</string>
     <string name="password_empty">password can not be empty</string>
+    <string name="password_empty_cn">密码不能为空</string>
     <string name="unknown_error">unknown error</string>
+    <string name="unknown_error_cn">未知错误 O_O</string>
     <string name="sign_up_success">sign up successfully</string>
+    <string name="sign_up_success_cn">注册成功</string>
     <string name="username_not_exist_error">username not exist</string>
+    <string name="username_not_exist_error_cn">用户名不存在</string>
     <string name="password_not_right">password not right</string>
+    <string name="password_not_right_cn">密码错误t</string>
     <string name="login_success">login successfully</string>
+    <string name="login_success_cn">登陆成功</string>
     <string name="hint_username">username</string>
+    <string name="hint_username_cn">用户名</string>
     <string name="hint_password">password</string>
+    <string name="hint_password_cn">密码</string>
     <string name="logout">logout</string>
+    <string name="logout_cn">登出</string>
     <string name="logout_info">Do you want to log out?</string>
+    <string name="logout_info_cn">确认登出?</string>
     <string name="todo">TODO</string>
     <string name="blanket">blanket</string>
+
+    <string name="pause">Game Paused</string>
+    <string name="pause_cn">游戏暂停</string>
+    <string name="config">Once game starts, you will no longer be allowed to set the difficulty.</string>
+    <string name="config_cn">一旦游戏开始，你将不能改变难度</string>
+    <string name="cannot_change_difficulty">Cannot change difficulty during the game.</string>
+    <string name="cannot_change_difficulty_cn">游戏中不能改变难度</string>
+
+    <string name="win">Congratulations! You can now enter the next stage.</string>
+    <string name="win_cn">恭喜通过！你可以进入下一关了</string>
+
+    <string name="fail">Xiao Ming is now in danger!!! Please try again to save him! Σ(*ﾟдﾟﾉ)ﾉ</string>
+    <string name="fail_cn">糟了，小明危险了……请重新尝试！</string>
+
+    <string name="single_score">Your score for this level is:</string>
+    <string name="single_score_cn">你在本关的得分是：</string>
+    <string name="total_score">Your accumulated score is:</string>
+    <string name="total_score_cn">你的总分是：</string>
+
+    <string name="exit">Return to Menu</string>
+    <string name="exit_cn">返回到菜单</string>
+
+    <string name="exit_alert">You will lose your current progress!! Click again to ensure you want to leave.</string>
+    <string name="exit_alert_cn">你将失去目前进度!! 再次点击确认退出.</string>
+
+    <string name="resume">Back to game</string>
+    <string name="resume_cn">返回到游戏</string>
+
+    <string name="difficulty">Choose the difficulty for games</string>
+    <string name="difficulty_cn">选择难度</string>
+    <string name="language">Choose preferred language</string>
+    <string name="language_cn">选择语言</string>
+    <string name="chinese">中文</string>
+    <string name="english">English</string>
+
+    <string name="start">start</string>
+    <string name="start_cn">开始</string>
+    <string name="setting">setting</string>
+    <string name="setting_cn">设置</string>
+    <string name="ranking">ranking</string>
+    <string name="ranking_cn">排行</string>
+
 </resources>
