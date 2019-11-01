@@ -23,5 +23,6 @@
     <string name="logout" />
     <string name="signup">SignUp</string>
     <string name="todo">TODO</string>
+    <string name="blanket">blanket</string>
 
 </resources>
