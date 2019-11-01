@@ -14,7 +14,7 @@ class LevelOneState {
     private static final String TAG = "LevelOne";
 
     /**
-     * The click amount of the user
+     * The number of clicks entered by the user.
      */
     private int clickAmount = 0;
 
@@ -37,6 +37,13 @@ class LevelOneState {
     }
 
     /**
+     * @return the target number of clicks in this game level.
+     */
+    static int getTARGETCLICK() {
+        return TARGETCLICK;
+    }
+
+    /**
      * @return the number of clicks a user has entered.
      */
     int getClickAmount() {
@@ -44,10 +51,17 @@ class LevelOneState {
     }
 
     /**
-     * Sets the number of clicks.
+     * Adds the number of clicks.
      */
     void addClickAmount() {
         clickAmount++;
+    }
+
+    /**
+     * Sets the number of clicks.
+     */
+    void setClickAmount(int i) {
+        clickAmount = i;
     }
 
 

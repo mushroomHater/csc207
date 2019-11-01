@@ -16,7 +16,7 @@ import org.w3c.dom.Text;
 
 public class LevelOne extends AppCompatActivity {
     /**
-     * The timer of the game level.
+     * The countdown timer of the game level.
      */
     private CountDownTimer timer;
 
@@ -31,14 +31,14 @@ public class LevelOne extends AppCompatActivity {
     private long timeLeftInMilliseconds = 16000; // 10 seconds
 
     /**
-     * The number of clicks entered by the user.
+     * The text view of the timer.
      */
-
     private TextView timerText;
 
-
+    /**
+     * The levelOneState instance passed into the game level.
+     */
     private LevelOneState levelOneState = new LevelOneState();
-
 
     /**
      * Creates a LevelOne instance.
@@ -62,17 +62,37 @@ public class LevelOne extends AppCompatActivity {
 
     }
 
-
+    @Override
     protected void onStart() {
         super.onStart();
         startTimer();
     }
 
+    @Override
     protected void onPause() {
         super.onPause();
+        timing = false;
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        timing = true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        timer = null;
+        timing = false;
+        levelOneState.setClickAmount(0);
+        System.out.println("Exit Level One");
+    }
+
+    /**
+     * Sets the function of the wake up button.
+     */
     private void setWakeUpBtn() {
         findViewById(R.id.btnWakeUp).setOnClickListener((view) -> {
             levelOneState.addClickAmount();
@@ -81,9 +101,32 @@ public class LevelOne extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Keep Tapping!", Toast.LENGTH_SHORT)
                         .show();
             }
+            /* Specifies XiaoMing's appearance depending on the number of clicks entered. */
+            if (levelOneState.getClickAmount() == LevelOneState.getTARGETCLICK() / 4) {
+                findViewById(R.id.xiaoming4).setVisibility(View.INVISIBLE);
+                System.out.println("4invisible");
+            }
+            if (levelOneState.getClickAmount() == LevelOneState.getTARGETCLICK() / 2) {
+                findViewById(R.id.xiaoming3).setVisibility(View.INVISIBLE);
+                System.out.println("3invisible");
+            }
+
+            if (levelOneState.getClickAmount() == LevelOneState.getTARGETCLICK() / 4 * 3) {
+                findViewById(R.id.xiaoming2).setVisibility(View.INVISIBLE);
+                System.out.println("1invisible");
+            }
+
+            if (levelOneState.getClickAmount() == LevelOneState.getTARGETCLICK()) {
+                findViewById(R.id.xiaoming1l).setVisibility(View.INVISIBLE);
+                findViewById(R.id.xiaoming1).setVisibility(View.VISIBLE);
+                System.out.println("1visible");
+            }
         });
     }
 
+    /**
+     * Sets the countdown timer.
+     */
     private void setTimer() {
         timerText = findViewById(R.id.levelOneCountDown);
     }
@@ -96,13 +139,14 @@ public class LevelOne extends AppCompatActivity {
             @Override
             public void onTick(long l) {
                 timeLeftInMilliseconds = l;
-                updateTimer();
-
+                if (timing) {
+                    updateTimer();
+                }
             }
 
             @Override
             public void onFinish() {
-
+                timer.cancel();
             }
 
         }.start();
@@ -114,7 +158,6 @@ public class LevelOne extends AppCompatActivity {
      * Stops the countdown timer.
      */
     private void stopTimer() {
-        timer.cancel();
         timing = false;
     }
 
@@ -152,4 +195,6 @@ public class LevelOne extends AppCompatActivity {
 
 
     }
+
 }
+
