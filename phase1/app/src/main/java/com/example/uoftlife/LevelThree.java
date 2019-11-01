@@ -2,6 +2,8 @@ package com.example.uoftlife;
 
 import android.os.CountDownTimer;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -13,7 +15,9 @@ class LevelThree implements Terminable{
 
     private Score score;
 
-    private Iterator mapIterator;
+    private Iterator<String> riddleIterator;
+
+    private List<String> riddleKeys;
 
     private Map<String, String> riddles = new HashMap<String, String>(){{
         put("The more you take, the more you leave behind. What am I?", "footsteps");
@@ -31,7 +35,9 @@ class LevelThree implements Terminable{
     LevelThree(Score score) {
 //        initialize(config);
         this.score = score;
-        mapIterator = riddles.entrySet().iterator();
+        riddleKeys = new ArrayList<>(riddles.keySet());
+        Collections.shuffle(riddleKeys);
+        riddleIterator = riddleKeys.iterator();
     }
 
     /**
@@ -39,8 +45,8 @@ class LevelThree implements Terminable{
      * @return the current riddle
      */
     String getCurrentRiddle() {
-        if (mapIterator.hasNext())
-            currentRiddle = (String) ((Map.Entry) mapIterator.next()).getKey();
+        if (riddleIterator.hasNext())
+            currentRiddle = riddleIterator.next();
         return currentRiddle;
     }
 
