@@ -9,11 +9,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-class LevelThree implements Terminable{
+class LevelThree{
 
     private GameConfiguration config;
 
-    private Score score;
+    private int score;
 
     private Iterator<String> riddleIterator;
 
@@ -32,7 +32,7 @@ class LevelThree implements Terminable{
     private String currentRiddle;
 
     // TODO: Add parameter config later
-    LevelThree(Score score) {
+    LevelThree(int score) {
 //        initialize(config);
         this.score = score;
         riddleKeys = new ArrayList<>(riddles.keySet());
@@ -48,38 +48,6 @@ class LevelThree implements Terminable{
         if (riddleIterator.hasNext())
             currentRiddle = riddleIterator.next();
         return currentRiddle;
-    }
-
-    /**
-     * get how many score does player have right now
-     * @return the score
-     */
-    @Override
-    public int getScore() {
-        return score.getScore();
-    }
-
-    /**
-     * check if the player passes this level
-     * @return always return true.
-     */
-    @Override
-    public boolean isPassed() {
-        return true;
-    }
-
-    @Override
-    public boolean update() {
-        return false;
-    }
-
-    @Override
-    public void initialize(GameConfiguration configure) {
-        this.config = configure;
-    }
-
-    @Override
-    public void clear() {
     }
 
 
@@ -100,6 +68,10 @@ class LevelThree implements Terminable{
      * @param amount
      */
     void updateScore(int amount){
-        score.addScore(amount);
+        score += amount;
+    }
+
+    int getScore(){
+        return score;
     }
 }

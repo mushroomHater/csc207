@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
-public abstract class LevelTwo extends AppCompatActivity implements Terminable {
+public abstract class LevelTwo extends AppCompatActivity {
 
     /**
      * The goal of this game
