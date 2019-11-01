@@ -51,7 +51,7 @@ public class GameLevelThree extends AppCompatActivity {
                 game.updateScore(10);
             }
             else{
-                Toast.makeText(getApplicationContext(), "Wrong Answer,", Toast.LENGTH_SHORT)
+                Toast.makeText(getApplicationContext(), "Wrong Answer, the answer is " + game.getAnswer(), Toast.LENGTH_SHORT)
                         .show();
             }
             setRiddlePrompt();

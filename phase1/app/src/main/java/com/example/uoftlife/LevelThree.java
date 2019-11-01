@@ -20,12 +20,13 @@ class LevelThree implements Terminable{
     private List<String> riddleKeys;
 
     private Map<String, String> riddles = new HashMap<String, String>(){{
-        put("The more you take, the more you leave behind. What am I?", "footsteps");
+        put("The more you take, the more you leave behind. What am I?qweqweqweqweqweqweqwewqeqweqweqweqweqw", "footsteps");
         put("What has a head, a tail, is brown, and has no legs?", "penny");
         put("David's father has three sons : Snap, Crackle and _____ ?", "David");
         put("What room do ghosts avoid", "living room");
         put("What belongs to you, but other people use it more than you", "name");
         put("What is more useful when it is broken", "egg");
+        put("8/2(2+2) = ?", "16");
 
     }};
 
@@ -89,10 +90,14 @@ class LevelThree implements Terminable{
      * @return true if matches false otherwise.
      */
     boolean checkIfMatch(String answer){
-        if ((riddles.get(currentRiddle)).equals(answer)){
+        if (getAnswer().equals(answer)){
             return true;
         }
         else return false;
+    }
+
+    String getAnswer(){
+        return riddles.get(currentRiddle);
     }
 
     /**
