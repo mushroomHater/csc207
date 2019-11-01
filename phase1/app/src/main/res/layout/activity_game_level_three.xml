@@ -6,15 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".GameLevelThree">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/classroom" />
+
     <TextView
-        android:id="@+id/CurrentWord"
-        android:layout_width="58dp"
-        android:layout_height="22dp"
+        android:id="@+id/riddle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="171dp"
         android:layout_marginTop="250dp"
         android:layout_marginEnd="182dp"
         android:layout_marginBottom="260dp"
         android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#F5FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/playerInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,29 +37,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="360dp"
         android:layout_marginEnd="99dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="183dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/DoneBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CurrentWord" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/DoneBtn"
+        android:id="@+id/doneBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="158dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="165dp"
         android:layout_marginBottom="150dp"
-        android:text="Button"
+        android:text="Guess"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerInput" />
+
+    <TextView
+        android:id="@+id/the_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="306dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="679dp"
+        android:text="TextView"
+        android:textAlignment="viewEnd"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
