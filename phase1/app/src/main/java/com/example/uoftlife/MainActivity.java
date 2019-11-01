@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView homeView = findViewById(R.id.homeView);
         setLevelOneBtn();
+        setLevelTwoBtn();
         setLevelThreeBtn();
 
 
@@ -94,6 +95,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void setLevelTwoBtn() {
+        findViewById(R.id.levelTwoBtn).setOnClickListener((view) -> {
+            startActivity(new Intent(MainActivity.this, LevelTwoPage.class));
+        });
+    }
+
     private void setLevelThreeBtn() {
         findViewById(R.id.LevelThreeBtn).setOnClickListener((view) -> {
             Intent i = new Intent(this, GameLevelThree.class);
@@ -101,6 +108,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-}
 
+}
 

@@ -1,25 +1,17 @@
 package com.example.uoftlife;
 
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.uoftlife.GameConfiguration;
-import com.example.uoftlife.Terminable;
+import java.util.List;
 
 public abstract class LevelTwo extends AppCompatActivity implements Terminable {
 
     /**
      * The goal of this game
      */
-    private int Goal;
+    static private int goal = 20;
 
     /**
      * the tag of this game level
@@ -39,39 +31,58 @@ public abstract class LevelTwo extends AppCompatActivity implements Terminable {
     /**
      * the minimum step for each round
      */
-    private static int min_step = 1;
+    static int min_step = 1;
 
     /**
      * the maximum step for each round
      */
-    private static int max_step = 2;
+    static int max_step = 2;
 
     /**
      * current number of this game
      */
-    private static int curr_num = 0;
+    static int curr_step = 0;
+
+    /**
+     * current round number
+     */
+    private int round_num;
 
     /**
      * player 1 (computer)  of this game
      */
-    private PlayerAI AI;
+    private LevelTwoPlayerAI AI;
 
     /**
-     * player 2 (user) of this game
+     * the list of players in this game
      */
-    private PlayerUser User;
 
     /**
      * indicate whose turn it is
      */
-    private static int turn = 0;
+    private int turn;
 
+    static int get_min(){return min_step;}
+    static int get_max(){return max_step;}
+    static int get_goal(){return goal;}
 
-
-    protected void play(){
-        if (curr_num < Goal){
-
-        }
+    public LevelTwo(){
+        this.curr_step = 0;
+        this.round_num = 0;
     }
+
+
+    static void addstep(int n){
+        curr_step += n;
+    }
+
+    static int AI_move(){
+        int i = min_step + (int) (Math.random() * ((
+                max_step - min_step) + 1));
+        return i;
+    }
+
+
+
 
 }
