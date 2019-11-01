@@ -23,28 +23,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String USER_SHARED = "user_shared";
-    private static final String USER_NAME = "user_name";
-    private static final String USER_PASSWORD = "user_password";
-    private SharedPreferences userPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         UserManager.loadUsers(this);
-        userPreferences = getSharedPreferences(USER_SHARED, MODE_PRIVATE);
-        String username = userPreferences.getString(USER_NAME, "");
-        String password = userPreferences.getString(USER_PASSWORD, "");
-
-        if (UserManager.authenticate(username, password) == null) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-        }
-
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
         ImageView homeView = findViewById(R.id.homeView);
         setLevelOneBtn();
-        setLevelTwoBtn();
         setLevelThreeBtn();
 
 
@@ -56,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton(R.string.logout, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        userPreferences.edit().putString(USER_NAME, "")
-                                .putString(USER_PASSWORD, "").apply();
                         finish();
                     }
                 })
@@ -83,21 +69,10 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    @Override
-    protected void onDestroy() {
-        UserManager.saveToFile(this);
-        super.onDestroy();
-    }
 
     private void setLevelOneBtn() {
         findViewById(R.id.btnLevelOne).setOnClickListener((view) -> {
             startActivity(new Intent(MainActivity.this, LevelOne.class));
-        });
-    }
-
-    private void setLevelTwoBtn() {
-        findViewById(R.id.levelTwoBtn).setOnClickListener((view) -> {
-            startActivity(new Intent(MainActivity.this, LevelTwoPage.class));
         });
     }
 
@@ -108,6 +83,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
 }
+
 

@@ -13,9 +13,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.InputMismatchException;
+import java.util.Map;
 
 public class UserManager {
-    private static HashMap<String, User> users;
+    private static Map<String, User> users;
     private static final String FILENAME = "users.dat";
     private static User currentUser;
     private UserManager() {
@@ -32,14 +33,7 @@ public class UserManager {
                 users = (HashMap<String, User>) input.readObject();
                 inputStream.close();
             }
-        } catch (FileNotFoundException e) {
-            Log.e("login activity", "File not found: " + e.toString());
-            users = new HashMap<>();
-        } catch (IOException e) {
-            Log.e("login activity", "Can not read file: " + e.toString());
-            users = new HashMap<>();
-        } catch (ClassNotFoundException e) {
-            Log.e("login activity", "File contains unexpected data type: " + e.toString());
+        } catch (Exception e) {
             users = new HashMap<>();
         }
     }
@@ -48,8 +42,12 @@ public class UserManager {
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(
                     context.openFileOutput(FILENAME, Context.MODE_PRIVATE));
+
             outputStream.writeObject(users);
             outputStream.close();
+            for (Map.Entry<String,User> entry : users.entrySet())
+                Log.e("user", "save " + entry.getKey());
+
         } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }
@@ -72,7 +70,7 @@ public class UserManager {
     }
 
     // sign in
-    public static User signIn(String username, String password) {
+    public static User signUp(String username, String password) {
         if (checkUserExist(username)) {
             return null;
         }

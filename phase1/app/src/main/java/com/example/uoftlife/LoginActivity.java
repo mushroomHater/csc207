@@ -1,13 +1,10 @@
 package com.example.uoftlife;
 
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,10 +17,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextView title;
     private Button left;
     private Button right;
-    private static final String USER_SHARED = "user_shared";
-    private static final String USER_NAME = "user_name";
-    private static final String USER_PASSWORD = "user_password";
-    private SharedPreferences userPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,13 +26,12 @@ public class LoginActivity extends AppCompatActivity {
         title = findViewById(R.id.tv_title);
         left = findViewById(R.id.bt_left);
         right = findViewById(R.id.bt_right);
-        userPreferences = getSharedPreferences(USER_SHARED, MODE_PRIVATE);
         left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 login = false;
-                title.setText(getString(R.string.sign_in));
-                right.setText(getString(R.string.sign_in));
+                title.setText(getString(R.string.sign_up));
+                right.setText(getString(R.string.sign_up));
                 right.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -60,14 +52,12 @@ public class LoginActivity extends AppCompatActivity {
                             showToast(getString(R.string.password_empty));
                             return;
                         }
-                        User user = UserManager.signIn(name, pwd);
+                        User user = UserManager.signUp(name, pwd);
                         if (user == null) {
                             showToast(getString(R.string.unknown_error));
                         } else {
-                            userPreferences.edit().putString(USER_NAME, name)
-                                    .putString(USER_PASSWORD, pwd)
-                                    .apply();
-                            showToast(getString(R.string.sign_in_success));
+                            showToast(getString(R.string.sign_up_success));
+                            UserManager.saveToFile(LoginActivity.this);
                             finish();
                         }
                     }
@@ -105,9 +95,6 @@ public class LoginActivity extends AppCompatActivity {
                     showToast(getString(R.string.password_not_right));
                     password.requestFocus();
                 } else {
-                    userPreferences.edit().putString(USER_NAME, name)
-                            .putString(USER_PASSWORD, pwd)
-                            .apply();
                     showToast(getString(R.string.login_success));
                     finish();
                 }
