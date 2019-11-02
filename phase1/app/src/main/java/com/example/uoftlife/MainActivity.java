@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -103,6 +104,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setBtnRanking() {
+        findViewById(R.id.btnRanking).setOnClickListener((view) -> {
+            if (GameConfiguration.getConfig().getLanguage().equals("English")) {
+                Toast.makeText(getApplicationContext(), "We are still working on this feature",
+                        Toast.LENGTH_LONG)
+                        .show();
+            } else {
+                Toast.makeText(getApplicationContext(), "我们还在完善相关功能",
+                        Toast.LENGTH_LONG)
+                        .show();
+            }
+
+        });
+
 
     }
 

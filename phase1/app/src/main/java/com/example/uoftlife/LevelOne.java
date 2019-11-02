@@ -63,7 +63,6 @@ public class LevelOne extends AppCompatActivity {
         setWakeUpBtn();
         setTimer();
         setXiaoMing();
-//        startTimer();
         setInitialLanguage();
         setConfigBtn();
         initializeDifficulty();
@@ -88,7 +87,6 @@ public class LevelOne extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-//        startTimer();
     }
 
     @Override
@@ -111,8 +109,10 @@ public class LevelOne extends AppCompatActivity {
         timing = true;
         if (GameConfiguration.getConfig().getLanguage().equals("English")) {
             ((Button) findViewById(R.id.btnWakeUp)).setText(R.string.wake_up);
+            ((Button) findViewById(R.id.gameconfig)).setText(R.string.gameconfig);
         } else {
             ((Button) findViewById(R.id.btnWakeUp)).setText(R.string.wake_up_cn);
+            ((Button) findViewById(R.id.gameconfig)).setText(R.string.gameconfig_cn);
         }
 
     }
@@ -166,6 +166,12 @@ public class LevelOne extends AppCompatActivity {
      * Sets the configuration button on top of the game level
      */
     private void setConfigBtn() {
+        if (GameConfiguration.getConfig().getLanguage().equals("English")) {
+            ((Button) findViewById(R.id.gameconfig)).setText(R.string.gameconfig);
+        } else {
+            ((Button) findViewById(R.id.gameconfig)).setText(R.string.gameconfig_cn);
+
+        }
         findViewById(R.id.gameconfig).setOnClickListener((view) -> {
             Intent i = new Intent(this, PauseDialogConfig.class);
             i.putExtra("from", 'G');

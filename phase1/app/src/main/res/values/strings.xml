@@ -104,4 +104,6 @@
     <string name="hard">Hard</string>
     <string name="hard_cn">困难</string>
     <string name="gameconfig">config</string>
+    <string name="gameconfig_cn">设置</string>
+
 </resources>

@@ -4,6 +4,7 @@ package com.example.uoftlife;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -76,6 +77,12 @@ public class LevelTwoPage extends AppCompatActivity {
      * Sets the configuration button on top of the game level
      */
     private void setConfigBtn() {
+        if (GameConfiguration.getConfig().getLanguage().equals("English")) {
+            ((Button) findViewById(R.id.gameconfig)).setText(R.string.gameconfig);
+        } else {
+            ((Button) findViewById(R.id.gameconfig)).setText(R.string.gameconfig_cn);
+
+        }
         findViewById(R.id.gameconfig).setOnClickListener((view) -> {
             Intent i = new Intent(this, PauseDialogConfig.class);
             i.putExtra("from", 'G');
