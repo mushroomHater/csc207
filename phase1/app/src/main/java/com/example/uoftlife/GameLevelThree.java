@@ -79,10 +79,8 @@ public class GameLevelThree extends AppCompatActivity {
             }
             setRiddlePrompt();
             setScorePrompt();
-            System.out.println("health is: " + game.getHealth());
             if(game.getHealth() <= 0){
-                System.out.println("I'm in");
-                onDestroy();
+                finish();
             }
         });
     }
