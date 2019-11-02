@@ -13,24 +13,65 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="94dp"
         android:layout_marginEnd="94dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="40dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/okBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
     <TextView
-        android:id="@+id/step_AI"
+        android:id="@+id/CurrStep"
         android:layout_width="140dp"
         android:layout_height="66dp"
         android:layout_marginStart="132dp"
-        android:layout_marginTop="368dp"
-        android:text="AI's location"
+        android:layout_marginTop="344dp"
+        android:text="current step"
         android:textColor="#0000FF"
         android:textSize="20sp"
         android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Goal"
+        android:layout_width="166dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="48dp"
+        android:text="goal step"
+        android:textColor="#0000FF"
+        android:textSize="20sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.334"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Instruction"
+        android:layout_width="347dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="196dp"
+        android:text="instruction"
+        android:textColor="#0000FF"
+        android:textSize="15sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Score"
+        android:layout_width="115dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="60dp"
+        android:text="current score"
+        android:textColor="#0000FF"
+        android:textSize="15sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.945"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginEnd="163dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="112dp"
         android:text="@android:string/ok"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
