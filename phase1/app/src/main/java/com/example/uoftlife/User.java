@@ -72,13 +72,13 @@ public class User implements Serializable {
 
     void setLevelScore(int level, int score) {
         if (newGame) {
-
             levelScore = new int[3];
             newGame = false;
         }
         if (level >= 1 && level <= 3) {
-            levelScore[level - 1] = score;
+            levelScore[level - 1] = score*((int)GameConfiguration.getConfig().getDifficulty());
             totalScore = levelScore[0] + levelScore[1] + levelScore[2];
+            setHighestScore();
         }
     }
 

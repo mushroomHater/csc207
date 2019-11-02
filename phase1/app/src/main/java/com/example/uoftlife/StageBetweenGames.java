@@ -26,6 +26,7 @@ public class StageBetweenGames extends AppCompatActivity {
         super.onResume();
         level += 1;
         if (level == 0) {
+            UserManager.getCurrentUser().setNewGame();
             launchLevel(1);
         } else {
             passed = UserManager.getCurrentUser().getLevelScore(level) != 0;
@@ -72,7 +73,6 @@ public class StageBetweenGames extends AppCompatActivity {
     private void launchLevel(int level) {
         if (level == 1) {
             startActivity(new Intent(this, LevelOne.class));
-
         } else if (level == 2) {
             startActivity(new Intent(this, LevelTwoPage.class));
         } else if (level == 3) {
