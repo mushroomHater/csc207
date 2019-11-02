@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.w3c.dom.Text;
 
 
-public class LevelOne extends AppCompatActivity{
+public class LevelOne extends AppCompatActivity {
 
     private GameConfiguration config = GameConfiguration.getConfig();
     /**
@@ -62,9 +63,8 @@ public class LevelOne extends AppCompatActivity{
         setTimer();
         setXiaoMing();
         startTimer();
-        Toast.makeText(getApplicationContext(), "Wake up Xiao Ming by tapping the button! ",
-                Toast.LENGTH_LONG)
-                .show();
+        setInitialLanguage();
+
     }
 
     @Override
@@ -81,9 +81,15 @@ public class LevelOne extends AppCompatActivity{
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onRestart() {
+        super.onRestart();
         timing = true;
+        if (GameConfiguration.getConfig().getLanguage().equals("English")) {
+            ((Button) findViewById(R.id.btnWakeUp)).setText(R.string.wake_up);
+        } else {
+            ((Button) findViewById(R.id.btnWakeUp)).setText(R.string.wake_up_cn);
+        }
+
     }
 
     /**
@@ -94,8 +100,15 @@ public class LevelOne extends AppCompatActivity{
             levelOneState.addClickAmount();
             System.out.println("ClickAmount:" + levelOneState.getClickAmount());
             if (levelOneState.getClickAmount() == 4) {
-                Toast.makeText(getApplicationContext(), "Keep Tapping!", Toast.LENGTH_SHORT)
-                        .show();
+                if (GameConfiguration.getConfig().getLanguage().equals("English")) {
+                    Toast.makeText(getApplicationContext(), "Keep tapping! ",
+                            Toast.LENGTH_LONG)
+                            .show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "继续点击！",
+                            Toast.LENGTH_LONG)
+                            .show();
+                }
             }
             /* Specifies XiaoMing's appearance depending on the number of clicks entered. */
             if (levelOneState.getClickAmount() == LevelOneState.getTARGETCLICK() / 4) {
@@ -125,6 +138,20 @@ public class LevelOne extends AppCompatActivity{
         findViewById(R.id.xiaoming2).setVisibility(View.VISIBLE);
         findViewById(R.id.xiaoming3).setVisibility(View.VISIBLE);
         findViewById(R.id.xiaoming4).setVisibility(View.VISIBLE);
+    }
+
+    private void setInitialLanguage(){
+        if (GameConfiguration.getConfig().getLanguage().equals("English")) {
+            ((Button) findViewById(R.id.btnWakeUp)).setText(R.string.wake_up);
+            Toast.makeText(getApplicationContext(), "Wake up Xiao Ming by tapping the button! ",
+                    Toast.LENGTH_LONG)
+                    .show();
+        } else {
+            ((Button) findViewById(R.id.btnWakeUp)).setText(R.string.wake_up_cn);
+            Toast.makeText(getApplicationContext(), "不断点击按钮让小明起床！",
+                    Toast.LENGTH_LONG)
+                    .show();
+        }
     }
 
     /**
@@ -183,7 +210,7 @@ public class LevelOne extends AppCompatActivity{
             stopTimer();
             showOutcome();
             timing = false;
-            UserManager.getCurrentUser().setLevelScore(1,levelOneState.getScore());
+            UserManager.getCurrentUser().setLevelScore(1, levelOneState.getScore());
             finish();
         }
     }
