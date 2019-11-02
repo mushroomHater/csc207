@@ -58,26 +58,34 @@ public abstract class LevelTwo extends AppCompatActivity {
      */
 
     /**
-     * indicate whose turn it is
+     * indicate the score
      */
     private static int score;
 
-    static int get_min() {
-        return min_step;
-    }
+    /**
+     * get minimum step of this level
+     */
+    static int get_min(){return min_step;}
 
-    static int get_max() {
-        return max_step;
-    }
+    /**
+     * get maximum step of this level
+     */
+    static int get_max(){return max_step;}
 
-    static int get_goal() {
-        return goal;
-    }
+    /**
+     * get goal of this level
+     */
+    static int get_goal(){return goal;}
 
+    /**
+     *add step towards total
+     */
     static void addstep(int n) {
         curr_step += n;
     }
-
+    /**
+     *Step of Xiaogang, different in each level because of different difficulties
+     */
     static int AI_move() {
         if (GameConfiguration.getConfig().getDifficulty() == 1) {
             return LevelTwoPlayerAI.leveleasy(min_step, max_step, curr_step);
@@ -86,7 +94,10 @@ public abstract class LevelTwo extends AppCompatActivity {
         } else return LevelTwoPlayerAI.levelhard(min_step, max_step, curr_step, goal);
     }
 
-
+    /**
+     * check if passed
+     * @return
+     */
     static boolean isPassed() {
         if (curr_step >= goal) {
             return true;
@@ -95,6 +106,9 @@ public abstract class LevelTwo extends AppCompatActivity {
         }
     }
 
+    /**
+     * get score of this level, different in each difficulties
+     */
     static int get_Score() {
         if (isPassed()) {
             if (GameConfiguration.getConfig().getDifficulty() == 1) {

@@ -27,31 +27,32 @@ public class LevelTwoPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_level_two);
-//        ImageView levelTwoView = findViewById(R.id.levelTwoView);
         LevelTwo.curr_step = 0;
         okBtn();
         setConfigBtn();
         showCurrStep();
         showGoal();
-//        showStepLimit();
         showInstruction();
     }
-
-
-//    private void showStepLimit() {
-//        TextView steplimit = (TextView) findViewById(R.id.StepLimit);
-//        steplimit.setText("minimum step is" + LevelTwo.get_min() + "maximum step is" + LevelTwo.get_max());
-//    }
-
+    /**
+     * the textview of instuction of this level
+     */
     private void showInstruction() {
         TextView instruction = (TextView) findViewById(R.id.Instruction);
-        instruction.setText("XiaoMing and his neighbour XiaoGang are late for school, so they need to run. " +
-                "Each of them can take one step per time, \nThe minimum step is " + LevelTwo.get_min()
-                + "\nand the maximum steps is" + LevelTwo.get_max()+"steps.\n" + "The first one reached "+
-                LevelTwo.get_goal()+" steps wins! Control XiaoMing to compete with XiaoGang!" +
-                "٩(๑•̀ω•́๑)۶");
+        if (GameConfiguration.getConfig().getLanguage().equals("English")) {
+            instruction.setText("XiaoMing and his neighbour XiaoGang are late for school, so they need to run. " +
+                    "Each of them can take one step per time, \nThe minimum step is " + LevelTwo.get_min()
+                    + "\nand the maximum steps is" + LevelTwo.get_max() + "steps.\n" + "The first one reached " +
+                    LevelTwo.get_goal() + " steps wins! Control XiaoMing to compete with XiaoGang!" +
+                    "٩(๑•̀ω•́๑)۶");
+        }
+        else instruction.setText("小明和他的邻居小刚在迟到的边缘疯狂试探，从家里到学校一共有"+LevelTwo.get_goal() + "步，" +
+                "他们每次可以走" + LevelTwo.get_min() + "步，最多可以走" + LevelTwo.get_max() + "步。控制小明，冲就完事了！٩(๑•̀ω•́๑)۶");
     }
 
+    /**
+     * the textview of currentstep
+     */
     private void showCurrStep() {
         TextView currstep = (TextView) findViewById(R.id.CurrStep);
         if (GameConfiguration.getConfig().getLanguage().equals("English")) {
@@ -59,18 +60,14 @@ public class LevelTwoPage extends AppCompatActivity {
         } else currstep.setText("你的步数是" + LevelTwo.curr_step);
     }
 
+    /**
+     * the target step of this level
+     */
     private void showGoal() {
         TextView goal = (TextView) findViewById(R.id.Goal);
         if (GameConfiguration.getConfig().getLanguage().equals("English")) {
             goal.setText("Target Step :" + LevelTwo.get_goal());
         } else goal.setText("目标步数 :" + LevelTwo.get_goal());
-    }
-
-    public void getInputStep() {
-        findViewById(R.id.okBtn).setOnClickListener(v -> {
-            EditText setMoveStep = findViewById(R.id.setMoveStepTextView);
-            int number = Integer.parseInt(setMoveStep.getText().toString());
-        });
     }
 
     /**
@@ -90,6 +87,9 @@ public class LevelTwoPage extends AppCompatActivity {
         });
     }
 
+    /**
+     * the button to click when confirming the steps a player entered
+     */
     public void okBtn() {
         findViewById(R.id.okBtn).setOnClickListener(v -> {
             EditText setMoveStep = findViewById(R.id.setMoveStepTextView);
@@ -111,7 +111,7 @@ public class LevelTwoPage extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "number not in range!", Toast.LENGTH_SHORT)
                                 .show();
                     }
-                    if (LevelTwo.curr_step > LevelTwo.get_goal()) {
+                    if (LevelTwo.curr_step >= LevelTwo.get_goal()) {
                         TextView prompt = (TextView) findViewById(R.id.CurrStep);
                         if (GameConfiguration.getConfig().getLanguage().equals("English")) {
                             prompt.setText("You win! (* ॑ᐜ ॑*)");
@@ -153,6 +153,9 @@ public class LevelTwoPage extends AppCompatActivity {
     }
 
     @Override
+    /**
+     * go back a stage
+     */
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             return true;
