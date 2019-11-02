@@ -15,6 +15,9 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
 
+/**
+ * A user manager class.
+ */
 public class UserManager {
     private static Map<String, User> users;
     private static final String FILENAME = "users.dat";
@@ -23,8 +26,9 @@ public class UserManager {
 
     }
 
-
-
+    /**
+     * Load users from file.
+     */
     public static void loadUsers(Context context){
         try {
             InputStream inputStream = context.openFileInput(FILENAME);
@@ -38,6 +42,9 @@ public class UserManager {
         }
     }
 
+    /**
+     * Save users to file.
+     */
     static void saveToFile(Context context){
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(
@@ -53,11 +60,16 @@ public class UserManager {
         }
     }
 
+    /**
+     * Check if the user exists.
+     */
     static boolean checkUserExist(String username) {
         return users.containsKey(username);
     }
 
-    //login
+    /**
+     * Log in.
+     */
     static User authenticate(String username, String password){
         if (!checkUserExist(username)) {
             return null;
@@ -69,7 +81,9 @@ public class UserManager {
         return currentUser;
     }
 
-    // sign in
+    /**
+     * Sign up.
+     */
     static User signUp(String username, String password) {
         if (checkUserExist(username)) {
             return null;
@@ -79,6 +93,9 @@ public class UserManager {
         return currentUser;
     }
 
+    /**
+     * Return current user.
+     */
     static User getCurrentUser(){
         return currentUser;
     }
