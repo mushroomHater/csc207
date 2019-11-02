@@ -20,7 +20,7 @@ public class LevelOne extends AppCompatActivity {
 
     private GameConfiguration config = GameConfiguration.getConfig();
     /**
-     * The countdown timer of the game level.
+     * The countdown timer of the game level..
      */
     private CountDownTimer timer;
 
