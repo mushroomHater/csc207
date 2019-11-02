@@ -27,14 +27,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Intent pause = new Intent(this, PauseDialogConfig.class);
-//        System.out.println(pause);
-//        startActivity(pause);
-//        System.out.println("!!!!!!");
-//
-//        UserManager.loadUsers(this);
-//        Intent intent = new Intent(this, LoginActivity.class);
-//        startActivity(intent);
+
+
+        UserManager.loadUsers(this);
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
         ImageView homeView = findViewById(R.id.homeView);
 
         setBtnStart();
@@ -78,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setBtnStart() {
         findViewById(R.id.btnStart).setOnClickListener((view) -> {
-            startActivity(new Intent(MainActivity.this, LevelOne.class));
+            startActivity(new Intent(MainActivity.this, StageBetweenGames.class));
         });
 
     }

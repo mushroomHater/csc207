@@ -52,16 +52,7 @@
     <string name="cannot_change_difficulty">Cannot change difficulty during the game.</string>
     <string name="cannot_change_difficulty_cn">游戏中不能改变难度</string>
 
-    <string name="win">Congratulations! You can now enter the next stage.</string>
-    <string name="win_cn">恭喜通过！你可以进入下一关了</string>
 
-    <string name="fail">Xiao Ming is now in danger!!! Please try again to save him! Σ(*ﾟдﾟﾉ)ﾉ</string>
-    <string name="fail_cn">糟了，小明危险了……请重新尝试！</string>
-
-    <string name="single_score">Your score for this level is:</string>
-    <string name="single_score_cn">你在本关的得分是：</string>
-    <string name="total_score">Your accumulated score is:</string>
-    <string name="total_score_cn">你的总分是：</string>
 
     <string name="exit">Return to Menu</string>
     <string name="exit_cn">返回到菜单</string>
@@ -81,9 +72,35 @@
 
     <string name="start">start</string>
     <string name="start_cn">开始</string>
-    <string name="setting">setting</string>
+    <string name="setting">Configuration</string>
     <string name="setting_cn">设置</string>
     <string name="ranking">ranking</string>
     <string name="ranking_cn">排行</string>
 
+
+
+    <string name="win">Congratulations! Youa can now enter the next stage.</string>
+    <string name="win_cn">恭喜通过！你可以进入下一关了</string>
+
+    <string name="fail">Xiao Ming is now in danger!!! Please try again to save him! Σ(*ﾟдﾟﾉ)ﾉ</string>
+    <string name="fail_cn">糟了，小明危险了……请重新尝试！</string>
+
+    <string name="single_score">Your score for this level is:</string>
+    <string name="single_score_cn">你在本关的得分是：</string>
+    <string name="total_score">Your accumulated score is:</string>
+    <string name="total_score_cn">你的总分是：</string>
+
+
+    <string name="yes">YES!</string>
+    <string name="yes_cn">好耶！</string>
+    <string name="try_again">Try Again</string>
+    <string name="try_again_cn">再来一次</string>
+
+
+    <string name="easy">Easy</string>
+    <string name="easy_cn">简单</string>
+    <string name="medium">Medium</string>
+    <string name="medium_cn">正常</string>
+    <string name="hard">Hard</string>
+    <string name="hard_cn">困难</string>
 </resources>

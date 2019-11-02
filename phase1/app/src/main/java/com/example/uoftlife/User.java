@@ -24,8 +24,8 @@ public class User implements Serializable {
         return totalScore;
     }
 
-    public int[] getLevelScore() {
-        return levelScore;
+    int getLevelScore(int level) {
+        return levelScore[level-1];
     }
 
 
