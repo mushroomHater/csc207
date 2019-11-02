@@ -54,7 +54,7 @@ public abstract class LevelTwo extends AppCompatActivity {
     /**
      * the score of this game
      */
-    private int score;
+    static int score;
 
     static int get_min() {
         return min_step;
@@ -94,7 +94,7 @@ public abstract class LevelTwo extends AppCompatActivity {
         }
     }
 
-    public int get_Score() {
+    static int get_Score() {
         if (isPassed()) {
             if (GameConfiguration.getConfig().getDifficulty() == 1) {
                 score = 50;
