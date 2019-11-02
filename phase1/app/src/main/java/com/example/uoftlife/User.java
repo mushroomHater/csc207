@@ -24,15 +24,15 @@ public class User implements Serializable {
     /**
      * The total score of the user.
      */
-    private double totalScore;
+    private int totalScore;
     /**
      * The score the user gets at each level.
      */
-    private List levelScore;
+    private int[] levelScore = new int[3];
     /**
-     * The current level user is at.
+     * Indicates if this is a new game.
      */
-    private int currentLevel;
+    private boolean newGame = true;
 
     /**
      * Construct a new user.
@@ -42,47 +42,38 @@ public class User implements Serializable {
         this.password = password;
         this.userid = userid;
         totalScore = 0;
-        currentLevel = 0;
-        levelScore = new ArrayList<>();
     }
 
     /**
-     * Get the total score of this user.
+     * Return the total score of this user.
      */
-    public double getTotalScore() {
+    int getTotalScore() {
         return totalScore;
     }
 
     /**
-     * Get the level score of this user.
+     * Return the level scores of this user.
      */
-    public List getLevelScore() {
+    public int[] getLevelScore() {
         return levelScore;
     }
 
     /**
-     * Get the current level of this user.
-     */
-    public int getCurrentLevel() {
-        return currentLevel;
-    }
-
-    /**
-     * Get the username of this user.
+     * Return the username of this user.
      */
     public String getUsername() {
         return username;
     }
 
     /**
-     * Get the password of this user.
+     * Return the password of this user.
      */
     String getPassword() {
         return password;
     }
 
     /**
-     * Get the userid of this user.
+     * Return the userid of this user.
      */
     public long getUserid() {
         return userid;
@@ -103,6 +94,27 @@ public class User implements Serializable {
             return false;
         }
         return this.password.equals(password);
+    }
+
+    /**
+     * Set this game of this user as a new game.
+     */
+    void setNewGame(){
+        newGame = true;
+    }
+
+    /**
+     * Set the level scores of this user.
+     */
+    void setLevelScore(int level, int score){
+        if(newGame){
+            levelScore = new int[3];
+            newGame = false;
+        }
+        if(level>=1&&level<=3){
+            levelScore[level - 1] = score;
+            totalScore = levelScore[0] + levelScore[1] + levelScore[2];
+        }
     }
 
 }

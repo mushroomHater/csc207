@@ -45,7 +45,7 @@ public class UserManager {
     /**
      * Save users to file.
      */
-    public static void saveToFile(Context context){
+    static void saveToFile(Context context){
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(
                     context.openFileOutput(FILENAME, Context.MODE_PRIVATE));
@@ -63,14 +63,14 @@ public class UserManager {
     /**
      * Check if the user exists.
      */
-    public static boolean checkUserExist(String username) {
+    static boolean checkUserExist(String username) {
         return users.containsKey(username);
     }
 
     /**
      * Log in.
      */
-    public static User authenticate(String username, String password){
+    static User authenticate(String username, String password){
         if (!checkUserExist(username)) {
             return null;
         }
@@ -84,12 +84,19 @@ public class UserManager {
     /**
      * Sign up.
      */
-    public static User signUp(String username, String password) {
+     static User signUp(String username, String password) {
         if (checkUserExist(username)) {
             return null;
         }
         currentUser= new User(username, password, username.hashCode());
         users.put(currentUser.getUsername(), currentUser);
+        return currentUser;
+    }
+
+    /**
+     * Return current user.
+     */
+    static User getCurrentUser(){
         return currentUser;
     }
 
