@@ -18,8 +18,8 @@ public class GameLevelThree extends AppCompatActivity {
         setContentView(R.layout.activity_game_level_three);
 
         // setup the textView of the riddle and the button
-        GameConfiguration config = new GameConfiguration((byte) 2, "Chinese");
-        game = new LevelThree(0, config);
+
+        game = new LevelThree(0, GameConfiguration.getConfig());
         setScorePrompt();
         setRiddlePrompt();
         setdoneBtn();
