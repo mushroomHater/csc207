@@ -103,4 +103,5 @@
     <string name="medium_cn">正常</string>
     <string name="hard">Hard</string>
     <string name="hard_cn">困难</string>
+    <string name="gameconfig">config</string>
 </resources>

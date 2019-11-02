@@ -1,7 +1,9 @@
 package com.example.uoftlife;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ public class LevelTwoPage extends AppCompatActivity{
         showGoal();
 //        showStepLimit();
         showInstruction();
+        setConfigBtn();
     }
 
 
@@ -60,6 +63,17 @@ public class LevelTwoPage extends AppCompatActivity{
         findViewById(R.id.okBtn).setOnClickListener(v -> {
             EditText setMoveStep = findViewById(R.id.setMoveStepTextView);
             int number = Integer.parseInt(setMoveStep.getText().toString());
+        });
+    }
+
+    /**
+     * Sets the configuration button on top of the game level
+     */
+    private void setConfigBtn() {
+        findViewById(R.id.gameconfig).setOnClickListener((view) -> {
+            Intent i = new Intent(this, PauseDialogConfig.class);
+            i.putExtra("from", 'G');
+            startActivity(i);
         });
     }
 
@@ -99,6 +113,14 @@ public class LevelTwoPage extends AppCompatActivity{
 
         });
         }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            return true;
+        }
+        return false;
+    }
 
 }
 

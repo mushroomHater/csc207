@@ -3,6 +3,7 @@ package com.example.uoftlife;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -31,7 +32,7 @@ public class LevelOne extends AppCompatActivity {
     /**
      * The time left in this game level in milliseconds.
      */
-    private long timeLeftInMilliseconds = 16000; // 10 seconds
+    private long timeLeftInMilliseconds = 16000; // 16 seconds
 
     /**
      * The text view of the timer.
@@ -64,8 +65,10 @@ public class LevelOne extends AppCompatActivity {
         setXiaoMing();
         startTimer();
         setInitialLanguage();
+        setConfigBtn();
 
     }
+
 
     @Override
     protected void onStart() {
@@ -90,6 +93,14 @@ public class LevelOne extends AppCompatActivity {
             ((Button) findViewById(R.id.btnWakeUp)).setText(R.string.wake_up_cn);
         }
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -130,6 +141,17 @@ public class LevelOne extends AppCompatActivity {
     }
 
     /**
+     * Sets the configuration button on top of the game level
+     */
+    private void setConfigBtn() {
+        findViewById(R.id.gameconfig).setOnClickListener((view) -> {
+            Intent i = new Intent(this, PauseDialogConfig.class);
+            i.putExtra("from", 'G');
+            startActivity(i);
+        });
+    }
+
+    /**
      * Sets Xiao Ming's appearance in the game level.
      */
     private void setXiaoMing() {
@@ -140,7 +162,7 @@ public class LevelOne extends AppCompatActivity {
         findViewById(R.id.xiaoming4).setVisibility(View.VISIBLE);
     }
 
-    private void setInitialLanguage(){
+    private void setInitialLanguage() {
         if (GameConfiguration.getConfig().getLanguage().equals("English")) {
             ((Button) findViewById(R.id.btnWakeUp)).setText(R.string.wake_up);
             Toast.makeText(getApplicationContext(), "Wake up Xiao Ming by tapping the button! ",
