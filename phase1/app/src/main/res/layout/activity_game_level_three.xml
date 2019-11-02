@@ -12,10 +12,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/classroom" />
 
     <TextView
@@ -68,30 +68,26 @@
         android:id="@+id/the_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="306dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="679dp"
+        android:layout_marginStart="171dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="142dp"
         android:text="TextView"
         android:textAlignment="viewEnd"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/health" />
 
     <TextView
         android:id="@+id/health"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="63dp"
-        android:layout_marginEnd="330dp"
-        android:layout_marginBottom="649dp"
+        android:layout_marginStart="171dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="142dp"
         android:text="TextView"
-        android:textAlignment="viewStart"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

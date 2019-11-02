@@ -32,7 +32,7 @@ public class LevelOne extends AppCompatActivity {
     /**
      * The time left in this game level in milliseconds.
      */
-    private long timeLeftInMilliseconds = 16000; // 16 seconds
+    private long timeLeftInMilliseconds = 1600; // 16 seconds
 
     /**
      * The text view of the timer.

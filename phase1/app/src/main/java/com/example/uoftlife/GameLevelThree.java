@@ -21,7 +21,7 @@ public class GameLevelThree extends AppCompatActivity {
 
         // setup the textView of the riddle and the button
 
-        game = new LevelThree(0, GameConfiguration.getConfig());
+        game = new LevelThree(0);
         setScorePrompt();
         setRiddlePrompt();
         setdoneBtn();
@@ -94,6 +94,7 @@ public class GameLevelThree extends AppCompatActivity {
             setRiddlePrompt();
             setScorePrompt();
             if(game.getHealth() <= 0){
+                UserManager.getCurrentUser().setLevelScore(3, game.getScore());
                 finish();
             }
         });
@@ -102,7 +103,6 @@ public class GameLevelThree extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        UserManager.getCurrentUser().setLevelScore(3, game.getScore());
     }
 
     @Override

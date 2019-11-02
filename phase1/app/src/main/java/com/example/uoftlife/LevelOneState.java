@@ -6,7 +6,7 @@ class LevelOneState {
     /**
      * The target number of click to pass the game level.
      */
-    private static int TARGETCLICK = 45;
+    private static int TARGETCLICK = 1;
 
     /**
      * The tag of the game level.
