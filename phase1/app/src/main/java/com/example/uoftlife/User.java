@@ -8,31 +8,26 @@ public class User implements Serializable {
     private String username;
     private String password;
     private long userid;
-    private double totalScore;
-    private List levelScore;
-    private int currentLevel;
+    private int totalScore;
+    private int[] levelScore = new int[3];
+    private boolean newGame = true;
 
     public User(String username, String password, long userid){
         this.username = username;
         this.password = password;
         this.userid = userid;
         totalScore = 0;
-        currentLevel = 0;
-        levelScore = new ArrayList<>();
     }
 
 
-    public double getTotalScore() {
+    int getTotalScore() {
         return totalScore;
     }
 
-    public List getLevelScore() {
+    public int[] getLevelScore() {
         return levelScore;
     }
 
-    public int getCurrentLevel() {
-        return currentLevel;
-    }
 
     public String getUsername() {
         return username;
@@ -55,6 +50,20 @@ public class User implements Serializable {
             return false;
         }
         return this.password.equals(password);
+    }
+
+    void setNewGame(){
+        newGame = true;
+    }
+    void setLevelScore(int level, int score){
+        if(newGame){
+            levelScore = new int[3];
+            newGame = false;
+        }
+        if(level>=1&&level<=3){
+            levelScore[level - 1] = score;
+            totalScore = levelScore[0] + levelScore[1] + levelScore[2];
+        }
     }
 
 }
