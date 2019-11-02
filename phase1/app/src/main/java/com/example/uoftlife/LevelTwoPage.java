@@ -38,11 +38,15 @@ public class LevelTwoPage extends AppCompatActivity {
      */
     private void showInstruction() {
         TextView instruction = (TextView) findViewById(R.id.Instruction);
-        instruction.setText("XiaoMing and his neighbour XiaoGang are late for school, so they need to run. " +
-                "Each of them can take one step per time, \nThe minimum step is " + LevelTwo.get_min()
-                + "\nand the maximum steps is" + LevelTwo.get_max()+"steps.\n" + "The first one reached "+
-                LevelTwo.get_goal()+" steps wins! Control XiaoMing to compete with XiaoGang!" +
-                "٩(๑•̀ω•́๑)۶");
+        if (GameConfiguration.getConfig().getLanguage().equals("English")) {
+            instruction.setText("XiaoMing and his neighbour XiaoGang are late for school, so they need to run. " +
+                    "Each of them can take one step per time, \nThe minimum step is " + LevelTwo.get_min()
+                    + "\nand the maximum steps is" + LevelTwo.get_max() + "steps.\n" + "The first one reached " +
+                    LevelTwo.get_goal() + " steps wins! Control XiaoMing to compete with XiaoGang!" +
+                    "٩(๑•̀ω•́๑)۶");
+        }
+        else instruction.setText("小明和他的邻居小刚在迟到的边缘疯狂试探，从家里到学校一共有"+LevelTwo.get_goal() + "步，" +
+                "他们每次可以走" + LevelTwo.get_min() + "步，最多可以走" + LevelTwo.get_max() + "步。控制小明，冲就完事了！٩(๑•̀ω•́๑)۶");
     }
 
     /**
