@@ -85,5 +85,12 @@
     <string name="setting_cn">设置</string>
     <string name="ranking">ranking</string>
     <string name="ranking_cn">排行</string>
+    <string name="easy">Easy</string>
+    <string name="easy_cn">简单</string>
+    <string name="medium">Medium</string>
+    <string name="medium_cn">正常</string>
+    <string name="hard">Hard</string>
+    <string name="hard_cn">困难</string>
+
 
 </resources>
