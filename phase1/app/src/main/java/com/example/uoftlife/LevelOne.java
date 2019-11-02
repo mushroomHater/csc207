@@ -84,12 +84,6 @@ public class LevelOne extends AppCompatActivity {
         timing = true;
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        System.out.println("Exit Level One");
-    }
-
     /**
      * Sets the function of the wake up button.
      */
@@ -191,7 +185,8 @@ public class LevelOne extends AppCompatActivity {
             stopTimer();
             showOutcome();
             timing = false;
-            System.out.println("Score:" + levelOneState.getScore() + "/100");
+            UserManager.getCurrentUser().setLevelScore(1,levelOneState.getScore());
+            finish();
         }
     }
 

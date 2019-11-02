@@ -72,7 +72,7 @@ class LevelOneState {
      * If the user fails the game level, return 0.
      */
 
-    public int getScore() {
+    int getScore() {
         if (isPassed()) {
             if (clickAmount >= TARGETCLICK &&
                     clickAmount < TARGETCLICK * 1.2) {
