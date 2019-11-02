@@ -63,7 +63,7 @@ public class LevelOne extends AppCompatActivity {
         setWakeUpBtn();
         setTimer();
         setXiaoMing();
-        startTimer();
+//        startTimer();
         setInitialLanguage();
         setConfigBtn();
 
@@ -73,14 +73,21 @@ public class LevelOne extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        startTimer();
+//        startTimer();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         timing = false;
+        startTimer();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        timing = true;
+        startTimer();
     }
 
     @Override
@@ -187,23 +194,22 @@ public class LevelOne extends AppCompatActivity {
      * Starts the countdown timer.
      */
     private void startTimer() {
-        timer = new CountDownTimer(timeLeftInMilliseconds, 1000) {
-            @Override
-            public void onTick(long l) {
-                timeLeftInMilliseconds = l;
-                if (timing) {
+        if (timing) {
+            timer = new CountDownTimer(timeLeftInMilliseconds, 1000) {
+                @Override
+                public void onTick(long l) {
+                    timeLeftInMilliseconds = l;
                     updateTimer();
                 }
-            }
 
-            @Override
-            public void onFinish() {
-                timer.cancel();
-            }
+                @Override
+                public void onFinish() {
+                    timer.cancel();
+                }
 
-        }.start();
-
-        timing = true;
+            }.start();
+        } else timer.cancel();
+//        timing = true;
     }
 
     /**
