@@ -59,21 +59,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
-        if (GameConfiguration.getConfig().getLanguage().equals("English")){
-            ((Button) findViewById(R.id.btnStart)).setText(R.string.start);
-            ((Button) findViewById(R.id.btnSetting)).setText(R.string.setting);
-            ((Button) findViewById(R.id.btnRanking)).setText(R.string.ranking);
-        }else{
-            ((Button) findViewById(R.id.btnStart)).setText(R.string.start_cn);
-            ((Button) findViewById(R.id.btnSetting)).setText(R.string.setting_cn);
-            ((Button) findViewById(R.id.btnRanking)).setText(R.string.ranking_cn);
-        }
-
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
@@ -88,7 +73,20 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if (GameConfiguration.getConfig().getLanguage().equals("English")){
+            ((Button) findViewById(R.id.btnStart)).setText(R.string.start);
+            ((Button) findViewById(R.id.btnSetting)).setText(R.string.setting);
+            ((Button) findViewById(R.id.btnRanking)).setText(R.string.ranking);
+        }else{
+            ((Button) findViewById(R.id.btnStart)).setText(R.string.start_cn);
+            ((Button) findViewById(R.id.btnSetting)).setText(R.string.setting_cn);
+            ((Button) findViewById(R.id.btnRanking)).setText(R.string.ranking_cn);
+        }
 
+    }
     private void setBtnStart() {
         findViewById(R.id.btnStart).setOnClickListener((view) -> {
             startActivity(new Intent(MainActivity.this, StageBetweenGames.class));
