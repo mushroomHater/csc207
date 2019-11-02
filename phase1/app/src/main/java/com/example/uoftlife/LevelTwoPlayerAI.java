@@ -2,8 +2,8 @@ package com.example.uoftlife;
 import java.util.Scanner;
 public class LevelTwoPlayerAI extends LevelTwoPlayer {
 
-    /*
-    ** how many steps a character moves each round, when the min_step is always 1
+    /**
+     how many steps a character moves each round, when the min_step is always 1
      */
     protected void move(int min_step, int max_step, int curr_step) {
 

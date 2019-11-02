@@ -62,26 +62,42 @@ public abstract class LevelTwo extends AppCompatActivity {
      */
     private static int score;
 
-    static int get_min(){return min_step;}
-    static int get_max(){return max_step;}
-    static int get_goal(){return goal;}
+    static int get_min() {
+        return min_step;
+    }
 
-    public LevelTwo(){
+    static int get_max() {
+        return max_step;
+    }
+
+    static int get_goal() {
+        return goal;
+    }
+
+    public LevelTwo() {
         this.curr_step = 0;
         this.round_num = 0;
+        int diff = (int) GameConfiguration.getConfig().getDifficulty();
+        goal = (int) (diff * 8 + Math.random() * 15);
+        if (diff > 1) {
+            min_step = 1 + (int) (Math.random() * diff);
+            max_step = 2 + (int) (Math.random() * diff * 1.4);
+
+        }
     }
 
 
-    static void addstep(int n){
+    static void addstep(int n) {
         curr_step += n;
     }
 
-    static int AI_move(){
-        if (GameConfiguration.getConfig().getDifficulty() == 1){
-            return LevelTwoPlayerAI.leveleasy(min_step, max_step, curr_step); }
-        else if (GameConfiguration.getConfig().getDifficulty() == 2){
-            return LevelTwoPlayerAI.levelmid(min_step, max_step, curr_step, goal); }
-        else return LevelTwoPlayerAI.levelhard(min_step, max_step, curr_step, goal); }
+    static int AI_move() {
+        if (GameConfiguration.getConfig().getDifficulty() == 1) {
+            return LevelTwoPlayerAI.leveleasy(min_step, max_step, curr_step);
+        } else if (GameConfiguration.getConfig().getDifficulty() == 2) {
+            return LevelTwoPlayerAI.levelmid(min_step, max_step, curr_step, goal);
+        } else return LevelTwoPlayerAI.levelhard(min_step, max_step, curr_step, goal);
+    }
 
 
     static boolean isPassed() {
