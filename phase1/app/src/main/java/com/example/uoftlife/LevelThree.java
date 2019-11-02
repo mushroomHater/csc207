@@ -13,32 +13,60 @@ class LevelThree{
 
     private GameConfiguration config;
 
+    private int health;
+
     private int score;
 
     private Iterator<String> riddleIterator;
 
-    private List<String> riddleKeys;
+//    private List<String> riddleKeys;
 
-    private Map<String, String> riddles = new HashMap<String, String>(){{
-        put("The more you take, the more you leave behind. What am I?qweqweqweqweqweqweqwewqeqweqweqweqweqw", "footsteps");
-        put("What has a head, a tail, is brown, and has no legs?", "penny");
-        put("David's father has three sons : Snap, Crackle and _____ ?", "David");
-        put("What room do ghosts avoid", "living room");
-        put("What belongs to you, but other people use it more than you", "name");
-        put("What is more useful when it is broken", "egg");
+    private Map<String, String> riddles;
+
+    private int scoreAmount;
+
+    private Map<String, String> riddlesEazy = new HashMap<String, String>(){{
         put("8/2(2+2) = ?", "16");
-
+        put("0, 1, 3, 9, 33, ( ? )","153");
+        put("2, 2, 8, -1, -2, 5, 1, 1, 2, -1, 1, (?) ", "2");
+        put("204, 180, 12, 84, -36, (?) ", "60");
+        put("2, 5, 14, 29, 86, (?)", "173");
+        put("82, 98, 102, 118, 62, 138, (?)", "82");
+        put("12, 9 18, 33, 96, 21, 36, (?)", "51");
+        put("1, 2, 5, 29, (?)","866");
+        put("2, 12, 30, (?)","56");
+        put("4, 2, 2, 3, 6, (?)", "15");
+        put("1, 7, 8, 57, (?)", "121");
+        put("4, 12, 8, 10, (?)", "9");
+        put("1/2, 1, 1, (?), 9/11, 11/13","1");
+        put("95, 88, 71, 61, 50, (?)","40");
+        put("2, 6, 13, 39, 15, 45, 23, (?)", "69");
     }};
 
+    private Map<String, String> riddlesMiddle = new HashMap<String, String>(){{}};
+
+    private Map<String, String> riddlesHard = new HashMap<String, String>(){{}};
     private String currentRiddle;
 
-    // TODO: Add parameter config later
-    LevelThree(int score) {
-//        initialize(config);
+    LevelThree(int score, GameConfiguration config) {
+        this.config = config;
+        if (config.getDifficulty() == 1){
+            riddles = riddlesEazy;
+            scoreAmount = 4;
+        }
+        else if (config.getDifficulty() == 2){
+            riddles = riddlesMiddle;
+            scoreAmount = 6;
+        }
+        else {
+            riddles = riddlesHard;
+            scoreAmount = 10;
+        }
         this.score = score;
-        riddleKeys = new ArrayList<>(riddles.keySet());
+        List<String> riddleKeys = new ArrayList<>(riddles.keySet());
         Collections.shuffle(riddleKeys);
         riddleIterator = riddleKeys.iterator();
+        health = 3;
     }
 
     /**
@@ -68,15 +96,22 @@ class LevelThree{
         return riddles.get(currentRiddle);
     }
 
+    int getHealth() {
+        return health;
+    }
+
     /**
      *  add or delete the score of the player.
-     * @param amount
      */
-    void updateScore(int amount){
-        score += amount;
+    void updateScore(){
+        score += scoreAmount;
     }
 
     int getScore(){
         return score;
+    }
+
+    void updateHealth(){
+        health -= 1;
     }
 }

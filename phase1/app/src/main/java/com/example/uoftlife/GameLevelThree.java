@@ -17,10 +17,17 @@ public class GameLevelThree extends AppCompatActivity {
         setContentView(R.layout.activity_game_level_three);
 
         // setup the textView of the riddle and the button
-        game = new LevelThree(0);
+        GameConfiguration config = new GameConfiguration((byte) 1, "English");
+        game = new LevelThree(0, config);
         setScorePrompt();
         setRiddlePrompt();
         setdoneBtn();
+        setHealthPrompt();
+    }
+
+    void setHealthPrompt() {
+        TextView prompt = findViewById(R.id.health);
+        prompt.setText("Your health left: " + String.valueOf(game.getHealth()));
     }
 
     /**
@@ -49,13 +56,17 @@ public class GameLevelThree extends AppCompatActivity {
             if (game.checkIfMatch(answer)) {
                 Toast.makeText(getApplicationContext(), "Bingo!", Toast.LENGTH_SHORT)
                         .show();
-                game.updateScore(10);
+                game.updateScore();
             } else {
-                Toast.makeText(getApplicationContext(), "Wrong Answer,", Toast.LENGTH_SHORT)
+                Toast.makeText(getApplicationContext(), "Wrong Answer, Right Answer is " + game.getAnswer(), Toast.LENGTH_SHORT)
                         .show();
+                game.updateHealth();
+                setHealthPrompt();
+                if(game.getHealth() == 0) onDestroy();
             }
             setRiddlePrompt();
             setScorePrompt();
+
         });
     }
 
