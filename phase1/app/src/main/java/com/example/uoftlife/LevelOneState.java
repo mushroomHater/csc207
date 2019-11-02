@@ -23,11 +23,6 @@ class LevelOneState {
      */
     private int score;
 
-    /**
-     * The GameConfiguration instance passed into the game level.
-     */
-    private GameConfiguration config;
-
 
     /**
      * Creates a LevelOne instance.
@@ -72,7 +67,7 @@ class LevelOneState {
      * If the user fails the game level, return 0.
      */
 
-    public int getScore() {
+    int getScore() {
         if (isPassed()) {
             if (clickAmount >= TARGETCLICK &&
                     clickAmount < TARGETCLICK * 1.2) {
@@ -100,7 +95,7 @@ class LevelOneState {
      *
      * @return true if the player passes the game level, otherwise return false.
      */
-    public boolean isPassed() {
+    private boolean isPassed() {
         return this.getClickAmount() >= TARGETCLICK;
     }
 

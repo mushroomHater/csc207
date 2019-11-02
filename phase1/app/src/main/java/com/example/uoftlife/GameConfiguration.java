@@ -7,32 +7,23 @@ class GameConfiguration {
      */
     private byte difficulty;
 
-
     /**
      * The language setting of the game,
      * can only be "English" or "Chinese".
      */
     private String language;
 
-
-    /**
-     * The display mode of the game.
-     * true represents nightMode on, false represents nightMode off.
-     */
-    private boolean nightMode;
-
+    private static GameConfiguration config = null;
 
     /**
      * Generates a game configuration.
      *
      * @param difficulty the difficulty of the game
      * @param language   the language setting of the game
-     * @param nightMode  the display mode of the game
      */
-    public GameConfiguration(byte difficulty, String language, boolean nightMode) {
+    private GameConfiguration(byte difficulty, String language) {
         this.difficulty = difficulty;
         this.language = language;
-        this.nightMode = nightMode;
     }
 
 
@@ -51,12 +42,18 @@ class GameConfiguration {
         return language;
     }
 
-
-    /**
-     * @return true if the game is on nightMode, otherwise return false
-     */
-    boolean isNightMode() {
-        return nightMode;
+    void setDifficulty(byte d){
+        this.difficulty = d;
     }
 
+    void setLanguage(String l){
+        this.language = l;
+    }
+
+    static GameConfiguration getConfig(){
+        if(config==null){
+            config = new GameConfiguration((byte)2,"English");
+        }
+        return config;
+    }
 }

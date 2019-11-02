@@ -48,7 +48,6 @@ public class PauseDialogConfig extends AppCompatActivity {
             (findViewById(R.id.exit)).setEnabled(false);
             setDifficulty();
             ((TextView) findViewById(R.id.p_title)).setText(R.string.config);
-            ((TextView) findViewById(R.id.setDifficulty)).setText(R.string.difficulty);
         } else {
             (findViewById(R.id.easy)).setEnabled(false);
             (findViewById(R.id.hard)).setEnabled(false);
@@ -80,8 +79,6 @@ public class PauseDialogConfig extends AppCompatActivity {
             ((TextView) findViewById(R.id.medium)).setText(R.string.medium);
             ((TextView) findViewById(R.id.hard)).setText(R.string.hard);
 
-
-            //todo translate 还需要判断是否在game中打开的 标题不同 以及是否确认退出过了
         } else {
 
             if (!openInGame) {
@@ -101,8 +98,6 @@ public class PauseDialogConfig extends AppCompatActivity {
             ((TextView) findViewById(R.id.medium)).setText(R.string.medium_cn);
             ((TextView) findViewById(R.id.hard)).setText(R.string.hard_cn);
 
-
-            //todo
         }
     }
 
