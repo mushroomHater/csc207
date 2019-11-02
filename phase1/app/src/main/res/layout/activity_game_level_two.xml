@@ -7,6 +7,14 @@
     tools:context=".LevelTwoPage">
 
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/level2" />
+
     <EditText
         android:id="@+id/setMoveStepTextView"
         android:layout_width="wrap_content"

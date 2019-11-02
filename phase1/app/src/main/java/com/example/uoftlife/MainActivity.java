@@ -98,15 +98,12 @@ public class MainActivity extends AppCompatActivity {
     private void setBtnSetting() {
         findViewById(R.id.btnSetting).setOnClickListener((view) -> {
             Intent intent = new Intent(this, PauseDialogConfig.class);
-//            intent.putExtra("from", 'G');
             startActivity(intent);
         });
     }
 
     private void setBtnRanking() {
-        findViewById(R.id.btnRanking).setOnClickListener((view) -> {
-            startActivity(new Intent(MainActivity.this, GameLevelThree.class));
-        });
+
     }
 
 
