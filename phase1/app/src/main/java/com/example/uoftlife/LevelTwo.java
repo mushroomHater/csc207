@@ -46,7 +46,7 @@ public abstract class LevelTwo extends AppCompatActivity {
     /**
      * current round number
      */
-    private int round_num;
+    private int round_num =0;
 
     /**
      * player 1 (computer)  of this game
@@ -73,19 +73,6 @@ public abstract class LevelTwo extends AppCompatActivity {
     static int get_goal() {
         return goal;
     }
-
-    public LevelTwo() {
-        this.curr_step = 0;
-        this.round_num = 0;
-        int diff = (int) GameConfiguration.getConfig().getDifficulty();
-        goal = (int) (diff * 8 + Math.random() * 15);
-        if (diff > 1) {
-            min_step = 1 + (int) (Math.random() * diff);
-            max_step = 2 + (int) (Math.random() * diff * 1.4);
-
-        }
-    }
-
 
     static void addstep(int n) {
         curr_step += n;

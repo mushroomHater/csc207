@@ -2,7 +2,9 @@ package com.example.uoftlife;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,11 +21,23 @@ public class GameLevelThree extends AppCompatActivity {
 
         // setup the textView of the riddle and the button
 
-        game = new LevelThree(0, GameConfiguration.getConfig());
+        game = new LevelThree(0);
         setScorePrompt();
         setRiddlePrompt();
         setdoneBtn();
         setHealthPrompt();
+        setConfigBtn();
+    }
+
+    /**
+     * Sets the configuration button on top of the game level
+     */
+    private void setConfigBtn() {
+        findViewById(R.id.gameconfig).setOnClickListener((view) -> {
+            Intent i = new Intent(this, PauseDialogConfig.class);
+            i.putExtra("from", 'G');
+            startActivity(i);
+        });
     }
 
     void setHealthPrompt() {
@@ -80,6 +94,7 @@ public class GameLevelThree extends AppCompatActivity {
             setRiddlePrompt();
             setScorePrompt();
             if(game.getHealth() <= 0){
+                UserManager.getCurrentUser().setLevelScore(3, game.getScore());
                 finish();
             }
         });
@@ -88,6 +103,13 @@ public class GameLevelThree extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        UserManager.getCurrentUser().setLevelScore(3, game.getScore());
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            return true;
+        }
+        return false;
     }
 }

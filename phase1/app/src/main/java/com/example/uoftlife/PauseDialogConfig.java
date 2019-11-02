@@ -30,10 +30,10 @@ public class PauseDialogConfig extends AppCompatActivity {
         setExitButton();
         setResumeButton();
         isEnglish = GameConfiguration.getConfig().getLanguage().equals("English");
-        if(isEnglish){
-            ((RadioButton)findViewById(R.id.english)).setChecked(true);
-        }else{
-            ((RadioButton)findViewById(R.id.chinese)).setChecked(true);
+        if (isEnglish) {
+            ((RadioButton) findViewById(R.id.english)).setChecked(true);
+        } else {
+            ((RadioButton) findViewById(R.id.chinese)).setChecked(true);
         }
         byte d = GameConfiguration.getConfig().getDifficulty();
         if (d == 1) {
@@ -78,7 +78,6 @@ public class PauseDialogConfig extends AppCompatActivity {
             ((TextView) findViewById(R.id.hard)).setText(R.string.hard);
 
         } else {
-
             if (!openInGame) {
                 ((TextView) findViewById(R.id.p_title)).setText(R.string.config_cn);
                 ((TextView) findViewById(R.id.setDifficulty)).setText(R.string.difficulty_cn);

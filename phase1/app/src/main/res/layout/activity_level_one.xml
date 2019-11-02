@@ -110,4 +110,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/blanket" />
 
+    <Button
+        android:id="@+id/gameconfig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/gameconfig"
+        app:layout_constraintStart_toStartOf="@+id/levelOneView"
+        app:layout_constraintTop_toTopOf="@+id/levelOneView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

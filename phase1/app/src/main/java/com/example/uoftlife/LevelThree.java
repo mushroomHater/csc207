@@ -61,8 +61,8 @@ class LevelThree{
     }};
     private String currentRiddle;
 
-    LevelThree(int score, GameConfiguration config) {
-        this.config = config;
+    LevelThree(int score) {
+        this.config = GameConfiguration.getConfig();
         if (config.getDifficulty() == 1){
             riddles = riddlesEazy;
             scoreAmount = 4;
