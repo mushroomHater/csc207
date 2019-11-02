@@ -28,7 +28,7 @@ public class LevelTwoPage extends AppCompatActivity{
         okBtn();
         showCurrStep();
         showGoal();
-        showScore();
+//        showStepLimit();
         showInstruction();
     }
 
@@ -56,11 +56,12 @@ public class LevelTwoPage extends AppCompatActivity{
         goal.setText("Target Step :" + LevelTwo.get_goal());
     }
 
-    private void showScore(){
-        TextView currscore = (TextView)findViewById(R.id.Score);
-        currscore.setText("Current Score:" + LevelTwo.get_Score());
+    public void getInputStep(){
+        findViewById(R.id.okBtn).setOnClickListener(v -> {
+            EditText setMoveStep = findViewById(R.id.setMoveStepTextView);
+            int number = Integer.parseInt(setMoveStep.getText().toString());
+        });
     }
-
 
     public void okBtn(){
         findViewById(R.id.okBtn).setOnClickListener(v -> {
@@ -69,38 +70,35 @@ public class LevelTwoPage extends AppCompatActivity{
             if (i % 2 == 0){
             if (number >= LevelTwo.get_min() && number <= LevelTwo.get_max()) {
                 LevelTwo.addstep(number);
-                TextView step1 = (TextView)findViewById(R.id.CurrStep);
-                step1.setText("You'are at step" + LevelTwo.curr_step);
+                TextView prompt = (TextView)findViewById(R.id.CurrStep);
+                prompt.setText("You'are at step" + LevelTwo.curr_step);
 
             } else {
                 Toast.makeText(getApplicationContext(), "number not in range!", Toast.LENGTH_SHORT)
                         .show();
             }
             if (LevelTwo.curr_step > LevelTwo.get_goal()){
-                TextView wins = (TextView)findViewById(R.id.CurrStep);
-                wins.setText("You win! (* ॑ᐜ ॑*)");
+                TextView prompt = (TextView)findViewById(R.id.CurrStep);
+                prompt.setText("You win! (* ॑ᐜ ॑*)");
 
             }}
 
             else{
             LevelTwo.addstep(LevelTwo.AI_move());
-            TextView step2 = (TextView)findViewById(R.id.CurrStep);
-            step2.setText("XiaoGang is at step" + LevelTwo.curr_step);
+            TextView prompt = (TextView)findViewById(R.id.CurrStep);
+            prompt.setText("XiaoGang is at step" + LevelTwo.curr_step);
 
             if (LevelTwo.curr_step > LevelTwo.get_goal()){
-                TextView loses = (TextView)findViewById(R.id.CurrStep);
-                loses.setText("XiaoGang wins (｡•́︿•̀｡)");
+                TextView promp = (TextView)findViewById(R.id.CurrStep);
+                promp.setText("XiaoGang wins (｡•́︿•̀｡)");
 
             }}
             i++;
 
+
+
         });
         }
-
-    protected void onDestroy() {
-        super.onDestroy();
-        UserManager.getCurrentUser().setLevelScore(2, LevelTwo.get_Score());
-    }
 
 }
 

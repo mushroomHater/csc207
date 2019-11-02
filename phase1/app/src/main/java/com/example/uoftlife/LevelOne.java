@@ -14,7 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.w3c.dom.Text;
 
 
-public class LevelOne extends AppCompatActivity {
+public class LevelOne extends AppCompatActivity{
+
+    private GameConfiguration config = GameConfiguration.getConfig();
     /**
      * The countdown timer of the game level.
      */
@@ -98,22 +100,18 @@ public class LevelOne extends AppCompatActivity {
             /* Specifies XiaoMing's appearance depending on the number of clicks entered. */
             if (levelOneState.getClickAmount() == LevelOneState.getTARGETCLICK() / 4) {
                 findViewById(R.id.xiaoming4).setVisibility(View.INVISIBLE);
-                System.out.println("4invisible");
             }
             if (levelOneState.getClickAmount() == LevelOneState.getTARGETCLICK() / 2) {
                 findViewById(R.id.xiaoming3).setVisibility(View.INVISIBLE);
-                System.out.println("3invisible");
             }
 
             if (levelOneState.getClickAmount() == LevelOneState.getTARGETCLICK() / 4 * 3) {
                 findViewById(R.id.xiaoming2).setVisibility(View.INVISIBLE);
-                System.out.println("1invisible");
             }
 
             if (levelOneState.getClickAmount() == LevelOneState.getTARGETCLICK()) {
                 findViewById(R.id.xiaoming1l).setVisibility(View.INVISIBLE);
                 findViewById(R.id.xiaoming1).setVisibility(View.VISIBLE);
-                System.out.println("1visible");
             }
         });
     }

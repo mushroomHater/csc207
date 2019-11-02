@@ -15,15 +15,19 @@ public class StageBetweenGames extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stage_between_games);
-        initialize();
+        setConfigButton();
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
-        determineLanguage();
         level += 1;
+        if(level==0){
+            startActivity(new Intent(this, LevelOne.class));
+        }
+        determineLanguage();
+
     }
 
     private void determineLanguage() {
@@ -44,11 +48,7 @@ public class StageBetweenGames extends AppCompatActivity {
         }
     }
 
-    private void initialize() {
-        if(level==0){
-        //startActivity(new Intent(this, LevelOne.class));
-            }
-    }
+
     private void setConfigButton() {
         findViewById(R.id.config).setOnClickListener((view) -> {
             Intent i = new Intent(this, PauseDialogConfig.class);
