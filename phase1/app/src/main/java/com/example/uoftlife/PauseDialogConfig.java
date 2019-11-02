@@ -65,16 +65,14 @@ public class PauseDialogConfig extends AppCompatActivity {
             if (!openInGame) {
                 ((TextView) findViewById(R.id.p_title)).setText(R.string.config);
                 ((TextView) findViewById(R.id.setDifficulty)).setText(R.string.difficulty);
-                ((TextView) findViewById(R.id.setLanguage)).setText(R.string.language);
-
-                ((TextView) findViewById(R.id.resume)).setText(R.string.resume);
-                ((TextView) findViewById(R.id.exit)).setText(R.string.exit);
-
             } else {
                 ((TextView) findViewById(R.id.p_title)).setText(R.string.pause);
                 ((TextView) findViewById(R.id.setDifficulty)).setText(R.string.cannot_change_difficulty);
-
             }
+            ((TextView) findViewById(R.id.setLanguage)).setText(R.string.language);
+            ((TextView) findViewById(R.id.resume)).setText(R.string.resume);
+            ((TextView) findViewById(R.id.exit)).setText(R.string.exit);
+
             ((TextView) findViewById(R.id.easy)).setText(R.string.easy);
             ((TextView) findViewById(R.id.medium)).setText(R.string.medium);
             ((TextView) findViewById(R.id.hard)).setText(R.string.hard);
@@ -84,16 +82,14 @@ public class PauseDialogConfig extends AppCompatActivity {
             if (!openInGame) {
                 ((TextView) findViewById(R.id.p_title)).setText(R.string.config_cn);
                 ((TextView) findViewById(R.id.setDifficulty)).setText(R.string.difficulty_cn);
-                ((TextView) findViewById(R.id.setLanguage)).setText(R.string.language_cn);
-
-                ((TextView) findViewById(R.id.resume)).setText(R.string.resume_cn);
-                ((TextView) findViewById(R.id.exit)).setText(R.string.exit_cn);
-
             } else {
                 ((TextView) findViewById(R.id.p_title)).setText(R.string.pause_cn);
                 ((TextView) findViewById(R.id.setDifficulty)).setText(R.string.cannot_change_difficulty_cn);
-
             }
+            ((TextView) findViewById(R.id.setLanguage)).setText(R.string.language_cn);
+            ((TextView) findViewById(R.id.resume)).setText(R.string.resume_cn);
+            ((TextView) findViewById(R.id.exit)).setText(R.string.exit_cn);
+
             ((TextView) findViewById(R.id.easy)).setText(R.string.easy_cn);
             ((TextView) findViewById(R.id.medium)).setText(R.string.medium_cn);
             ((TextView) findViewById(R.id.hard)).setText(R.string.hard_cn);
