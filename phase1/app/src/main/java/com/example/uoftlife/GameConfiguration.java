@@ -21,6 +21,7 @@ class GameConfiguration {
      * @param difficulty the difficulty of the game
      * @param language   the language setting of the game
      */
+
     private GameConfiguration(byte difficulty, String language) {
         this.difficulty = difficulty;
         this.language = language;
