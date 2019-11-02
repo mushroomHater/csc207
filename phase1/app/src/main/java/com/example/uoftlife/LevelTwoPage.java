@@ -2,6 +2,7 @@ package com.example.uoftlife;
 
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -122,6 +123,14 @@ public class LevelTwoPage extends AppCompatActivity{
     protected void onDestroy() {
         super.onDestroy();
         UserManager.getCurrentUser().setLevelScore(2, LevelTwo.get_Score());
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            return true;
+        }
+        return false;
     }
 }
 
