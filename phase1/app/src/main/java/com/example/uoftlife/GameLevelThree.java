@@ -22,11 +22,16 @@ public class GameLevelThree extends AppCompatActivity {
         // setup the textView of the riddle and the button
 
         game = new LevelThree(0);
+        setConfigBtn();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         setScorePrompt();
         setRiddlePrompt();
         setdoneBtn();
         setHealthPrompt();
-        setConfigBtn();
     }
 
     /**
@@ -75,6 +80,7 @@ public class GameLevelThree extends AppCompatActivity {
     void setdoneBtn() {
         Button doneBtn = findViewById(R.id.doneBtn);
         if (game.getConfig().getLanguage().equals("Chinese")) doneBtn.setText("确定");
+        else doneBtn.setText("Guess!");
         doneBtn.setOnClickListener(v -> {
             EditText playerInput = findViewById(R.id.playerInput);
             String answer = playerInput.getText().toString();
