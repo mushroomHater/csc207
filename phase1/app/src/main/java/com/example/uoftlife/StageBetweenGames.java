@@ -44,6 +44,14 @@ public class StageBetweenGames extends AppCompatActivity {
             //todo
         } else {
 
+            ((TextView) findViewById(R.id.totalText)).setText(R.string.total_score_cn);
+            ((TextView) findViewById(R.id.levelText)).setText(R.string.single_score_cn);
+            ((Button) findViewById(R.id.config)).setText(R.string.setting_cn);
+            if (level > 0 && UserManager.getCurrentUser().getLevelScore(level) == 0) {
+                ((Button) findViewById(R.id.next)).setText(R.string.try_again_cn);
+            } else {
+                ((Button) findViewById(R.id.next)).setText(R.string.yes_cn);
+            }
             //todo
         }
     }

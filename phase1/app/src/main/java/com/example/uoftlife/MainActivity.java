@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -55,6 +56,21 @@ public class MainActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 }).show();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if (GameConfiguration.getConfig().getLanguage().equals("English")){
+            ((Button) findViewById(R.id.btnStart)).setText(R.string.start);
+            ((Button) findViewById(R.id.btnSetting)).setText(R.string.setting);
+            ((Button) findViewById(R.id.btnRanking)).setText(R.string.ranking);
+        }else{
+            ((Button) findViewById(R.id.btnStart)).setText(R.string.start_cn);
+            ((Button) findViewById(R.id.btnSetting)).setText(R.string.setting_cn);
+            ((Button) findViewById(R.id.btnRanking)).setText(R.string.ranking_cn);
+        }
+
     }
 
     @Override
@@ -94,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, GameLevelThree.class));
         });
     }
+
+
 }
 
 
