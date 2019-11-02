@@ -6,7 +6,7 @@ class LevelOneState {
     /**
      * The target number of click to pass the game level.
      */
-    private static int TARGETCLICK = 1;
+    private static int targetClick = 45;
 
     /**
      * The tag of the game level.
@@ -34,8 +34,8 @@ class LevelOneState {
     /**
      * @return the target number of clicks in this game level.
      */
-    static int getTARGETCLICK() {
-        return TARGETCLICK;
+    static int getTargetClick() {
+        return targetClick;
     }
 
     /**
@@ -45,18 +45,15 @@ class LevelOneState {
         return clickAmount;
     }
 
+    public static void setTargetClick(int t) {
+        LevelOneState.targetClick = t;
+    }
+
     /**
      * Adds the number of clicks.
      */
     void addClickAmount() {
         clickAmount++;
-    }
-
-    /**
-     * Sets the number of clicks.
-     */
-    void setClickAmount(int i) {
-        clickAmount = i;
     }
 
 
@@ -69,19 +66,19 @@ class LevelOneState {
 
     int getScore() {
         if (isPassed()) {
-            if (clickAmount >= TARGETCLICK &&
-                    clickAmount < TARGETCLICK * 1.2) {
+            if (clickAmount >= targetClick &&
+                    clickAmount < targetClick * 1.2) {
                 score = 60;
-            } else if (clickAmount >= TARGETCLICK * 1.2 &&
-                    clickAmount < TARGETCLICK * 1.3) {
+            } else if (clickAmount >= targetClick * 1.2 &&
+                    clickAmount < targetClick * 1.3) {
                 score = 70;
-            } else if (clickAmount >= TARGETCLICK * 1.3 &&
-                    clickAmount < TARGETCLICK * 1.4) {
+            } else if (clickAmount >= targetClick * 1.3 &&
+                    clickAmount < targetClick * 1.4) {
                 score = 80;
-            } else if (clickAmount >= TARGETCLICK * 1.4 &&
-                    clickAmount < TARGETCLICK * 1.5) {
+            } else if (clickAmount >= targetClick * 1.4 &&
+                    clickAmount < targetClick * 1.5) {
                 score = 90;
-            } else if (clickAmount >= TARGETCLICK * 1.5) {
+            } else if (clickAmount >= targetClick * 1.5) {
                 score = 100;
             }
         } else {
@@ -96,7 +93,7 @@ class LevelOneState {
      * @return true if the player passes the game level, otherwise return false.
      */
     private boolean isPassed() {
-        return this.getClickAmount() >= TARGETCLICK;
+        return this.getClickAmount() >= targetClick;
     }
 
 }

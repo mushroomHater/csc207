@@ -32,7 +32,7 @@ public class LevelOne extends AppCompatActivity {
     /**
      * The time left in this game level in milliseconds.
      */
-    private long timeLeftInMilliseconds = 1600; // 16 seconds
+    private long timeLeftInMilliseconds = 16000; // 16 seconds
 
     /**
      * The text view of the timer.
@@ -66,7 +66,22 @@ public class LevelOne extends AppCompatActivity {
         startTimer();
         setInitialLanguage();
         setConfigBtn();
+        initializeDifficulty();
 
+    }
+
+    private void initializeDifficulty() {
+        int d = (int)GameConfiguration.getConfig().getDifficulty();
+        if(d==1){
+            timeLeftInMilliseconds = 16000;
+            LevelOneState.setTargetClick(65);
+        }else if(d==2){
+            timeLeftInMilliseconds = 10000;
+            LevelOneState.setTargetClick(60);
+        }else{
+            timeLeftInMilliseconds = 8000;
+            LevelOneState.setTargetClick(65);
+        }
     }
 
 
@@ -122,18 +137,18 @@ public class LevelOne extends AppCompatActivity {
                 }
             }
             /* Specifies XiaoMing's appearance depending on the number of clicks entered. */
-            if (levelOneState.getClickAmount() == LevelOneState.getTARGETCLICK() / 4) {
+            if (levelOneState.getClickAmount() == LevelOneState.getTargetClick() / 4) {
                 findViewById(R.id.xiaoming4).setVisibility(View.INVISIBLE);
             }
-            if (levelOneState.getClickAmount() == LevelOneState.getTARGETCLICK() / 2) {
+            if (levelOneState.getClickAmount() == LevelOneState.getTargetClick() / 2) {
                 findViewById(R.id.xiaoming3).setVisibility(View.INVISIBLE);
             }
 
-            if (levelOneState.getClickAmount() == LevelOneState.getTARGETCLICK() / 4 * 3) {
+            if (levelOneState.getClickAmount() == LevelOneState.getTargetClick() / 4 * 3) {
                 findViewById(R.id.xiaoming2).setVisibility(View.INVISIBLE);
             }
 
-            if (levelOneState.getClickAmount() == LevelOneState.getTARGETCLICK()) {
+            if (levelOneState.getClickAmount() == LevelOneState.getTargetClick()) {
                 findViewById(R.id.xiaoming1l).setVisibility(View.INVISIBLE);
                 findViewById(R.id.xiaoming1).setVisibility(View.VISIBLE);
             }
