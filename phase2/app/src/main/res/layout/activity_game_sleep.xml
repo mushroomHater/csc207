@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameSleepView">
+
+
+    <ImageView
+        android:id="@+id/gameSleepBG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/leveloneview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/levelone" />
+
+    <Button
+        android:id="@+id/btnWakeUp"
+        android:layout_width="114dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="524dp"
+        android:text="@string/wake_up"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/levelOneCountDown"
+        android:layout_width="140dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/_00_15"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/xiaoming1"
+        android:layout_width="256dp"
+        android:layout_height="345dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="80dp"
+        android:contentDescription="@string/todo"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/gameSleepBG"
+        app:layout_constraintTop_toTopOf="@+id/gameSleepBG"
+        app:srcCompat="@drawable/xiaoming1" />
+
+    <ImageView
+        android:id="@+id/xiaoming1l"
+        android:layout_width="256dp"
+        android:layout_height="345dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="144dp"
+        android:contentDescription="@string/todo"
+        android:rotation="-20"
+        app:layout_constraintStart_toStartOf="@+id/gameSleepBG"
+        app:layout_constraintTop_toTopOf="@+id/gameSleepBG"
+        app:srcCompat="@drawable/xiaoming1" />
+
+    <ImageView
+        android:id="@+id/xiaoming2"
+        android:layout_width="256dp"
+        android:layout_height="345dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="144dp"
+        android:contentDescription="@string/todo"
+        android:rotation="-20"
+        app:layout_constraintStart_toStartOf="@+id/gameSleepBG"
+        app:layout_constraintTop_toTopOf="@+id/gameSleepBG"
+        app:srcCompat="@drawable/xiaoming2" />
+
+    <ImageView
+        android:id="@+id/xiaoming3"
+        android:layout_width="256dp"
+        android:layout_height="345dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="144dp"
+        android:contentDescription="@string/todo"
+        android:rotation="-20"
+        app:layout_constraintStart_toStartOf="@+id/gameSleepBG"
+        app:layout_constraintTop_toTopOf="@+id/gameSleepBG"
+        app:srcCompat="@drawable/xiaoming3" />
+
+    <ImageView
+        android:id="@+id/xiaoming4"
+        android:layout_width="256dp"
+        android:layout_height="345dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="144dp"
+        android:contentDescription="@string/todo"
+        android:rotation="-20"
+        app:layout_constraintStart_toStartOf="@+id/gameSleepBG"
+        app:layout_constraintTop_toTopOf="@+id/gameSleepBG"
+        app:srcCompat="@drawable/xiaoming4" />
+
+    <ImageView
+        android:id="@+id/blanket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/blanket"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/blanket" />
+
+    <Button
+        android:id="@+id/gameconfig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/gameconfig"
+        app:layout_constraintStart_toStartOf="@+id/gameSleepBG"
+        app:layout_constraintTop_toTopOf="@+id/gameSleepBG" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
