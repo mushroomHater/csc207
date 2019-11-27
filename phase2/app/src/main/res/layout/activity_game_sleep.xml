@@ -17,16 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/levelone" />
 
-    <Button
-        android:id="@+id/btnWakeUp"
-        android:layout_width="114dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="524dp"
-        android:text="@string/wake_up"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/levelOneCountDown"
@@ -119,5 +109,17 @@
         android:text="@string/gameconfig"
         app:layout_constraintStart_toStartOf="@+id/gameSleepBG"
         app:layout_constraintTop_toTopOf="@+id/gameSleepBG" />
+
+    <Button
+        android:id="@+id/BtnAlarm"
+        android:layout_width="85dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="524dp"
+        android:background="@drawable/btn_alarm_custom"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

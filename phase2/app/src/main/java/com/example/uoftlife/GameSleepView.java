@@ -2,7 +2,6 @@ package com.example.uoftlife;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.KeyEvent;
@@ -48,15 +47,14 @@ public class GameSleepView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_sleep);
-        ImageView gameSleepbg = findViewById(R.id.gameSleepBG);
+        ImageView gameSleepBackground = findViewById(R.id.gameSleepBG);
 
-        Intent intent = getIntent();
         GameSleepModel gameSleepModel = new GameSleepModel();
 
         gameSleepPresenter = new GameSleepPresenter(this, gameSleepModel);
 
 
-        setWakeUpBtn();
+        setAlarmBtn();
         setTimer();
         setXiaoMing();
         setInitialLanguage();
@@ -107,8 +105,8 @@ public class GameSleepView extends AppCompatActivity {
     /**
      * Sets the function of the wake up button.
      */
-    private void setWakeUpBtn() {
-        findViewById(R.id.btnWakeUp).setOnClickListener((view) -> {
+    private void setAlarmBtn() {
+        findViewById(R.id.BtnAlarm).setOnClickListener((view) -> {
             gameSleepPresenter.addClickAmount();
             System.out.println("ClickAmount:" + gameSleepPresenter.getClickAmount());
             if (gameSleepPresenter.getClickAmount() == 4) {
@@ -171,7 +169,7 @@ public class GameSleepView extends AppCompatActivity {
 
     private void setInitialLanguage() {
 //        if (GameConfiguration.getConfig().getLanguage().equals("English")) {
-        ((Button) findViewById(R.id.btnWakeUp)).setText(R.string.wake_up);
+//        ((Button) findViewById(R.id.btnAlarm)).setText(R.string.wake_up);
 //            Toast.makeText(getApplicationContext(), "Wake up Xiao Ming by tapping the button! ",
 //                    Toast.LENGTH_LONG)
 //                    .show();
@@ -249,7 +247,7 @@ public class GameSleepView extends AppCompatActivity {
      */
     private void showOutcome() {
         //hide the button and timer when time is up.
-        findViewById(R.id.btnWakeUp).setVisibility(View.GONE);
+        findViewById(R.id.BtnAlarm).setVisibility(View.GONE);
         findViewById(R.id.levelOneCountDown).setVisibility(View.GONE);
         System.out.println("SCORE: " + gameSleepPresenter.getScore() + "/100");
 

@@ -23,7 +23,7 @@ class GameSleepModel {
 
 
     /**
-     * Creates a LevelOne instance.
+     * Creates a GameSleepModel instance.
      */
     GameSleepModel() {
 
