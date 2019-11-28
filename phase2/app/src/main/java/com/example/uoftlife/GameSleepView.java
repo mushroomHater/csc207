@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.DisplayMetrics;
+
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class GameSleepView extends AppCompatActivity {
 
@@ -22,7 +27,7 @@ public class GameSleepView extends AppCompatActivity {
     /**
      * Indicates if the timer is running.
      */
-    private boolean timing = true;
+    private boolean timing;
 
     /**
      * The time left in this game level in milliseconds.
@@ -35,7 +40,12 @@ public class GameSleepView extends AppCompatActivity {
     private TextView timerText;
 
     /**
-     * The levelOneState instance passed into the game level.
+     * The time interval for the button to change position.
+     */
+    private int alarmChangePositionInterval = 4000;
+
+    /**
+     * The GameSleepPresenter instance passed into the game level.
      */
     private GameSleepPresenter gameSleepPresenter;
 
@@ -51,7 +61,7 @@ public class GameSleepView extends AppCompatActivity {
 
         GameSleepModel gameSleepModel = new GameSleepModel();
 
-        gameSleepPresenter = new GameSleepPresenter(this, gameSleepModel);
+        gameSleepPresenter = new GameSleepPresenter(gameSleepModel);
 
 
         setAlarmBtn();
@@ -106,7 +116,28 @@ public class GameSleepView extends AppCompatActivity {
      * Sets the function of the wake up button.
      */
     private void setAlarmBtn() {
-        findViewById(R.id.BtnAlarm).setOnClickListener((view) -> {
+        final Button alarm_button = findViewById(R.id.BtnAlarm);
+        final DisplayMetrics displaymetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+
+        final Timer buttonTimer = new Timer();
+        buttonTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(() -> {
+                    Random R = new Random();
+                    final float dx = R.nextFloat() * displaymetrics.widthPixels * 0.7f;
+                    final float dy = R.nextFloat() * displaymetrics.heightPixels * 0.7f;
+                    alarm_button.animate()
+                            .x(dx)
+                            .y(dy)
+                            .setDuration(0)
+                            .start();
+                });
+            }
+        }, 5000, alarmChangePositionInterval);
+
+        alarm_button.setOnClickListener((view) -> {
             gameSleepPresenter.addClickAmount();
             System.out.println("ClickAmount:" + gameSleepPresenter.getClickAmount());
             if (gameSleepPresenter.getClickAmount() == 4) {
@@ -120,6 +151,8 @@ public class GameSleepView extends AppCompatActivity {
 //                            .show();
 //                }
             }
+
+
             /* Specifies XiaoMing's appearance depending on the number of clicks entered. */
             if (gameSleepPresenter.getClickAmount() == GameSleepPresenter.getTargetClick() / 4) {
                 findViewById(R.id.xiaoming4).setVisibility(View.INVISIBLE);
@@ -157,7 +190,7 @@ public class GameSleepView extends AppCompatActivity {
     }
 
     /**
-     * Sets Xiao Ming's appearance in the game level.
+     * Sets the character's appearance in the game level.
      */
     private void setXiaoMing() {
         findViewById(R.id.xiaoming1).setVisibility(View.INVISIBLE);

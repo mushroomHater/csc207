@@ -2,12 +2,10 @@ package com.example.uoftlife;
 
 class GameSleepPresenter {
     private GameSleepModel gameSleepModel;
-    private GameSleepView gameSleepView;
 
 
-    GameSleepPresenter(GameSleepView gameSleepView, GameSleepModel gameSleepModel) {
+    GameSleepPresenter(GameSleepModel gameSleepModel) {
         this.gameSleepModel = gameSleepModel;
-        this.gameSleepView = gameSleepView;
 
     }
 
