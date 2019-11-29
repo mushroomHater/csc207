@@ -16,7 +16,10 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class GameSleepView extends AppCompatActivity {
+public class
+
+
+GameSleepView extends AppCompatActivity {
 
     //private GameConfiguration config = GameConfiguration.getConfig();
     /**
@@ -135,7 +138,7 @@ public class GameSleepView extends AppCompatActivity {
                             .start();
                 });
             }
-        }, 5000, alarmChangePositionInterval);
+        }, 4000, alarmChangePositionInterval);
 
         alarm_button.setOnClickListener((view) -> {
             gameSleepPresenter.addClickAmount();
