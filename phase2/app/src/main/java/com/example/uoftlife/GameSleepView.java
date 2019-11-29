@@ -16,10 +16,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class
-
-
-GameSleepView extends AppCompatActivity {
+public class GameSleepView extends AppCompatActivity {
 
     //private GameConfiguration config = GameConfiguration.getConfig();
     /**
@@ -158,19 +155,19 @@ GameSleepView extends AppCompatActivity {
 
             /* Specifies XiaoMing's appearance depending on the number of clicks entered. */
             if (gameSleepPresenter.getClickAmount() == GameSleepPresenter.getTargetClick() / 4) {
-                findViewById(R.id.xiaoming4).setVisibility(View.INVISIBLE);
+                findViewById(R.id.character4).setVisibility(View.INVISIBLE);
             }
             if (gameSleepPresenter.getClickAmount() == GameSleepPresenter.getTargetClick() / 2) {
-                findViewById(R.id.xiaoming3).setVisibility(View.INVISIBLE);
+                findViewById(R.id.character3).setVisibility(View.INVISIBLE);
             }
 
             if (gameSleepPresenter.getClickAmount() == GameSleepPresenter.getTargetClick() / 4 * 3) {
-                findViewById(R.id.xiaoming2).setVisibility(View.INVISIBLE);
+                findViewById(R.id.character2).setVisibility(View.INVISIBLE);
             }
 
             if (gameSleepPresenter.getClickAmount() == GameSleepPresenter.getTargetClick()) {
-                findViewById(R.id.xiaoming1l).setVisibility(View.INVISIBLE);
-                findViewById(R.id.xiaoming1).setVisibility(View.VISIBLE);
+                findViewById(R.id.character1).setVisibility(View.INVISIBLE);
+                findViewById(R.id.characterSit).setVisibility(View.VISIBLE);
             }
         });
     }
@@ -196,11 +193,11 @@ GameSleepView extends AppCompatActivity {
      * Sets the character's appearance in the game level.
      */
     private void setXiaoMing() {
-        findViewById(R.id.xiaoming1).setVisibility(View.INVISIBLE);
-        findViewById(R.id.xiaoming1l).setVisibility(View.VISIBLE);
-        findViewById(R.id.xiaoming2).setVisibility(View.VISIBLE);
-        findViewById(R.id.xiaoming3).setVisibility(View.VISIBLE);
-        findViewById(R.id.xiaoming4).setVisibility(View.VISIBLE);
+        findViewById(R.id.characterSit).setVisibility(View.INVISIBLE);
+        findViewById(R.id.character1).setVisibility(View.VISIBLE);
+        findViewById(R.id.character2).setVisibility(View.VISIBLE);
+        findViewById(R.id.character3).setVisibility(View.VISIBLE);
+        findViewById(R.id.character4).setVisibility(View.VISIBLE);
     }
 
     private void setInitialLanguage() {

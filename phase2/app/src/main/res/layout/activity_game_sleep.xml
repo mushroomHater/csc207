@@ -32,7 +32,7 @@
 
 
     <ImageView
-        android:id="@+id/xiaoming1l"
+        android:id="@+id/character1"
         android:layout_width="343dp"
         android:layout_height="405dp"
         android:layout_marginStart="68dp"
@@ -40,10 +40,10 @@
         android:contentDescription="@string/todo"
         app:layout_constraintStart_toStartOf="@+id/gameSleepBG"
         app:layout_constraintTop_toTopOf="@+id/gameSleepBG"
-        app:srcCompat="@drawable/xiaoming1" />
+        app:srcCompat="@drawable/character_male_1" />
 
     <ImageView
-        android:id="@+id/xiaoming2"
+        android:id="@+id/character2"
         android:layout_width="343dp"
         android:layout_height="405dp"
         android:layout_marginStart="68dp"
@@ -51,10 +51,10 @@
         android:contentDescription="@string/todo"
         app:layout_constraintStart_toStartOf="@+id/gameSleepBG"
         app:layout_constraintTop_toTopOf="@+id/gameSleepBG"
-        app:srcCompat="@drawable/xiaoming2" />
+        app:srcCompat="@drawable/character_male_2" />
 
     <ImageView
-        android:id="@+id/xiaoming3"
+        android:id="@+id/character3"
         android:layout_width="343dp"
         android:layout_height="405dp"
         android:layout_marginStart="68dp"
@@ -62,10 +62,10 @@
         android:contentDescription="@string/todo"
         app:layout_constraintStart_toStartOf="@+id/gameSleepBG"
         app:layout_constraintTop_toTopOf="@+id/gameSleepBG"
-        app:srcCompat="@drawable/xiaoming3" />
+        app:srcCompat="@drawable/character_male_3" />
 
     <ImageView
-        android:id="@+id/xiaoming4"
+        android:id="@+id/character4"
         android:layout_width="343dp"
         android:layout_height="405dp"
         android:layout_marginStart="68dp"
@@ -73,7 +73,7 @@
         android:contentDescription="@string/todo"
         app:layout_constraintStart_toStartOf="@+id/gameSleepBG"
         app:layout_constraintTop_toTopOf="@+id/gameSleepBG"
-        app:srcCompat="@drawable/xiaoming4" />
+        app:srcCompat="@drawable/character_male_4" />
 
     <ImageView
         android:id="@+id/blanket"
@@ -88,14 +88,14 @@
 
 
     <ImageView
-        android:id="@+id/xiaoming1"
-        android:layout_width="348dp"
-        android:layout_height="405dp"
+        android:id="@+id/characterSit"
+        android:layout_width="362dp"
+        android:layout_height="426dp"
         android:layout_marginStart="156dp"
         android:layout_marginTop="108dp"
         android:contentDescription="@string/todo"
         android:rotation="-90"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/gameSleepBG"
         app:layout_constraintTop_toTopOf="@+id/gameSleepBG"
         app:srcCompat="@drawable/xiaomingsit" />
