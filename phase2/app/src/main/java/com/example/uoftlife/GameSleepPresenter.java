@@ -1,11 +1,19 @@
 package com.example.uoftlife;
 
-class GameSleepPresenter {
+import android.util.Pair;
+import android.widget.Toast;
+
+
+import java.util.List;
+
+public class GameSleepPresenter {
     private GameSleepModel gameSleepModel;
+    private GameSleepView gameSleepView;
 
 
-    GameSleepPresenter(GameSleepModel gameSleepModel) {
+    GameSleepPresenter(GameSleepModel gameSleepModel, GameSleepView gameSleepView) {
         this.gameSleepModel = gameSleepModel;
+        this.gameSleepView = gameSleepView;
 
     }
 
@@ -59,6 +67,10 @@ class GameSleepPresenter {
     void setScore(int score) {
         gameSleepModel.setScore(score);
     }
+    void handleAlarmAnimation(){
+        List<Float> coordinate = gameSleepModel.generateRandomloc();
+        gameSleepView.showAlarmAnimation(coordinate.get(0), coordinate.get(1));
+    }
 
     /**
      * @return the score of the user within the range of 0 - 100.
@@ -99,5 +111,9 @@ class GameSleepPresenter {
         return gameSleepModel.getClickAmount() >= GameSleepModel.getTargetClick();
     }
 
-
+    void makeToast() {
+        if (this.getClickAmount() == 4) {
+            gameSleepView.makeToast();
+        }
+    }
 }

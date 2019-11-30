@@ -1,5 +1,12 @@
 package com.example.uoftlife;
 
+import android.util.Pair;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 class GameSleepModel {
     /**
      * The target number of click to pass the game level.
@@ -15,6 +22,8 @@ class GameSleepModel {
      * The number of clicks entered by the user.
      */
     private int clickAmount = 0;
+    private float dx;
+    private float dy;
 
     /**
      * The score the user gets in this game level
@@ -23,10 +32,11 @@ class GameSleepModel {
 
 
     /**
-     * Creates a GameSleepModel instance.
+     * Creates a LevelOne instance.
      */
-    GameSleepModel() {
-
+    GameSleepModel(float dx, float dy) {
+     this.dx = dx;
+     this.dy = dy;
     }
 
     /**
@@ -61,9 +71,21 @@ class GameSleepModel {
         return score;
     }
 
+    List<Float> generateRandomloc(){
+        List<Float> result = new ArrayList<>();
+        Random R = new Random();
+        final float dx = R.nextFloat() * this.dx;
+        final float dy = R.nextFloat() * this.dy;
+        result.add(dx);
+        result.add(dy);
+        return result;
+    }
+
     void setScore(int score) {
         this.score = score;
     }
+
+
 }
 
 
