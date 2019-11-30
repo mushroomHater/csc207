@@ -1,3 +1,99 @@
 <resources>
-    <string name="app_name">UofTlife</string>
+    <!--    todo somebody translate them to English later-->
+
+
+    <!--    Norm: the string fields need to have the same name as corresponding String key of maps
+     in GameConstant so that they can be read and are good for future extension; Anywise, the
+     exceptions are handled in case of invalid naming.-->
+
+    <string name="app_name">UofTLife</string>
+
+    <string name="back">Back</string>
+    <string name="menu">Menu</string>
+    <string name="save">Save</string>
+    <string name="quit">Quit</string>
+    <string name="save_alert">Are you sure you want to save this progress? Your existing game file will be overwritten. Click again to save.</string>
+    <string name="quit_alert">Are you sure you want to quit this game without saving? You will lose your current progress since last saving. Click again to quit anywise.</string>
+    <string name="save_success">Your file is saved successfully!</string>
+    <string name="save_error">Error occurred. Please try again later.</string>
+    <string name="save_disable">Cannot save during a level of game.</string>
+    <string name="give_up">Give up Current Progress</string>
+    <string name="start">Start New Game</string>
+    <string name="load">Load from Files</string>
+
+
+    <string name="build_character">Build New Character</string>
+
+    <string name="difficulty">Game Difficulty</string>
+    <string name="difficulty_instruction">增大游戏难度会使得初始可分配资源点变少。
+        【%1$s】难度时可分配 %2$d 点，
+        【%3$s】难度时可分配 %4$d 点，
+        【%5$s】难度时可分配 %6$d 点。</string>
+    <string name="setting">Setting</string>
+    <string name="name">Name</string>
+
+    <string name="allocation">Allocation</string>
+    <string name="allocation_instruction">分配主人公的背景资源，并根据点数，随机得到%1$d条正面或负面的角色特性。</string>
+
+    <string name="fated_resources">Fated Resources</string>
+    <string name="free_points">Free Points</string>
+    <!--  进入游戏之后不会再变化的属性-->
+    <string name="wealth">Wealth</string>
+    <string name="stamina">Stamina</string>
+    <string name="aspiration">Aspiration</string>
+    <string name="comprehension">Comprehension</string>
+    <string name="fortune">Fortune</string>
+
+    <!--随机生成的特性/天赋-->
+    <string name="randomize">Randomize</string>
+    <string name="characteristic">Characteristic</string>
+
+
+    <!--  时间=游戏进度，也是唯一永远递减的资源；不受加点影响-->
+    <string name="time">Time Blocks</string>
+    <!--手动操作（进入关卡、按通关情况）而变化的资源/属性-->
+    <string name="money">Money</string>
+    <string name="understanding">Understanding</string>
+    <string name="mark">Marks</string>
+
+    <!--随时间而自动降低，也会因为关卡和角色特性而产生变化-->
+    <string name="vitality">Vitality</string>
+    <string name="repletion">Repletion</string>
+    <string name="practice">Practice</string>
+
+    <!--隐藏的参数，由上面的属性通过某些规则以及一定的随机性计算得到，玩家无法直接影响。只能看到阶段性状态-->
+    <string name="health">Health Condition</string>
+    <string name="mood">State of Mind</string>
+    <string name="GPA">GPA</string>
+
+
+    <!--    一些活动和事件-->
+    <string name="random_event">Random Events</string>
+    <string name="die_starving">%1$s died because of starving for too long time…</string>
+
+
+    <string name="assignment">Assignment %1$s</string>
+    <string name="exam">Test %1$s</string>
+    <string name="assign"> is posted.</string>
+    <string name="worth">It is worth %1$d marks.</string>
+    <string name="due">Deadline is %1$s.</string>
+    <string name="date">It is to take on %1$s.</string>
+    <string name="do_ass">Check and do it now</string>
+
+    <!--    把自己事件要显示的用语写在下方，不要写在 activity 内部，到时候方便统一翻译-->
+    <string name="scene_library">Library</string>
+    <string name="scene_home">Home</string>
+    <string name="scene_restaurant">Restaurant</string>
+    <string name="scene_lecture">Lecture</string>
+    <string name="scene_exam">Exam Center</string>
+
+    <string name="walk_spend_time">Walk to %1$s will take %2$d time blocks.</string>
+
+    <string name="activity_choose">At %1$s, below are valid activities</string>
+    <string name="study">Study</string>
+    <string name="sleep">Sleep</string>
+    <string name="eat">Eat</string>
+
+    <string name="activity_spend_time">Doing this will take %1$d time blocks.</string>
+
 </resources>

@@ -1,11 +1,44 @@
 <resources>
-
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorButtonNormal">#2B9EB1</item>
+        <item name="colorControlHighlight">#15356D</item>
+        <item name="android:buttonCornerRadius">18dp</item>
+        <item name="android:windowFullscreen">true</item>
+<!--        <item name="android:windowTranslucentNavigation">true</item>-->
+    </style>
+    <!-- Dialog Theme. -->
+    <style name="Float" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/floating_box</item>
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorButtonNormal">@color/buttonNormal</item>
+        <item name="colorControlHighlight">@color/controlHighlight</item>
+        <item name="android:textColor">#A08D90</item>
+        <item name="android:textSize">14sp</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowOverscan">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.8</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+    <style name="Theme.Test" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:textColor">#A08D90</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowFrame">@drawable/floating_box</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
 </resources>
