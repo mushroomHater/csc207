@@ -22,7 +22,15 @@ class GameSleepModel {
      * The number of clicks entered by the user.
      */
     private int clickAmount = 0;
+
+    /**
+     * The x coordinate of the alarm button.
+     */
     private float dx;
+
+    /**
+     * The y coordinate of the alarm button.
+     */
     private float dy;
 
     /**
@@ -67,10 +75,23 @@ class GameSleepModel {
         clickAmount++;
     }
 
+    /**
+     * @return the score of the game level.
+     */
     int getScore() {
         return score;
     }
 
+    /**
+     * Sets the score of the game level.
+     */
+    void setScore(int score) {
+        this.score = score;
+    }
+
+    /**
+     * @return random location for the alarm button.
+     */
     List<Float> generateRandomloc(){
         List<Float> result = new ArrayList<>();
         Random R = new Random();
@@ -80,12 +101,6 @@ class GameSleepModel {
         result.add(dy);
         return result;
     }
-
-    void setScore(int score) {
-        this.score = score;
-    }
-
-
 }
 
 

@@ -1,6 +1,7 @@
 package com.example.uoftlife;
 
 import android.util.Pair;
+import android.view.View;
 import android.widget.Toast;
 
 
@@ -115,5 +116,26 @@ public class GameSleepPresenter {
         if (this.getClickAmount() == 4) {
             gameSleepView.makeToast();
         }
+    }
+
+    int handleCharacter(){
+        /* Specifies character's appearance according to the number of clicks entered. */
+        int d = 0;
+
+        if (getClickAmount() == GameSleepPresenter.getTargetClick() / 4) {
+            d = 1;
+        }
+        if (getClickAmount() == GameSleepPresenter.getTargetClick() / 2) {
+            d = 2;
+        }
+
+        if (getClickAmount() == GameSleepPresenter.getTargetClick() / 4 * 3) {
+            d = 3;
+        }
+
+        if (getClickAmount() == GameSleepPresenter.getTargetClick()) {
+            d= 4;
+        }
+        return d;
     }
 }

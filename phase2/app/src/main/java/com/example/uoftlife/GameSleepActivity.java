@@ -62,10 +62,9 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         GameSleepModel gameSleepModel = createGameSleepModel();
         gameSleepPresenter = new GameSleepPresenter(gameSleepModel, this);
 
-
+        setInitialCharacter();
         setAlarmBtn();
         setTimer();
-        setXiaoMing();
         setInitialLanguage();
         setConfigBtn();
         gameSleepPresenter.initializeDifficulty();
@@ -119,7 +118,7 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     }
 
     /**
-     * Sets the function of the wake up button.
+     * Sets the function of the alarm button.
      */
     private void setAlarmBtn() {
         alarmButton = findViewById(R.id.BtnAlarm);
@@ -136,27 +135,8 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
 
         alarmButton.setOnClickListener((view) -> {
             gameSleepPresenter.addClickAmount();
-           // System.out.println("ClickAmount:" + gameSleepPresenter.getClickAmount());
             gameSleepPresenter.makeToast();
-
-
-
-            /* Specifies XiaoMing's appearance depending on the number of clicks entered. */
-            if (gameSleepPresenter.getClickAmount() == GameSleepPresenter.getTargetClick() / 4) {
-                findViewById(R.id.character4).setVisibility(View.INVISIBLE);
-            }
-            if (gameSleepPresenter.getClickAmount() == GameSleepPresenter.getTargetClick() / 2) {
-                findViewById(R.id.character3).setVisibility(View.INVISIBLE);
-            }
-
-            if (gameSleepPresenter.getClickAmount() == GameSleepPresenter.getTargetClick() / 4 * 3) {
-                findViewById(R.id.character2).setVisibility(View.INVISIBLE);
-            }
-
-            if (gameSleepPresenter.getClickAmount() == GameSleepPresenter.getTargetClick()) {
-                findViewById(R.id.character1).setVisibility(View.INVISIBLE);
-                findViewById(R.id.characterSit).setVisibility(View.VISIBLE);
-            }
+            handleCharacter();
         });
     }
 
@@ -178,9 +158,9 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     }
 
     /**
-     * Sets the character's appearance in the game level.
+     * Sets the character's initial appearance in the game level.
      */
-    private void setXiaoMing() {
+    private void setInitialCharacter() {
         findViewById(R.id.characterSit).setVisibility(View.INVISIBLE);
         findViewById(R.id.character1).setVisibility(View.VISIBLE);
         findViewById(R.id.character2).setVisibility(View.VISIBLE);
@@ -262,6 +242,58 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         }
     }
 
+    /**
+     * Shows the alarm and assign location
+     */
+    @Override
+    public void showAlarmAnimation(float dx, float dy) {
+        alarmButton.animate()
+                .x(dx)
+                .y(dy)
+                .setDuration(0)
+                .start();
+
+    }
+
+    /**
+     * Shows the toast instruction.
+     */
+    @Override
+    public void makeToast() {
+        Toast.makeText(getApplicationContext(), "Keep tapping! ",
+                Toast.LENGTH_LONG)
+                .show();
+    }
+
+    /**
+     * Handles the appearance of the character.
+     */
+    @Override
+    public void handleCharacter() {
+        int d = gameSleepPresenter.handleCharacter();
+        switch (d) {
+            // if the click amount reaches 1/4 of the target click, hide the first layer of character
+            case 1:
+                findViewById(R.id.character4).setVisibility(View.INVISIBLE);
+                break;
+            // if the click amount reaches 1/2 of the target click, hide the second layer of character
+            case 2:
+                findViewById(R.id.character3).setVisibility(View.INVISIBLE);
+                break;
+            // if the click amount reaches 3/4 of the target click, hide the third layer of character
+            case 3:
+                findViewById(R.id.character2).setVisibility(View.INVISIBLE);
+                break;
+
+            // if the click amount reaches the target click, hide the fourth layer
+            // and show the final  layer of the character
+            case 4:
+                findViewById(R.id.character1).setVisibility(View.INVISIBLE);
+                findViewById(R.id.characterSit).setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
 
     /**
      * Shows the outcome of the game level after hiding the elements from display
@@ -273,22 +305,5 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         System.out.println("SCORE: " + gameSleepPresenter.getScore() + "/100");
 
     }
-
-    @Override
-    public void showAlarmAnimation(float dx, float dy) {
-        alarmButton.animate()
-                .x(dx)
-                .y(dy)
-                .setDuration(0)
-                .start();
-
-    }
-
-    public void makeToast() {
-        Toast.makeText(getApplicationContext(), "Keep tapping! ",
-                Toast.LENGTH_LONG)
-                .show();
-    }
 }
-
 
