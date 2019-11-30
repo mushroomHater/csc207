@@ -1,5 +1,6 @@
 package com.example.uoftlife;
 
+import android.os.CountDownTimer;
 import android.util.Pair;
 
 import java.lang.reflect.Array;
@@ -11,7 +12,7 @@ class GameSleepModel {
     /**
      * The target number of click to pass the game level.
      */
-    private static int targetClick = 45;
+    private int targetClick = 45;
 
     /**
      * The tag of the game level.
@@ -24,41 +25,61 @@ class GameSleepModel {
     private int clickAmount = 0;
 
     /**
+     * The score the user gets in this game level
+     */
+    private int score;
+
+    /**
+     * Indicates if the timer is running.
+     */
+    private boolean timing;
+
+    /**
+     * The time left in this game level in milliseconds.
+     */
+    private long timeLeftInMilliseconds = 16000; // 16 seconds
+
+    /**
+     * The countdown timer of the game level.
+     */
+//    private CountDownTimer timer;
+
+    /**
      * The x coordinate of the alarm button.
      */
-    private float dx;
+    private float windowWidth;
 
     /**
      * The y coordinate of the alarm button.
      */
-    private float dy;
+    private float windowHeight;
 
     /**
-     * The score the user gets in this game level
+     * The time interval for the button to change position.
      */
-    private int score;
+    private int alarmChangePositionInterval = 4000;
 
 
     /**
      * Creates a LevelOne instance.
      */
-    GameSleepModel(float dx, float dy) {
-     this.dx = dx;
-     this.dy = dy;
+    GameSleepModel(float windowWidth, float windowHeight) {
+        this.windowWidth = windowWidth;
+        this.windowHeight = windowHeight;
     }
 
     /**
      * @return the target number of clicks in this game level.
      */
-    static int getTargetClick() {
+    int getTargetClick() {
         return targetClick;
     }
 
     /**
      * Sets the target number of clicks in this game level.
      */
-    static void setTargetClick(int t) {
-        GameSleepModel.targetClick = t;
+    void setTargetClick(int targetClick) {
+        this.targetClick = targetClick;
     }
 
     /**
@@ -90,17 +111,63 @@ class GameSleepModel {
     }
 
     /**
+     * @return the if the timer is timing.
+     */
+    public boolean isTiming() {
+        return timing;
+    }
+
+    /**
+     * Sets if the timer should be timing.
+     */
+    public void setTiming(boolean timing) {
+        this.timing = timing;
+    }
+
+    public void setTimer(CountDownTimer timer) {
+//        this.timer = timer;
+    }
+
+    public void cancelTimer() {
+//        if(timer==null){
+//            System.out.println(clickAmount);
+//        }else{
+//        timer.cancel();}
+    }
+
+    /**
+     * @return the time left for the game level in milliseconds.
+     */
+    public long getTimeLeftInMilliseconds() {
+        return timeLeftInMilliseconds;
+    }
+
+    /**
+     * Sets the time left for the game level in milliseconds.
+     */
+    public void setTimeLeftInMilliseconds(long timeLeftInMilliseconds) {
+        this.timeLeftInMilliseconds = timeLeftInMilliseconds;
+    }
+
+    public int getAlarmChangePositionInterval() {
+        return alarmChangePositionInterval;
+    }
+
+    public void setAlarmChangePositionInterval(int alarmChangePositionInterval) {
+        this.alarmChangePositionInterval = alarmChangePositionInterval;
+    }
+
+    /**
      * @return random location for the alarm button.
      */
-    List<Float> generateRandomloc(){
-        List<Float> result = new ArrayList<>();
+    float[] generateRandomLocation() {
         Random R = new Random();
-        final float dx = R.nextFloat() * this.dx;
-        final float dy = R.nextFloat() * this.dy;
-        result.add(dx);
-        result.add(dy);
-        return result;
+        final float windowWidth = R.nextFloat() * this.windowWidth;
+        final float windowHeight = R.nextFloat() * this.windowHeight;
+        return new float[]{windowWidth, windowHeight};
     }
+
+
 }
 
 

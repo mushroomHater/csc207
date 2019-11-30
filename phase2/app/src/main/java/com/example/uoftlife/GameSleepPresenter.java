@@ -1,5 +1,6 @@
 package com.example.uoftlife;
 
+import android.os.CountDownTimer;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Toast;
@@ -20,31 +21,35 @@ public class GameSleepPresenter {
 
 
     void initializeDifficulty() {
-//        int d = (int)GameConfiguration.getConfig().getDifficulty();
-//        if(d==1){
-//            timeLeftInMilliseconds = 16000;
-//            LevelOneState.setTargetClick(65);
-//        }else if(d==2){
-//            timeLeftInMilliseconds = 10000;
-//            LevelOneState.setTargetClick(60);
-//        }else{
-//            timeLeftInMilliseconds = 8000;
-//            LevelOneState.setTargetClick(65);
-//        }
+        //       int d = (int)GameConfiguration.getConfig().getDifficulty();
+        int d = 1;
+        if (d == 1) {
+            setTimeLeftInMilliseconds(16000);
+            setTargetClick(45);
+            setAlarmChangePositionInterval(5000);
+        } else if (d == 2) {
+            setTimeLeftInMilliseconds(15000);
+            setTargetClick(50);
+            setAlarmChangePositionInterval(4000);
+        } else {
+            setTimeLeftInMilliseconds(14000);
+            setTargetClick(60);
+            setAlarmChangePositionInterval(3000);
+        }
     }
 
     /**
      * @return the target number of clicks in this game level.
      */
-    static int getTargetClick() {
-        return GameSleepModel.getTargetClick();
+    int getTargetClick() {
+        return gameSleepModel.getTargetClick();
     }
 
     /**
      * Sets the target number of clicks in this game level.
      */
-    static void setTargetClick(int t) {
-        GameSleepModel.setTargetClick(t);
+    void setTargetClick(int targetClick) {
+        gameSleepModel.setTargetClick(targetClick);
     }
 
     /**
@@ -61,25 +66,12 @@ public class GameSleepPresenter {
         gameSleepModel.addClickAmount();
     }
 
-    int modelScore() {
-        return gameSleepModel.getScore();
-    }
-
-    void setScore(int score) {
-        gameSleepModel.setScore(score);
-    }
-    void handleAlarmAnimation(){
-        List<Float> coordinate = gameSleepModel.generateRandomloc();
-        gameSleepView.showAlarmAnimation(coordinate.get(0), coordinate.get(1));
-    }
-
     /**
      * @return the score of the user within the range of 0 - 100.
      * If the user passes the game level, return a score within the range 1 - 100,
      * depending on the performance/ click amount of the user.
      * If the user fails the game level, return 0.
      */
-
     int getScore() {
         if (isPassed()) {
             if (getClickAmount() >= getTargetClick() &&
@@ -103,39 +95,132 @@ public class GameSleepPresenter {
         return gameSleepModel.getScore();
     }
 
+
+    /**
+     * @return the if the timer is timing.
+     */
+    public boolean isTiming() {
+        return gameSleepModel.isTiming();
+    }
+
+    /**
+     * Sets if the timer should be timing.
+     */
+    public void setTiming(boolean timing) {
+        gameSleepModel.setTiming(timing);
+    }
+
+    /**
+     * @return the time left for the game level in milliseconds.
+     */
+    public long getTimeLeftInMilliseconds() {
+        return gameSleepModel.getTimeLeftInMilliseconds();
+    }
+
+    /**
+     * Sets the time left for the game level in milliseconds.
+     */
+    public void setTimeLeftInMilliseconds(long timeLeftInMilliseconds) {
+        gameSleepModel.setTimeLeftInMilliseconds(timeLeftInMilliseconds);
+    }
+
+    public void setTimer(CountDownTimer timer) {
+        gameSleepModel.setTimer(timer);
+
+    }
+
+
+    /**
+     * Updates the countdown timer.
+     */
+    void updateTimer() {
+        int seconds = (int) getTimeLeftInMilliseconds() / 1000;
+
+        String timeLeftText;
+        timeLeftText = "00:";
+        if (seconds < 10) {
+            timeLeftText += "0";
+        }
+        timeLeftText += seconds;
+
+        gameSleepView.setTimerText(timeLeftText);
+
+        if (seconds == 0) {
+            stopTimer();
+            gameSleepView.showOutcome();
+            gameSleepModel.setTiming(false);
+            //UserManager.getCurrentUser().setLevelScore(1, gameSleepModel.getScore());
+
+        }
+    }
+
+    /**
+     * Stops the countdown timer.
+     */
+    void stopTimer() {
+        gameSleepModel.setTiming(false);
+    }
+
+    public void cancelTimer() {
+        gameSleepModel.cancelTimer();
+    }
+
+    /**
+     * Handles the alarm button with changing location.
+     */
+    void handleAlarmAnimation() {
+        float[] coordinate = gameSleepModel.generateRandomLocation();
+        gameSleepView.showAlarmAnimation(coordinate[0], coordinate[1]);
+    }
+
+
+    public int getAlarmChangePositionInterval() {
+        return gameSleepModel.getAlarmChangePositionInterval();
+    }
+
+    public void setAlarmChangePositionInterval(int alarmChangePositionInterval) {
+        gameSleepModel.setAlarmChangePositionInterval(alarmChangePositionInterval);
+    }
+
     /**
      * Checks if the user passes the game level.
      *
      * @return true if the player passes the game level, otherwise return false.
      */
     private boolean isPassed() {
-        return gameSleepModel.getClickAmount() >= GameSleepModel.getTargetClick();
+        return getClickAmount() >= getTargetClick();
     }
 
+    /**
+     * Makes a toast if click amount reaches 4.
+     */
     void makeToast() {
         if (this.getClickAmount() == 4) {
             gameSleepView.makeToast();
         }
     }
 
-    int handleCharacter(){
-        /* Specifies character's appearance according to the number of clicks entered. */
+    /**
+     * Specifies character's appearance according to the number of clicks entered.
+     */
+    int handleCharacter() {
         int d = 0;
 
-        if (getClickAmount() == GameSleepPresenter.getTargetClick() / 4) {
+        if (getClickAmount() == getTargetClick() / 4) {
             d = 1;
         }
-        if (getClickAmount() == GameSleepPresenter.getTargetClick() / 2) {
+        if (getClickAmount() == getTargetClick() / 2) {
             d = 2;
         }
-
-        if (getClickAmount() == GameSleepPresenter.getTargetClick() / 4 * 3) {
+        if (getClickAmount() == getTargetClick() / 4 * 3) {
             d = 3;
         }
 
-        if (getClickAmount() == GameSleepPresenter.getTargetClick()) {
-            d= 4;
+        if (getClickAmount() == getTargetClick()) {
+            d = 4;
         }
         return d;
     }
+
+
 }

@@ -19,31 +19,22 @@ import java.util.TimerTask;
 public class GameSleepActivity extends AppCompatActivity implements GameSleepView {
 
     //private GameConfiguration config = GameConfiguration.getConfig();
+
     /**
-     * The countdown timer of the game level..
+     * The countdown timer of the game level.
      */
     private CountDownTimer timer;
 
     /**
-     * Indicates if the timer is running.
+     * The alarm button of the game level.
      */
-    private boolean timing;
-
-    /**
-     * The time left in this game level in milliseconds.
-     */
-    private long timeLeftInMilliseconds = 16000; // 16 seconds
+    Button alarmButton;
 
     /**
      * The text view of the timer.
      */
-    Button alarmButton;
-    private TextView timerText;
+    TextView timerText;
 
-    /**
-     * The time interval for the button to change position.
-     */
-    private int alarmChangePositionInterval = 4000;
 
     /**
      * The GameSleepPresenter instance passed into the game level.
@@ -59,16 +50,15 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_sleep);
         ImageView gameSleepBackground = findViewById(R.id.gameSleepBG);
+
         GameSleepModel gameSleepModel = createGameSleepModel();
         gameSleepPresenter = new GameSleepPresenter(gameSleepModel, this);
-
-        setInitialCharacter();
         setAlarmBtn();
+        setInitialCharacter();
         setTimer();
         setInitialLanguage();
         setConfigBtn();
         gameSleepPresenter.initializeDifficulty();
-
     }
 
 
@@ -80,14 +70,14 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     @Override
     protected void onPause() {
         super.onPause();
-        timing = false;
+        gameSleepPresenter.setTiming(false);
         startTimer();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        timing = true;
+        gameSleepPresenter.setTiming(false);
         startTimer();
     }
 
@@ -95,7 +85,7 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     @Override
     protected void onRestart() {
         super.onRestart();
-        timing = true;
+        gameSleepPresenter.setTiming(true);
 //        if (GameConfiguration.getConfig().getLanguage().equals("English")) {
 //            ((Button) findViewById(R.id.btnWakeUp)).setText(R.string.wake_up);
 //            ((Button) findViewById(R.id.gameconfig)).setText(R.string.gameconfig);
@@ -114,31 +104,11 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     GameSleepModel createGameSleepModel() {
         final DisplayMetrics displaymetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-        return new GameSleepModel(displaymetrics.widthPixels * 0.7f, displaymetrics.widthPixels * 0.7f);
+        // todo
+        return new GameSleepModel((displaymetrics.widthPixels * 0.7f),
+                displaymetrics.heightPixels * 0.7f);
     }
 
-    /**
-     * Sets the function of the alarm button.
-     */
-    private void setAlarmBtn() {
-        alarmButton = findViewById(R.id.BtnAlarm);
-
-        final Timer buttonTimer = new Timer();
-        buttonTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                runOnUiThread(() -> {
-                    gameSleepPresenter.handleAlarmAnimation();
-                });
-            }
-        }, 4000, alarmChangePositionInterval);
-
-        alarmButton.setOnClickListener((view) -> {
-            gameSleepPresenter.addClickAmount();
-            gameSleepPresenter.makeToast();
-            handleCharacter();
-        });
-    }
 
     /**
      * Sets the configuration button on top of the game level
@@ -183,73 +153,72 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     }
 
     /**
+     * Sets the function of the alarm button.
+     */
+    private void setAlarmBtn() {
+        alarmButton = findViewById(R.id.BtnAlarm);
+
+        final Timer buttonTimer = new Timer();
+        buttonTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(() -> {
+                    gameSleepPresenter.handleAlarmAnimation();
+                });
+            }
+        }, 4000, gameSleepPresenter.getAlarmChangePositionInterval());
+
+        alarmButton.setOnClickListener((view) -> {
+            gameSleepPresenter.addClickAmount();
+            gameSleepPresenter.makeToast();
+            handleCharacter();
+        });
+    }
+
+    public void setTimerText(String timeLeftText) {
+        timerText.setText(timeLeftText);
+
+    }
+
+    /**
      * Sets the countdown timer.
      */
     private void setTimer() {
         timerText = findViewById(R.id.levelOneCountDown);
+
     }
 
     /**
      * Starts the countdown timer.
      */
-    private void startTimer() {
-        if (timing) {
-            timer = new CountDownTimer(timeLeftInMilliseconds, 1000) {
-                @Override
-                public void onTick(long l) {
-                    timeLeftInMilliseconds = l;
-                    updateTimer();
-                }
+    void startTimer() {
 
-                @Override
-                public void onFinish() {
-                    timer.cancel();
-                }
+        timer = new CountDownTimer(gameSleepPresenter.getTimeLeftInMilliseconds(), 1000) {
+            @Override
+            public void onTick(long l) {
+                gameSleepPresenter.setTimeLeftInMilliseconds(l);
+                gameSleepPresenter.updateTimer();
+            }
 
-            }.start();
-        } else timer.cancel();
+            @Override
+            public void onFinish() {
+                finish();
+            }
+
+        }.start();
+
 //        timing = true;
     }
 
-    /**
-     * Stops the countdown timer.
-     */
-    private void stopTimer() {
-        timing = false;
-    }
-
-    /**
-     * Updates the countdown timer.
-     */
-    private void updateTimer() {
-        int seconds = (int) timeLeftInMilliseconds / 1000;
-
-        String timeLeftText;
-        timeLeftText = "00:";
-        if (seconds < 10) {
-            timeLeftText += "0";
-        }
-        timeLeftText += seconds;
-
-        timerText.setText(timeLeftText);
-
-        if (seconds == 0) {
-            stopTimer();
-            showOutcome();
-            timing = false;
-            //UserManager.getCurrentUser().setLevelScore(1, gameSleepModel.getScore());
-            finish();
-        }
-    }
 
     /**
      * Shows the alarm and assign location
      */
     @Override
-    public void showAlarmAnimation(float dx, float dy) {
+    public void showAlarmAnimation(float windowWidth, float windowHeight) {
         alarmButton.animate()
-                .x(dx)
-                .y(dy)
+                .x(windowWidth)
+                .y(windowHeight)
                 .setDuration(0)
                 .start();
 
@@ -298,7 +267,8 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     /**
      * Shows the outcome of the game level after hiding the elements from display
      */
-    private void showOutcome() {
+    @Override
+    public void showOutcome() {
         //hide the button and timer when time is up.
         findViewById(R.id.BtnAlarm).setVisibility(View.GONE);
         findViewById(R.id.levelOneCountDown).setVisibility(View.GONE);
