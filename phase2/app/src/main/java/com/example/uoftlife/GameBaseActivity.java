@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.uoftlife.floating.PauseDisplayActivity;
 import com.example.uoftlife.util.GameMessenger;
 import com.example.uoftlife.util.calculator.GameProcessorStrategy;
 

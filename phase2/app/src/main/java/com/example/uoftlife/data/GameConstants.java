@@ -25,7 +25,7 @@ public interface GameConstants {
     /**
      * Max values for the below attributes
      */
-    int MAX_UNDERSTANDING = 1000;
+    int MAX_TIME = 5000;
     int MAX_GENERAL = 100;
 
 
@@ -39,6 +39,17 @@ public interface GameConstants {
             "wealth", "stamina", "aspiration", "comprehension", "fortune"
     };
     String CONFIG_FILE = "game_config";
+
+    /**
+     * These sources key words are added in displaying order
+     */
+    String[] GAME_STATUS = {
+            "money",
+            "split line",
+            "understanding","practice","mark",
+            "split line",
+            "repletion","vitality"
+    };
 
     /**
      * The attributes that changes during game
@@ -57,6 +68,8 @@ public interface GameConstants {
         put("GPA", 4);
     }};
     String STATUS_FILE = "game_progress";
+
+
 
 
     GameProcessorStrategy<String, Integer> virtualPlaceholder = null;

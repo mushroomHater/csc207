@@ -9,26 +9,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <!--
 I don't know why child activity doesn't inherit their father's theme and launchMode,
 that I have to declare them again and again manually
         -->
         <activity
-            android:name=".FloatingActivity"
+            android:name=".floating.FloatingActivity"
             android:launchMode="singleTop"
             android:theme="@style/Float" />
         <activity
-            android:name=".PauseDisplayActivity"
+            android:name=".floating.PauseDisplayActivity"
             android:launchMode="singleTop"
             android:theme="@style/Float" />
         <activity
-            android:name=".ConfigActivity"
+            android:name=".floating.ConfigActivity"
             android:launchMode="singleTop"
             android:theme="@style/Float" />
-        <activity android:name=".EventSelectActivity"
+        <activity
+            android:name=".floating.EventSelectActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/Float" />
+        <activity android:name=".floating.MallEventActivity"
             android:launchMode="singleTop"
             android:theme="@style/Float"/>
+
+
+
+
         <activity android:name=".TransitionPageActivity" />
         <activity android:name=".GameBaseActivity" />
         <activity

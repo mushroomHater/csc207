@@ -58,6 +58,14 @@ public class DataFacade {
         }
     }
 
+    static public void setTempData(String key, Object value) {
+        GameProgress.getProgress().setTempData(key,value);
+    }
+
+    static public Object getTempData(String key){
+        return GameProgress.getProgress().getTempData(key);
+    }
+
     static public boolean saveConfig() {
         return save(GameConfiguration.configure());
     }
