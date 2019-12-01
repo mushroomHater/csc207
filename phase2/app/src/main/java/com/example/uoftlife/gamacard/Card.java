@@ -1,4 +1,4 @@
-package com.example.uoftlife.cardgame;
+package com.example.uoftlife.gamacard;
 
 class Card {
     private boolean covered;
