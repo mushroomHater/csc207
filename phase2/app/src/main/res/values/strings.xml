@@ -123,19 +123,7 @@
     <string name="_00_15" />
     <string name="gameconfig" />
 
-
-    <string name="logout">logout</string>
-    <string name="logout_info">Do you want to log out?</string>
-    <string name="login">LogIn</string>
-    <string name="username_empty">username can not be empty</string>
-    <string name="username_not_exist_error">username not exist</string>
-    <string name="password_empty">password can not be empty</string>
-    <string name="password_not_right">password not right</string>
-    <string name="login_success">login successfully</string>
-    <string name="username_exist_error">username has existed</string>
-    <string name="password_again_empty">password again can not be empty</string>
-    <string name="two_password_not_equal">two passwords are not equal</string>
-    <string name="unknown_error">unknown error</string>
-    <string name="sign_up_success">sign up successfully</string>
-
+    <!-- GameCard -->
+    <string name="sccore">Score:</string>
+    <string name="card">Try to find all matched cards</string>
 </resources>
