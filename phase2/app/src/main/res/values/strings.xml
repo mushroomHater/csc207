@@ -117,10 +117,17 @@
 
     <string name="activity_spend_time">Doing this will take %1$d time blocks.</string>
 
-        <!-- GameSleep  -->
+    <!-- GameSleep  -->
     <string name="todo" />
+    <string name="blanket" />
     <string name="_00_15" />
     <string name="gameconfig" />
 
-
+    <!-- GameCard -->
+    <string name="sccore">Score:</string>
+    <string name="card">Try to find all matched cards</string>
+    <string name="understanding_value">Your understaning value has increased by</string>
+    <string name="practice_value">Your practice value has incresed by</string>
+    <string name="time_value">Your time has decreased by</string>
+    <string name="energy_value">Your energy has decreased by</string>
 </resources>

@@ -19,8 +19,6 @@ class LevelThree{
 
     private Iterator<String> riddleIterator;
 
-//    private List<String> riddleKeys;
-
     private Map<String, String> riddles;
 
     private int scoreAmount;
