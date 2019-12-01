@@ -5,13 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="0dp"
-    tools:context=".FloatingActivity">
+    tools:context=".floating.FloatingActivity">
+
+    <ProgressBar
+        android:id="@+id/time_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
+        style="?android:attr/progressBarStyleHorizontal"/>
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/buttonLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:paddingTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +44,7 @@
 
     <LinearLayout
         android:id="@+id/contentLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,26 +53,38 @@
         android:paddingBottom="10dp"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@id/frameLayout">
+        app:layout_constraintTop_toBottomOf="@id/titleLayout">
     </LinearLayout>
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="45dp"
+        app:layout_constraintBottom_toTopOf="@+id/contentLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:id="@+id/title_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/setting"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:autoSizeMaxTextSize="90sp"
+            android:autoSizeMinTextSize="12sp"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:maxLines="3"
             android:textColor="@color/floatingBoxTitle"
-            android:textSize="36sp"
-            />
-    </FrameLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

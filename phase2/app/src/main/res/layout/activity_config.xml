@@ -1,103 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".ConfigActivity">
+    tools:context=".floating.ConfigActivity">
 
     <Button
-        android:id="@+id/testbtn"
+        android:id="@+id/ch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="267dp" />
+        android:layout_weight="1"
+        android:text="none" />
 
-    <TextView
-        android:id="@+id/textView3"
+    <Button
+        android:id="@+id/ch2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_weight="1"
+        android:text="none" />
 
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminate="true"
-                android:max="90" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <ToggleButton
-                android:id="@+id/toggleButton7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ToggleButton" />
-
-            <ToggleButton
-                android:id="@+id/toggleButton8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ToggleButton" />
-
-            <ToggleButton
-                android:id="@+id/toggleButton6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ToggleButton" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <ToggleButton
-                android:id="@+id/toggleButton11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ToggleButton" />
-
-            <ToggleButton
-                android:id="@+id/toggleButton10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ToggleButton" />
-
-            <ToggleButton
-                android:id="@+id/toggleButton9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ToggleButton" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <SeekBar
-                android:id="@+id/seekBar"
-                style="@style/Widget.AppCompat.SeekBar.Discrete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminate="false"
-                android:max="5"
-                android:progress="3" />
-        </TableRow>
-</TableLayout>
+</LinearLayout>

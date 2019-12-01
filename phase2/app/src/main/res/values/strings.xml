@@ -20,16 +20,21 @@
     <string name="give_up">Give up Current Progress</string>
     <string name="start">Start New Game</string>
     <string name="load">Load from Files</string>
+    <string name="help">Instruction</string>
+    <string name="ready">Go</string>
 
 
+    <string name="pause">Status</string>
     <string name="build_character">Build New Character</string>
 
     <string name="difficulty">Game Difficulty</string>
-    <string name="difficulty_instruction">增大游戏难度会使得初始可分配资源点变少。
-        【%1$s】难度时可分配 %2$d 点，
-        【%3$s】难度时可分配 %4$d 点，
-        【%5$s】难度时可分配 %6$d 点。</string>
-    <string name="setting">Setting</string>
+    <string name="difficulty_instruction">Difficulty of game influences the number of allocatable fated resources point. \n\n
+        [%1$s] -> %2$d\n
+        [%3$s] -> %4$d\n
+        [%5$s] -> %6$d</string>
+    <string name="diff_easy">easy</string>
+    <string name="diff_medium">medium</string>
+    <string name="diff_hard">hard</string>
     <string name="name">Name</string>
 
     <string name="allocation">Allocation</string>
@@ -41,12 +46,13 @@
     <string name="wealth">Wealth</string>
     <string name="stamina">Stamina</string>
     <string name="aspiration">Aspiration</string>
-    <string name="comprehension">Comprehension</string>
+    <string name="intellect">Intellect</string>
     <string name="fortune">Fortune</string>
 
     <!--随机生成的特性/天赋-->
-    <string name="randomize">Randomize</string>
+    <string name="randomize">Rand.</string>
     <string name="characteristic">Characteristic</string>
+    <string name="ch_alert">You have not allocated all free points!</string>
 
 
     <!--  时间=游戏进度，也是唯一永远递减的资源；不受加点影响-->
@@ -65,6 +71,19 @@
     <string name="health">Health Condition</string>
     <string name="mood">State of Mind</string>
     <string name="GPA">GPA</string>
+
+    <!--    暂停和状态界面显示的-->
+    <string name="time_display">Time Blocks Left for this semester:</string>
+
+    <!--    状态-->
+    <string name="status_starving">%1$s is starving and need to eat!</string>
+    <string name="status_exhausted">%1$s is too exhausted to do anything.</string>
+    <string name="status_sick">%1$s is sick. Feels so bad.</string>
+    <string name="status_bad_mood">%1$s is in bad temper.</string>
+    <string name="status_good_mood">%1$s feels so happy these days.</string>
+    <string name="status_study_alert">%1$s needs to study…</string>
+    <string name="status_has_due">%1$s has at least one deadline upcoming.</string>
+    <string name="status_default">All is well.   \n—%1$s</string>
 
 
     <!--    一些活动和事件-->
@@ -89,10 +108,12 @@
 
     <string name="walk_spend_time">Walk to %1$s will take %2$d time blocks.</string>
 
-    <string name="activity_choose">At %1$s, below are valid activities</string>
-    <string name="study">Study</string>
+    <string name="event">%1$s want to</string>
+    <string name="lecture">Take courses</string>
+    <string name="review">Review</string>
     <string name="sleep">Sleep</string>
-    <string name="eat">Eat</string>
+    <string name="shopping">Eat or purchase stuffs</string>
+    <string name="work">Do part time job</string>
 
     <string name="activity_spend_time">Doing this will take %1$d time blocks.</string>
 
