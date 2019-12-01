@@ -14,6 +14,7 @@ class GameProgress implements GameData {
 
     private HashMap<String, Integer> progressData;
 
+    private HashMap<String, Object> tempData;
 
     static GameProgress getProgress() {
         return progress;
@@ -26,6 +27,7 @@ class GameProgress implements GameData {
     @Override
     public void initialize() {
         progressData = new HashMap<>();
+        tempData = new HashMap<>();
         for (Map.Entry<String, Integer> kvEntry : GameConstants.GAME_STATUS_INIT.entrySet()) {
             progressData.put(kvEntry.getKey(), kvEntry.getValue());
         }
@@ -57,5 +59,13 @@ class GameProgress implements GameData {
     @Override
     public void load(Context context) {
         progressData = DataPersistence.readMapData(context, GameConstants.STATUS_FILE);
+    }
+
+    void setTempData(String key, Object value){
+        tempData.put(key, value);
+    }
+
+    Object getTempData(String key){
+        return tempData.get(key);
     }
 }

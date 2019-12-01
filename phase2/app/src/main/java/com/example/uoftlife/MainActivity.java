@@ -6,6 +6,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.uoftlife.data.DataFacade;
+import com.example.uoftlife.floating.DifficultySelectActivity;
+import com.example.uoftlife.floating.PauseDisplayActivity;
+import com.example.uoftlife.gamemap.MapActivity;
 import com.example.uoftlife.util.GameMessenger;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,17 +26,18 @@ public class MainActivity extends AppCompatActivity {
         DataFacade.setContext(getApplicationContext());
         DataFacade.initialize();
         GameMessenger.getMessenger().initialize();
+        DataFacade.setTempData("status", String.format(getString(R.string.status_has_due), "username"));
     }
 
-    private void setListeners(){
-        findViewById(R.id.button).setOnClickListener((view) ->
-                startActivity(new Intent(this, PauseDisplayActivity.class).putExtra("savable",true)));
+    private void setListeners() {
+        findViewById(R.id.start).setOnClickListener((view) ->
+                startActivity(new Intent(this, PauseDisplayActivity.class).putExtra("savable", true)));
 
-        findViewById(R.id.button2).setOnClickListener((view) -> {
-
+        findViewById(R.id.load).setOnClickListener((view) -> {
+            startActivity(new Intent(this, DifficultySelectActivity.class));
         });
-        findViewById(R.id.button3).setOnClickListener((view) ->
-                startActivity(new Intent(this, ConfigActivity.class)));
+        findViewById(R.id.help).setOnClickListener((view) ->
+                startActivity(new Intent(this, MapActivity.class)));
     }
 
     @Override
