@@ -1,107 +1,99 @@
 <resources>
-    <string name="app_name">UofT Life</string>
-    <string name="app_name_cn">UofT校园生活</string>
-    <string name="wake_up">Wake Up!</string>
-    <string name="wake_up_cn">起床啦!</string>
-
-    <string name="homeview">homeview</string>
-    <string name="level_1">Level 1</string>
-    <string name="level_1_cn">关卡 1</string>
-    <string name="home_screen">Home screen</string>
-    <string name="home_screen_cn">主界面</string>
-    <string name="_0_10">0:10</string>
-    <string name="_00_15">00:15</string>
-    <string name="leveloneview">levelOneView</string>
-    <string name="leveloneview_cn">关卡1背景</string>
-
-    <string name="login">LogIn</string>
-    <string name="login_cn">登陆</string>
-    <string name="sign_up">SignUp</string>
-    <string name="sign_up_cn">注册</string>
-    <string name="username_empty">username can not be empty</string>
-    <string name="username_empty_cn">用户名不能为空</string>
-    <string name="username_exist_error">username has existed</string>
-    <string name="username_exist_error_cn">用户名已存在</string>
-    <string name="password_empty">password can not be empty</string>
-    <string name="password_empty_cn">密码不能为空</string>
-    <string name="unknown_error">unknown error</string>
-    <string name="unknown_error_cn">未知错误 O_O</string>
-    <string name="sign_up_success">sign up successfully</string>
-    <string name="sign_up_success_cn">注册成功</string>
-    <string name="username_not_exist_error">username not exist</string>
-    <string name="username_not_exist_error_cn">用户名不存在</string>
-    <string name="password_not_right">password not right</string>
-    <string name="password_not_right_cn">密码错误t</string>
-    <string name="login_success">login successfully</string>
-    <string name="login_success_cn">登陆成功</string>
-    <string name="hint_username">username</string>
-    <string name="hint_username_cn">用户名</string>
-    <string name="hint_password">password</string>
-    <string name="hint_password_cn">密码</string>
-    <string name="logout">logout</string>
-    <string name="logout_cn">登出</string>
-    <string name="logout_info">Do you want to log out?</string>
-    <string name="logout_info_cn">确认登出?</string>
-    <string name="todo">TODO</string>
-    <string name="blanket">blanket</string>
-
-    <string name="pause">Game Paused</string>
-    <string name="pause_cn">游戏暂停</string>
-    <string name="config">Once game starts, you will no longer be allowed to set the difficulty.</string>
-    <string name="config_cn">一旦游戏开始，你将不能改变难度</string>
-    <string name="cannot_change_difficulty">Cannot change difficulty during the game.</string>
-    <string name="cannot_change_difficulty_cn">游戏中不能改变难度</string>
+    <!--    todo somebody translate them to English later-->
 
 
-    <string name="exit">Return to Menu</string>
-    <string name="exit_cn">返回到菜单</string>
+    <!--    Norm: the string fields need to have the same name as corresponding String key of maps
+     in GameConstant so that they can be read and are good for future extension; Anywise, the
+     exceptions are handled in case of invalid naming.-->
 
-    <string name="exit_alert">You will lose your current progress!! Click again to ensure you want to leave.</string>
-    <string name="exit_alert_cn">你将失去目前进度!! 再次点击确认退出.</string>
+    <string name="app_name">UofTLife</string>
 
-    <string name="resume">Back to game</string>
-    <string name="resume_cn">返回到游戏</string>
-
-    <string name="difficulty">Choose the difficulty for games</string>
-    <string name="difficulty_cn">选择难度</string>
-    <string name="language">Choose preferred language</string>
-    <string name="language_cn">选择语言</string>
-    <string name="chinese">中文</string>
-    <string name="english">English</string>
-
-    <string name="start">start</string>
-    <string name="start_cn">开始</string>
-    <string name="setting">Configuration</string>
-    <string name="setting_cn">设置</string>
-    <string name="ranking">ranking</string>
-    <string name="ranking_cn">排行</string>
+    <string name="back">Back</string>
+    <string name="menu">Menu</string>
+    <string name="save">Save</string>
+    <string name="quit">Quit</string>
+    <string name="save_alert">Are you sure you want to save this progress? Your existing game file will be overwritten. Click again to save.</string>
+    <string name="quit_alert">Are you sure you want to quit this game without saving? You will lose your current progress since last saving. Click again to quit anywise.</string>
+    <string name="save_success">Your file is saved successfully!</string>
+    <string name="save_error">Error occurred. Please try again later.</string>
+    <string name="save_disable">Cannot save during a level of game.</string>
+    <string name="give_up">Give up Current Progress</string>
+    <string name="start">Start New Game</string>
+    <string name="load">Load from Files</string>
 
 
-    <string name="win">Congratulations! Youa can now enter the next stage.</string>
-    <string name="win_cn">恭喜通过！你可以进入下一关了</string>
+    <string name="build_character">Build New Character</string>
 
-    <string name="fail">Xiao Ming is now in danger!!! Please try again to save him! Σ(*ﾟдﾟﾉ)ﾉ</string>
-    <string name="fail_cn">糟了，小明危险了……请重新尝试！</string>
+    <string name="difficulty">Game Difficulty</string>
+    <string name="difficulty_instruction">增大游戏难度会使得初始可分配资源点变少。
+        【%1$s】难度时可分配 %2$d 点，
+        【%3$s】难度时可分配 %4$d 点，
+        【%5$s】难度时可分配 %6$d 点。</string>
+    <string name="setting">Setting</string>
+    <string name="name">Name</string>
 
-    <string name="single_score">Your score for this level is:</string>
-    <string name="single_score_cn">你在本关的得分是：</string>
-    <string name="total_score">Your accumulated score is:</string>
-    <string name="total_score_cn">你的总分是：</string>
+    <string name="allocation">Allocation</string>
+    <string name="allocation_instruction">分配主人公的背景资源，并根据点数，随机得到%1$d条正面或负面的角色特性。</string>
+
+    <string name="fated_resources">Fated Resources</string>
+    <string name="free_points">Free Points</string>
+    <!--  进入游戏之后不会再变化的属性-->
+    <string name="wealth">Wealth</string>
+    <string name="stamina">Stamina</string>
+    <string name="aspiration">Aspiration</string>
+    <string name="comprehension">Comprehension</string>
+    <string name="fortune">Fortune</string>
+
+    <!--随机生成的特性/天赋-->
+    <string name="randomize">Randomize</string>
+    <string name="characteristic">Characteristic</string>
 
 
-    <string name="yes">YES!</string>
-    <string name="yes_cn">好耶！</string>
-    <string name="try_again">Try Again</string>
-    <string name="try_again_cn">再来一次</string>
+    <!--  时间=游戏进度，也是唯一永远递减的资源；不受加点影响-->
+    <string name="time">Time Blocks</string>
+    <!--手动操作（进入关卡、按通关情况）而变化的资源/属性-->
+    <string name="money">Money</string>
+    <string name="understanding">Understanding</string>
+    <string name="mark">Marks</string>
+
+    <!--随时间而自动降低，也会因为关卡和角色特性而产生变化-->
+    <string name="vitality">Vitality</string>
+    <string name="repletion">Repletion</string>
+    <string name="practice">Practice</string>
+
+    <!--隐藏的参数，由上面的属性通过某些规则以及一定的随机性计算得到，玩家无法直接影响。只能看到阶段性状态-->
+    <string name="health">Health Condition</string>
+    <string name="mood">State of Mind</string>
+    <string name="GPA">GPA</string>
 
 
-    <string name="easy">Easy</string>
-    <string name="easy_cn">简单</string>
-    <string name="medium">Medium</string>
-    <string name="medium_cn">正常</string>
-    <string name="hard">Hard</string>
-    <string name="hard_cn">困难</string>
-    <string name="gameconfig">config</string>
-    <string name="gameconfig_cn">设置</string>
+    <!--    一些活动和事件-->
+    <string name="random_event">Random Events</string>
+    <string name="die_starving">%1$s died because of starving for too long time…</string>
+
+
+    <string name="assignment">Assignment %1$s</string>
+    <string name="exam">Test %1$s</string>
+    <string name="assign"> is posted.</string>
+    <string name="worth">It is worth %1$d marks.</string>
+    <string name="due">Deadline is %1$s.</string>
+    <string name="date">It is to take on %1$s.</string>
+    <string name="do_ass">Check and do it now</string>
+
+    <!--    把自己事件要显示的用语写在下方，不要写在 activity 内部，到时候方便统一翻译-->
+    <string name="scene_library">Library</string>
+    <string name="scene_home">Home</string>
+    <string name="scene_restaurant">Restaurant</string>
+    <string name="scene_lecture">Lecture</string>
+    <string name="scene_exam">Exam Center</string>
+
+    <string name="walk_spend_time">Walk to %1$s will take %2$d time blocks.</string>
+
+    <string name="activity_choose">At %1$s, below are valid activities</string>
+    <string name="study">Study</string>
+    <string name="sleep">Sleep</string>
+    <string name="eat">Eat</string>
+
+    <string name="activity_spend_time">Doing this will take %1$d time blocks.</string>
 
 </resources>
