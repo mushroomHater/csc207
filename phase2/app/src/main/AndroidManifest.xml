@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".cardgame.CardGameActicity"></activity>
         <!--
 I don't know why child activity doesn't inherit their father's theme and launchMode,
 that I have to declare them again and again manually
@@ -34,9 +35,9 @@ that I have to declare them again and again manually
             android:launchMode="singleTop"
             android:theme="@style/Float" />
         <activity
-        android:name=".floating.SchoolEventActivity"
-        android:launchMode="singleTop"
-        android:theme="@style/Float" />
+            android:name=".floating.SchoolEventActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/Float" />
         <activity
             android:name=".floating.HomeEventActivity"
             android:launchMode="singleTop"
@@ -45,10 +46,6 @@ that I have to declare them again and again manually
             android:name=".floating.DifficultySelectActivity"
             android:launchMode="singleTop"
             android:theme="@style/Float" />
-
-
-
-
         <activity android:name=".TransitionPageActivity" />
         <activity android:name=".GameBaseActivity" />
         <activity
@@ -60,7 +57,8 @@ that I have to declare them again and again manually
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".gamemap.MapActivity"
+        <activity
+            android:name=".gamemap.MapActivity"
             android:launchMode="singleTop" />
     </application>
 
