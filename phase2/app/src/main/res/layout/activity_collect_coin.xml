@@ -6,7 +6,7 @@
     android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".collectcoin.CollectCoinActivity" >
+    tools:context=".gamework.CollectCoinActivity" >
 
     <ImageView
         android:id="@+id/bag"

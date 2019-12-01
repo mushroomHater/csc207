@@ -52,8 +52,25 @@ class GameConfiguration implements GameData {
         for (String key : GameConstants.INNATE_ATTRIBUTES) {
             innatePointsAllocation.put(key, 0);
         }
+        for (String key : GameConstants.MAP_BUILDINGS) {
+            int x, y;
+            do {
+                x = (int) (GameConstants.HORIZONTAL_GRIDS * Math.random());
+                y = (int) (GameConstants.VERTICAL_GRIDS * Math.random());
+            } while (isRepeatedCoordinates(x, y));
+            innatePointsAllocation.put(key + "_x", x);
+            innatePointsAllocation.put(key + "_y", y);
+        }
     }
 
+    private boolean isRepeatedCoordinates(int x, int y) {
+        for (String key : GameConstants.MAP_BUILDINGS) {
+            if (getValue(key + "_x") == x && getValue(key + "_y") == y) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     public void setValue(String key, int value) throws IllegalArgumentException {

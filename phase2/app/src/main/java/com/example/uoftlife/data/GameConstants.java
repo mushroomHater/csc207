@@ -36,7 +36,10 @@ public interface GameConstants {
      * The innate attributes that is assigned/set at the beginning of each turn of game
      */
     String[] INNATE_ATTRIBUTES = {
-            "wealth", "stamina", "aspiration", "comprehension", "fortune"
+            "wealth", "stamina", "aspiration", "intellect", "fortune"
+    };
+    String[] MAP_BUILDINGS = {
+            "school","home","mall"
     };
     String CONFIG_FILE = "game_config";
 

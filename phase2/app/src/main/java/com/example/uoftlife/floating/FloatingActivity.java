@@ -2,7 +2,7 @@ package com.example.uoftlife.floating;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.uoftlife.R;
 
 public abstract class FloatingActivity extends AppCompatActivity {
-    ViewGroup contentBaseLayout;
+    LinearLayout contentBaseLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public abstract class FloatingActivity extends AppCompatActivity {
 
     protected abstract void dynamicCreateView();
 
-    protected ViewGroup getContentBaseLayout() {
+    protected LinearLayout getContentBaseLayout() {
         return contentBaseLayout;
     }
 

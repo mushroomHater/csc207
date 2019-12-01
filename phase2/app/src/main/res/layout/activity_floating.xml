@@ -70,14 +70,13 @@
 
         <TextView
             android:id="@+id/title_message"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:autoSizeMaxTextSize="90sp"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeTextType="uniform"
             android:gravity="center"
             android:maxLines="3"
-            android:text="@string/setting"
             android:textColor="@color/floatingBoxTitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

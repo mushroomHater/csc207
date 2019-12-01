@@ -2,7 +2,9 @@ package com.example.uoftlife;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 
+import androidx.annotation.LayoutRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.uoftlife.floating.PauseDisplayActivity;
@@ -20,7 +22,16 @@ public abstract class GameBaseActivity extends AppCompatActivity {
         savable = setSavable();
         sceneStrategy = setSceneStrategy();
         setContentView(R.layout.activity_game_base);
+        inflateLayout();
         setCommonListeners();
+    }
+
+    abstract protected @LayoutRes
+    int setContentLayout();
+
+    private void inflateLayout(){
+        LayoutInflater inflater = LayoutInflater.from(this);
+        inflater.inflate(setContentLayout(), findViewById(R.id.base));
     }
 
     abstract protected boolean setSavable();
@@ -30,7 +41,7 @@ public abstract class GameBaseActivity extends AppCompatActivity {
     private void setCommonListeners() {
         findViewById(R.id.pause).setOnClickListener((view) ->
                 startActivity(new Intent(this, PauseDisplayActivity.class)
-                .putExtra("savable", savable)));
+                        .putExtra("savable", savable)));
     }
 
 
@@ -51,7 +62,7 @@ public abstract class GameBaseActivity extends AppCompatActivity {
         GameMessenger.getMessenger().clearAll();
     }
 
-    private void updateProgress(){
+    private void updateProgress() {
         // todo some calculation and introduce some new structure
     }
 

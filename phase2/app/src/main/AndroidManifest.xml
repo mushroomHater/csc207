@@ -29,9 +29,22 @@ that I have to declare them again and again manually
             android:name=".floating.EventSelectActivity"
             android:launchMode="singleTop"
             android:theme="@style/Float" />
-        <activity android:name=".floating.MallEventActivity"
+        <activity
+            android:name=".floating.MallEventActivity"
             android:launchMode="singleTop"
-            android:theme="@style/Float"/>
+            android:theme="@style/Float" />
+        <activity
+        android:name=".floating.SchoolEventActivity"
+        android:launchMode="singleTop"
+        android:theme="@style/Float" />
+        <activity
+            android:name=".floating.HomeEventActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/Float" />
+        <activity
+            android:name=".floating.DifficultySelectActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/Float" />
 
 
 
@@ -47,6 +60,8 @@ that I have to declare them again and again manually
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".gamemap.MapActivity"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>
