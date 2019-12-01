@@ -30,6 +30,11 @@ class GameSleepModel {
     private int score;
 
     /**
+     * The timer of the game.
+     */
+    private CountDownTimer timer;
+
+    /**
      * Indicates if the timer is running.
      */
     private boolean timing;
@@ -120,14 +125,11 @@ class GameSleepModel {
     }
 
     public void setTimer(CountDownTimer timer) {
-//        this.timer = timer;
+        this.timer = timer;
     }
 
     public void cancelTimer() {
-//        if(timer==null){
-//            System.out.println(clickAmount);
-//        }else{
-//        timer.cancel();}
+        timer.cancel();
     }
 
     /**
