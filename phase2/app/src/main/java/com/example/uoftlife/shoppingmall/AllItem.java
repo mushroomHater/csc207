@@ -13,9 +13,22 @@ public class AllItem implements Iterable{
             if (r < 0.2){
                 items.add("bread");
             }
-            //todo
+            else if (0.2 <= r && r < 0.4){
+                items.add("coffee");
+            }
+            else if (0.4 <= r && r < 0.6){
+                items.add("bubbleTea");
+            }
+            else if (0.6 <= r && r < 0.8){
+                items.add("book");
+            }
+            else{
+                items.add("lipstick");
+            }
         }
     }};
+
+
     //the order of this list is the value of money, understanding, practice, vitality, repletion, mood respectively
     static int[] bread = {-200, 0,0,0,10,5};
     static int[] coffee = {-200, 0,0,10,0,5};
