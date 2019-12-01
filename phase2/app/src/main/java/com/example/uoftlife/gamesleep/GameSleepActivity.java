@@ -178,7 +178,7 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
      */
     @Override
     public void setAlarmBtn() {
-        alarmButton = findViewById(R.id.BtnAlarm);
+        alarmButton = findViewById(R.id.btnAlarm);
 
         final Timer buttonTimer = new Timer();
         buttonTimer.schedule(new TimerTask() {
@@ -230,7 +230,7 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
 
             @Override
             public void onFinish() {
-                gameSleepPresenter.onDestory();
+                gameSleepPresenter.onDestroy();
                 finish();
             }
 
@@ -298,7 +298,7 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     @Override
     public void showOutcome() {
         //hide the button and timer when time is up.
-        findViewById(R.id.BtnAlarm).setVisibility(View.GONE);
+        findViewById(R.id.btnAlarm).setVisibility(View.GONE);
         findViewById(R.id.levelOneCountDown).setVisibility(View.GONE);
         System.out.println("SCORE: " + gameSleepPresenter.getScore() + "/100");
 

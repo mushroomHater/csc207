@@ -76,6 +76,7 @@
         app:srcCompat="@drawable/character_male_4" />
 
     <ImageView
+        android:id="@+id/blanket"
         android:layout_width="350dp"
         android:layout_height="512dp"
         android:layout_marginStart="24dp"
@@ -110,7 +111,7 @@
         app:layout_constraintTop_toTopOf="@+id/gameSleepBG" />
 
     <Button
-        android:id="@+id/BtnAlarm"
+        android:id="@+id/btnAlarm"
         android:layout_width="85dp"
         android:layout_height="80dp"
         android:layout_marginStart="156dp"

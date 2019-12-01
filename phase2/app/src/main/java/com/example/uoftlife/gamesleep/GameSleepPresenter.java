@@ -2,7 +2,7 @@ package com.example.uoftlife.gamesleep;
 
 import android.os.CountDownTimer;
 
- class GameSleepPresenter {
+class GameSleepPresenter {
     private GameSleepModel gameSleepModel;
     private GameSleepView gameSleepView;
 
@@ -37,21 +37,21 @@ import android.os.CountDownTimer;
     /**
      * @return the target number of clicks in this game level.
      */
-    int getTargetClick() {
+    private int getTargetClick() {
         return gameSleepModel.getTargetClick();
     }
 
     /**
      * Sets the target number of clicks in this game level.
      */
-    void setTargetClick(int targetClick) {
+    private void setTargetClick(int targetClick) {
         gameSleepModel.setTargetClick(targetClick);
     }
 
     /**
      * @return the number of clicks a user has entered.
      */
-    int getClickAmount() {
+    private int getClickAmount() {
         return gameSleepModel.getClickAmount();
     }
 
@@ -95,42 +95,44 @@ import android.os.CountDownTimer;
     /**
      * @return the if the timer is timing.
      */
-    public boolean isTiming() {
+    private boolean isTiming() {
         return gameSleepModel.isTiming();
     }
 
     /**
      * Sets if the timer should be timing.
      */
-    public void setTiming(boolean timing) {
+    void setTiming(boolean timing) {
         gameSleepModel.setTiming(timing);
     }
 
     /**
      * @return the time left for the game level in milliseconds.
      */
-    public long getTimeLeftInMilliseconds() {
+    long getTimeLeftInMilliseconds() {
         return gameSleepModel.getTimeLeftInMilliseconds();
     }
 
     /**
      * Sets the time left for the game level in milliseconds.
      */
-    public void setTimeLeftInMilliseconds(long timeLeftInMilliseconds) {
+    void setTimeLeftInMilliseconds(long timeLeftInMilliseconds) {
         gameSleepModel.setTimeLeftInMilliseconds(timeLeftInMilliseconds);
     }
 
-    public void setTimer(CountDownTimer timer) {
+    /**
+     * Sets the timer.
+     */
+    void setTimer(CountDownTimer timer) {
         gameSleepModel.setTimer(timer);
 
     }
-
 
     /**
      * Updates the countdown timer.
      */
     void updateTimer() {
-        if (isTiming()){
+        if (isTiming()) {
             int seconds = (int) getTimeLeftInMilliseconds() / 1000;
 
             String timeLeftText;
@@ -144,9 +146,10 @@ import android.os.CountDownTimer;
         }
 
     }
-    void onDestory(){
+
+    void onDestroy() {
         gameSleepView.showOutcome();
-        gameSleepModel.setTiming(false);
+        setTiming(false);
         cancelTimer();
     }
 
@@ -154,13 +157,13 @@ import android.os.CountDownTimer;
      * Stops the countdown timer.
      */
     void pauseTimer() {
-        gameSleepModel.setTiming(false);
+        setTiming(false);
     }
 
     /**
      * Cancels the countdown timer.
      */
-    public void cancelTimer() {
+    void cancelTimer() {
         gameSleepModel.cancelTimer();
     }
 
@@ -173,11 +176,11 @@ import android.os.CountDownTimer;
     }
 
 
-    public int getAlarmChangePositionInterval() {
+    int getAlarmChangePositionInterval() {
         return gameSleepModel.getAlarmChangePositionInterval();
     }
 
-    public void setAlarmChangePositionInterval(int alarmChangePositionInterval) {
+    private void setAlarmChangePositionInterval(int alarmChangePositionInterval) {
         gameSleepModel.setAlarmChangePositionInterval(alarmChangePositionInterval);
     }
 
