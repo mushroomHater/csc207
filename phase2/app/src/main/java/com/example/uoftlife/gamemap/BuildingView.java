@@ -2,7 +2,6 @@ package com.example.uoftlife.gamemap;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.view.View;
@@ -24,7 +23,7 @@ public class BuildingView extends View {
 
     public BuildingView(Context context, int gridWidth, int gridHeight) {
         super(context);
-        buildingPaint.setColor(0xff88bbaa);
+        buildingPaint.setColor(GameConstants.GRID_COLOR);
 
         int drawX = 0;
         int drawY = 0;
@@ -42,7 +41,7 @@ public class BuildingView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawColor(Color.DKGRAY);
+        canvas.drawColor(GameConstants.STREET_COLOR);
         for (Rect rect : allRectangle) {
             canvas.drawRect(rect, buildingPaint);
         }

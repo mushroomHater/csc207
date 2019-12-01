@@ -32,7 +32,7 @@ public class MapActivity extends GameBaseActivity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
         int windowWidth = metrics.widthPixels;
-        int windowHeight = metrics.heightPixels - 220;
+        int windowHeight = metrics.heightPixels - GameConstants.RESERVE_HEIGHT;
         gridWidth = ((int) (windowWidth / (GameConstants.HORIZONTAL_GRIDS + GameConstants.ROAD_WIDTH * (GameConstants.HORIZONTAL_GRIDS + 1))));
         gridHeight = ((int) (windowHeight / (GameConstants.VERTICAL_GRIDS + GameConstants.ROAD_WIDTH * (GameConstants.HORIZONTAL_GRIDS + 1))));
         ((ViewGroup) findViewById(R.id.base)).addView(new BuildingView(this, gridWidth, gridHeight));

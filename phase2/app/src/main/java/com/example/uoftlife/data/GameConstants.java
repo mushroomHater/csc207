@@ -19,13 +19,15 @@ public interface GameConstants {
      */
     int HORIZONTAL_GRIDS = 4;
     int VERTICAL_GRIDS = 6;
-    double ROAD_WIDTH = 0.2;
+    double ROAD_WIDTH = 0.4;
+    int GRID_COLOR = 0xFF336B3A;
+    int STREET_COLOR = 0xFF96928D;
+    int RESERVE_HEIGHT = 260;
 
 
     /**
      * Max values for the below attributes
      */
-    int MAX_TIME = 5000;
     int MAX_GENERAL = 100;
 
 
