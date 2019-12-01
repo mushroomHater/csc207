@@ -9,7 +9,7 @@ public interface GameSleepView {
 
     void setAlarmBtn();
 
-    void showAlarmAnimation(float windowWidth, float windowHeight);
+    void showAlarmAnimation(float dx, float dy);
 
     void setTimer();
 

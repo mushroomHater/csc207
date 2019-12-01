@@ -1,11 +1,7 @@
 package com.example.uoftlife.gamesleep;
 
 import android.os.CountDownTimer;
-import android.util.Pair;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 class GameSleepModel {
@@ -38,6 +34,7 @@ class GameSleepModel {
      * Indicates if the timer is running.
      */
     private boolean timing;
+
 
     /**
      * The time left in this game level in milliseconds.
@@ -113,44 +110,45 @@ class GameSleepModel {
     /**
      * @return the if the timer is timing.
      */
-    public boolean isTiming() {
+    boolean isTiming() {
         return timing;
     }
 
     /**
      * Sets if the timer should be timing.
      */
-    public void setTiming(boolean timing) {
+    void setTiming(boolean timing) {
         this.timing = timing;
     }
 
-    public void setTimer(CountDownTimer timer) {
+    void setTimer(CountDownTimer timer) {
         this.timer = timer;
     }
 
-    public void cancelTimer() {
+    void cancelTimer() {
         timer.cancel();
+
     }
 
     /**
      * @return the time left for the game level in milliseconds.
      */
-    public long getTimeLeftInMilliseconds() {
+    long getTimeLeftInMilliseconds() {
         return timeLeftInMilliseconds;
     }
 
     /**
      * Sets the time left for the game level in milliseconds.
      */
-    public void setTimeLeftInMilliseconds(long timeLeftInMilliseconds) {
+    void setTimeLeftInMilliseconds(long timeLeftInMilliseconds) {
         this.timeLeftInMilliseconds = timeLeftInMilliseconds;
     }
 
-    public int getAlarmChangePositionInterval() {
+    int getAlarmChangePositionInterval() {
         return alarmChangePositionInterval;
     }
 
-    public void setAlarmChangePositionInterval(int alarmChangePositionInterval) {
+    void setAlarmChangePositionInterval(int alarmChangePositionInterval) {
         this.alarmChangePositionInterval = alarmChangePositionInterval;
     }
 
@@ -166,5 +164,3 @@ class GameSleepModel {
 
 
 }
-
-

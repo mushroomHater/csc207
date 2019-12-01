@@ -78,6 +78,7 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         super.onPause();
         gameSleepPresenter.pauseTimer();
         gameSleepPresenter.cancelTimer();
+
     }
 
     /**
@@ -217,6 +218,7 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     /**
      * Starts the countdown timer.
      */
+    @Override
     public void startTimer(long timeLeft) {
 
         timer = new CountDownTimer(timeLeft, 1000) {
@@ -228,6 +230,7 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
 
             @Override
             public void onFinish() {
+                gameSleepPresenter.onDestory();
                 finish();
             }
 
@@ -301,4 +304,3 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
 
     }
 }
-

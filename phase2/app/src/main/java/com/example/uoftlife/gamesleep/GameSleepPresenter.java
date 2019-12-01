@@ -2,7 +2,7 @@ package com.example.uoftlife.gamesleep;
 
 import android.os.CountDownTimer;
 
-public class GameSleepPresenter {
+ class GameSleepPresenter {
     private GameSleepModel gameSleepModel;
     private GameSleepView gameSleepView;
 
@@ -131,24 +131,23 @@ public class GameSleepPresenter {
      */
     void updateTimer() {
         if (isTiming()){
-        int seconds = (int) getTimeLeftInMilliseconds() / 1000;
+            int seconds = (int) getTimeLeftInMilliseconds() / 1000;
 
-        String timeLeftText;
-        timeLeftText = "00:";
-        if (seconds < 10) {
-            timeLeftText += "0";
-        }
-        timeLeftText += seconds;
+            String timeLeftText;
+            timeLeftText = "00:";
+            if (seconds < 10) {
+                timeLeftText += "0";
+            }
+            timeLeftText += seconds;
+            gameSleepView.setTimerText(timeLeftText);
 
-        gameSleepView.setTimerText(timeLeftText);
+        }
 
-        if (seconds == 0) {
-            gameSleepView.showOutcome();
-            gameSleepModel.setTiming(false);
-            cancelTimer();
-            //UserManager.getCurrentUser().setLevelScore(1, gameSleepModel.getScore());
-        }
-        }
+    }
+    void onDestory(){
+        gameSleepView.showOutcome();
+        gameSleepModel.setTiming(false);
+        cancelTimer();
     }
 
     /**

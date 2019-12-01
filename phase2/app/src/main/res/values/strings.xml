@@ -117,10 +117,10 @@
 
     <string name="activity_spend_time">Doing this will take %1$d time blocks.</string>
 
-    <!-- GameSleep  -->
+        <!-- GameSleep  -->
     <string name="todo" />
-    <string name="blanket" />
     <string name="_00_15" />
     <string name="gameconfig" />
+
 
 </resources>
