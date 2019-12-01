@@ -1,10 +1,10 @@
-package com.example.uoftlife.cardgame;
+package com.example.uoftlife.gamacard;
 
 import android.widget.ImageView;
 
 import java.util.List;
 
-class CardGame {
+class GameCard {
     private List<Card> cardArray;
     private ImageView[] listOfImageView;
     private int numCardOver;
@@ -14,7 +14,7 @@ class CardGame {
     private int numberOfFlipTime;
 
 
-    CardGame(List<Card> cards, ImageView[] listOfImageView, int backImage) {
+    GameCard(List<Card> cards, ImageView[] listOfImageView, int backImage) {
         this.cardArray = cards;
         this.listOfImageView = listOfImageView;
         for (int i = 0; i < this.listOfImageView.length; i++) {
