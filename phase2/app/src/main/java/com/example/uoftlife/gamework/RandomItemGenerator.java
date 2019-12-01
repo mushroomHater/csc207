@@ -6,17 +6,17 @@ import java.util.Random;
 //This is a random generator, we use rand.nextInt to get probability,
 //so hard coding cannot be avoid
 
-public class RandomItemGenerator {
+ class RandomItemGenerator {
 
     private int bound;
-    long lastTime;
+    private long lastTime;
 
-    public RandomItemGenerator(int bound) {
+     RandomItemGenerator(int bound) {
         this.bound = bound;
         lastTime = System.currentTimeMillis();
     }
 
-    public ArrayList<DropItems> generateItems(){
+     ArrayList<DropItems> generateItems(){
         ArrayList<DropItems> result = new ArrayList<>();
         long now = System.currentTimeMillis();
         long pass = now - lastTime;

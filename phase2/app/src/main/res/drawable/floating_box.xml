@@ -2,12 +2,12 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#19222E" />
+            <solid android:color="#181816" />
             <stroke
                 android:width="4dp"
-                android:color="#090927"
+                android:color="#201319"
                 android:dashWidth="0dp"
-                android:dashGap="4dp">
+                android:dashGap="3dp">
                 <!--        something here-->
             </stroke>
             <padding
@@ -24,7 +24,7 @@
             <solid android:color="#101427" />
             <stroke
                 android:width="2dp"
-                android:color="#6D6A5B"
+                android:color="#9C864F"
                 android:dashWidth="4dp"
                 android:dashGap="4dp">
                 <!--        something here-->
