@@ -1,29 +1,32 @@
 package com.example.uoftlife.collectcoin;
 
-public class DropItems {
-    String type;
-    int locationX;
-    int locationY;
+ class DropItems {
+    private String type;
+    private int locationX;
+    private int locationY;
+    private double speed;
 
-    public DropItems(String type, int locationX) {
+     DropItems(String type, int locationX) {
         this.type = type;
         this.locationX = locationX;
         locationY = 0;
+        speed = 0.7;
+
     }
 
-    public String getType() {
+     String getType() {
         return type;
     }
 
-    public int getLocationX() {
+     int getLocationX() {
         return locationX;
     }
 
-    public void drop(int time) {
-        locationY += time * (0.7);
+     void drop(int time) {
+        locationY += time * speed;
 
     }
-    public int getLocationY() {
+     int getLocationY() {
         return locationY;
     }
 }

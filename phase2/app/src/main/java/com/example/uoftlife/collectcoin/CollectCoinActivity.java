@@ -1,9 +1,5 @@
 package com.example.uoftlife.collectcoin;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,8 +7,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.uoftlife.R;
 
@@ -31,6 +29,7 @@ public class CollectCoinActivity extends AppCompatActivity {
     private TextView scoreText;
     private ImageView bag;
     private ViewGroup root;
+    private ProgressBar time;
     private Handler handler;
     private CollectCoinPresenter presenter;
     long lastTime;
@@ -49,6 +48,7 @@ public class CollectCoinActivity extends AppCompatActivity {
         handler = new Handler();
         score = 0;
         health = 3;
+        lastTime = System.currentTimeMillis();
         presenter = new CollectCoinPresenter(this);
         initView();
 
@@ -120,6 +120,9 @@ public class CollectCoinActivity extends AppCompatActivity {
         }
         bag.setX(bagLastLocation);
         bag.setY(bagHeight);
+        time = findViewById(R.id.progressBar);
+        time.setX(10);
+        time.setY(10);
         scoreText = new TextView(this);
         scoreText.setX(0);
         scoreText.setY(0);
@@ -131,6 +134,7 @@ public class CollectCoinActivity extends AppCompatActivity {
     }
 
     public void updateGraph(ArrayList<DropItems> items) {
+        updateProgressBar();
         bag.setX(bagLocation);
         int i = 0;
         for (DropItems item : items) {
@@ -153,8 +157,11 @@ public class CollectCoinActivity extends AppCompatActivity {
             dropItems.get(i).setVisibility(View.GONE);
             i++;
         }
-}
-
+    }
+    public void updateProgressBar(){
+        long curr = System.currentTimeMillis();
+        time.setProgress((int)((curr - lastTime)/300));
+    }
 
     public void increaseHealth(){
         if(health < 3){
