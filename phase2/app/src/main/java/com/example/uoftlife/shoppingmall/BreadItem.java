@@ -4,6 +4,6 @@ public class BreadItem extends AllItem {
 
 
     public BreadItem() {
-        super(10, -5, 0, 0, 0);
+        super(10, -5, 0, 10, 0);
     }
 }
