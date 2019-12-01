@@ -19,13 +19,15 @@ public interface GameConstants {
      */
     int HORIZONTAL_GRIDS = 4;
     int VERTICAL_GRIDS = 6;
-    double ROAD_WIDTH = 0.2;
+    double ROAD_WIDTH = 0.4;
+    int GRID_COLOR = 0xFF336B3A;
+    int STREET_COLOR = 0xFF96928D;
+    int RESERVE_HEIGHT = 260;
 
 
     /**
      * Max values for the below attributes
      */
-    int MAX_UNDERSTANDING = 1000;
     int MAX_GENERAL = 100;
 
 
@@ -36,9 +38,23 @@ public interface GameConstants {
      * The innate attributes that is assigned/set at the beginning of each turn of game
      */
     String[] INNATE_ATTRIBUTES = {
-            "wealth", "stamina", "aspiration", "comprehension", "fortune"
+            "wealth", "stamina", "aspiration", "intellect", "fortune"
+    };
+    String[] MAP_BUILDINGS = {
+            "school","home","mall"
     };
     String CONFIG_FILE = "game_config";
+
+    /**
+     * These sources key words are added in displaying order
+     */
+    String[] GAME_STATUS = {
+            "money",
+            "split line",
+            "understanding","practice","mark",
+            "split line",
+            "repletion","vitality"
+    };
 
     /**
      * The attributes that changes during game
@@ -57,6 +73,8 @@ public interface GameConstants {
         put("GPA", 4);
     }};
     String STATUS_FILE = "game_progress";
+
+
 
 
     GameProcessorStrategy<String, Integer> virtualPlaceholder = null;

@@ -1,7 +1,6 @@
-package com.example.uoftlife.collectcoin;
+package com.example.uoftlife.gamework;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class CollectCoinTemplate {
 

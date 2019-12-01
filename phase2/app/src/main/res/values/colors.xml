@@ -3,7 +3,11 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="floatingBoxTitle">#A09444</color>
+    <color name="floatingBoxTitle">#54817D</color>
     <color name="buttonNormal">#242146</color>
     <color name="controlHighlight">#37635C</color>
+    <color name="attr_name">#594E66</color>
+    <color name="highlight">#CEAD49</color>
+    <color name="subtitle">#862D4C</color>
+    <color name="grids">#336B3A</color>
 </resources>

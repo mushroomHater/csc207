@@ -1,6 +1,4 @@
-package com.example.uoftlife.collectcoin;
-
-import java.util.ArrayList;
+package com.example.uoftlife.gamework;
 
 public class CollectCoinPresenter {
 
