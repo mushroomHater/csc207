@@ -20,8 +20,9 @@ public interface GameConstants {
     int HORIZONTAL_GRIDS = 4;
     int VERTICAL_GRIDS = 6;
     double ROAD_WIDTH = 0.4;
-    int GRID_COLOR = 0xFF336B3A;
-    int STREET_COLOR = 0xFF96928D;
+    //GREEN: 0xff009f45, LIGHT_GREY: 0xffe6e6e5
+    int GRID_COLOR =  0xffe6e6e5;
+    int STREET_COLOR = 0xffc4c6c3;
     int RESERVE_HEIGHT = 260;
 
 
