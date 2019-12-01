@@ -1,4 +1,4 @@
-package com.example.uoftlife;
+package com.example.uoftlife.gamesleep;
 
 import android.os.CountDownTimer;
 import android.util.Pair;
@@ -38,11 +38,6 @@ class GameSleepModel {
      * The time left in this game level in milliseconds.
      */
     private long timeLeftInMilliseconds = 16000; // 16 seconds
-
-    /**
-     * The countdown timer of the game level.
-     */
-//    private CountDownTimer timer;
 
     /**
      * The x coordinate of the alarm button.

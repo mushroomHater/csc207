@@ -1,4 +1,4 @@
-package com.example.uoftlife;
+package com.example.uoftlife.gamesleep;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.util.DisplayMetrics;
 
-import java.util.Random;
+import com.example.uoftlife.R;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -43,7 +44,7 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
 
 
     /**
-     * Specifies the activity lifecycle.
+     * Specifies the activities once the game is created.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +62,17 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         gameSleepPresenter.initializeDifficulty();
     }
 
-
+    /**
+     * Specifies the activities once the game is started.
+     */
     @Override
     protected void onStart() {
         super.onStart();
     }
 
+    /**
+     * Specifies the activities once the game is paused.
+     */
     @Override
     protected void onPause() {
         super.onPause();
@@ -74,6 +80,9 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         startTimer();
     }
 
+    /**
+     * Specifies the activities once the game is resumed.
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -81,7 +90,9 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         startTimer();
     }
 
-
+    /**
+     * Specifies the activities once the game is restarted.
+     */
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -101,6 +112,9 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         return keyCode == KeyEvent.KEYCODE_BACK;
     }
 
+    /**
+     * Creates a new GameSleepModel.
+     */
     GameSleepModel createGameSleepModel() {
         final DisplayMetrics displaymetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
@@ -113,9 +127,10 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     /**
      * Sets the configuration button on top of the game level
      */
-    private void setConfigBtn() {
+    @Override
+    public void setConfigBtn() {
 //        if (GameConfiguration.getConfig().getLanguage().equals("English")) {
-        ((Button) findViewById(R.id.gameconfig)).setText(R.string.gameconfig);
+        //((Button) findViewById(R.id.gameconfig)).setText(R.string.gameconfig);
 //        } else {
 //            ((Button) findViewById(R.id.gameconfig)).setText(R.string.gameconfig_cn);
 //
@@ -130,7 +145,8 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     /**
      * Sets the character's initial appearance in the game level.
      */
-    private void setInitialCharacter() {
+    @Override
+    public void setInitialCharacter() {
         findViewById(R.id.characterSit).setVisibility(View.INVISIBLE);
         findViewById(R.id.character1).setVisibility(View.VISIBLE);
         findViewById(R.id.character2).setVisibility(View.VISIBLE);
@@ -138,7 +154,11 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         findViewById(R.id.character4).setVisibility(View.VISIBLE);
     }
 
-    private void setInitialLanguage() {
+    /**
+     * Sets the initial language of the game.
+     */
+    @Override
+    public void setInitialLanguage() {
 //        if (GameConfiguration.getConfig().getLanguage().equals("English")) {
 //        ((Button) findViewById(R.id.btnAlarm)).setText(R.string.wake_up);
 //            Toast.makeText(getApplicationContext(), "Wake up Xiao Ming by tapping the button! ",
@@ -153,9 +173,10 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     }
 
     /**
-     * Sets the function of the alarm button.
+     * Sets the functions of the alarm button.
      */
-    private void setAlarmBtn() {
+    @Override
+    public void setAlarmBtn() {
         alarmButton = findViewById(R.id.BtnAlarm);
 
         final Timer buttonTimer = new Timer();
@@ -175,6 +196,10 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         });
     }
 
+    /**
+     * Shows the timer text to record the time left in the game.
+     */
+    @Override
     public void setTimerText(String timeLeftText) {
         timerText.setText(timeLeftText);
 
@@ -183,7 +208,8 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     /**
      * Sets the countdown timer.
      */
-    private void setTimer() {
+    @Override
+    public void setTimer() {
         timerText = findViewById(R.id.levelOneCountDown);
 
     }
@@ -191,7 +217,7 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     /**
      * Starts the countdown timer.
      */
-    void startTimer() {
+    public void startTimer() {
 
         timer = new CountDownTimer(gameSleepPresenter.getTimeLeftInMilliseconds(), 1000) {
             @Override
@@ -212,7 +238,7 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
 
 
     /**
-     * Shows the alarm and assign location
+     * Shows the alarm and assigns its location on screen.
      */
     @Override
     public void showAlarmAnimation(float windowWidth, float windowHeight) {
@@ -254,8 +280,7 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
                 findViewById(R.id.character2).setVisibility(View.INVISIBLE);
                 break;
 
-            // if the click amount reaches the target click, hide the fourth layer
-            // and show the final  layer of the character
+            // if reaches the target click, hide the fourth layer and show the final layer
             case 4:
                 findViewById(R.id.character1).setVisibility(View.INVISIBLE);
                 findViewById(R.id.characterSit).setVisibility(View.VISIBLE);

@@ -1,12 +1,6 @@
-package com.example.uoftlife;
+package com.example.uoftlife.gamesleep;
 
 import android.os.CountDownTimer;
-import android.util.Pair;
-import android.view.View;
-import android.widget.Toast;
-
-
-import java.util.List;
 
 public class GameSleepPresenter {
     private GameSleepModel gameSleepModel;
@@ -21,6 +15,8 @@ public class GameSleepPresenter {
 
 
     void initializeDifficulty() {
+        //todo set difficulty
+
         //       int d = (int)GameConfiguration.getConfig().getDifficulty();
         int d = 1;
         if (d == 1) {
@@ -161,6 +157,9 @@ public class GameSleepPresenter {
         gameSleepModel.setTiming(false);
     }
 
+    /**
+     * Cancles the countdown timer.
+     */
     public void cancelTimer() {
         gameSleepModel.cancelTimer();
     }
