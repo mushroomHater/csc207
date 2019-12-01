@@ -1,4 +1,4 @@
-package com.example.uoftlife.collectcoin;
+package com.example.uoftlife.gamework;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -113,7 +113,7 @@ public class CollectCoinActivity extends AppCompatActivity {
         for(int i = 0; i < health; i++){
             ImageView imageView = new ImageView(this);
             imageView.setImageResource(R.drawable.heart1);
-            imageView.setY(0);
+            imageView.setX(0);
             imageView.setX(650 + 130*i);
             healths.add(imageView);
             root.addView(imageView);
