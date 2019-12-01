@@ -44,29 +44,6 @@ public class ShoppingMallActivity extends AppCompatActivity {
 
     // if click on the item button, the user purchases it immediately
     // and its status changes accordingly.
-    public void purchaseBread(){
-        item = new BreadItem();
-//        item.purchaseItem(a);
+
     }
 
-    public void purchaseBubbleTea(){
-        item = new BubbleTeaItem();
-//        item.purchaseItem(a);
-    }
-
-    public void purchaseBook(){
-        item = new BookItem();
-//        item.purchaseItem(a);
-    }
-
-    public void purchaseCoffee(){
-        item = new CoffeeItem();
-//        item.purchaseItem(a);
-    }
-
-    public void purchaseLipstick(){
-        item = new LipstickItem();
-//        item.purchaseItem(a);
-    }
-
-}
