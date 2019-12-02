@@ -62,8 +62,8 @@ public class GameStudyActivity extends GameBaseActivity {
         new TransitionPageBuilder(this).setTitle("Congratulations!!")
                 .setDescription("You just finished your course!!")
                 .setShowingTime(3)
-                .addValueChange("practice", (int) Math.floor(gameStudy.getScore() / 20))
-                .addValueChange("understanding", (int) Math.floor(gameStudy.getScore() / 20))
+                .addValueChange("practice", (int) Math.floor(gameStudy.getScore() / 5))
+                .addValueChange("understanding", (int) Math.floor(gameStudy.getScore() / 5))
                 .addValueChange("time", -12)
                 .addValueChange("vitality", -gameStudy.getVitalityConsume())
                 .start();
