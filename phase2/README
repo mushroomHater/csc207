@@ -1,0 +1,11 @@
+Setting Requirement:
+1)Set language to level 8
+
+
+Note:
+1) Sorry we have accidentally pushed some gradle/config files to master. Please kindly delete local
+files if there is any conflict/untracked files.
+
+Instruction:
+We have four games to simulate student life at Uoft. These games are sleep,work,study,and review.
+Character can allocate gift points & difficulty to customize game experience.
