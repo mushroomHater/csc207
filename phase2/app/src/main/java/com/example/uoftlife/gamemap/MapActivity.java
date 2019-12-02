@@ -34,18 +34,18 @@ public class MapActivity extends GameBaseActivity {
             @Override
             public void run() {
                 checkEndding();
-                if (DataFacade.getValue("repletion")<=20 || DataFacade.getValue("vitality")<=20){
+                if (DataFacade.getValue("repletion") <= 20 || DataFacade.getValue("vitality") <= 20) {
                     DataFacade.addToValue("health", -1);
                 }
                 DataFacade.addToValue("time", -1);
                 frequencySpliter--;
-                if(frequencySpliter==0){
+                if (frequencySpliter == 0) {
                     frequencySpliter = 5;
                     DataFacade.addToValue("practice", -1);
                 }
-                if(DataFacade.getValue("mood")<=20){
+                if (DataFacade.getValue("mood") <= 20) {
                     DataFacade.setTempData("status", String.format(getString(R.string.status_bad_mood), "username"));
-                }else if(DataFacade.getValue("mood")>=90){
+                } else if (DataFacade.getValue("mood") >= 90) {
                     DataFacade.setTempData("status", String.format(getString(R.string.status_good_mood), "username"));
                 }
 
