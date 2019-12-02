@@ -6,10 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/trans_event_bg"
+    android:gravity="center"
     android:orientation="vertical"
-    android:paddingHorizontal="50dp"
-    android:paddingVertical="80dp"
-    tools:context=".transpage.TransitionPageActivity">
+    android:paddingHorizontal="40dp"
+    tools:context=".transpage.TransitionPageActivity"
+    tools:paddingTop="40dp">
 
 
     <TextView

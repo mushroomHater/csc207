@@ -70,7 +70,7 @@ public class PauseDisplayActivity extends FloatingActivity {
                 return (String) statusString;
             }
         }
-        return String.format(getString(R.string.status_default), "username");
+        return String.format(getString(R.string.status_default), DataFacade.getTempData("name"));
     }
 
     @Override

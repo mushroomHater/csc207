@@ -6,13 +6,14 @@ import android.widget.Button;
 import androidx.annotation.StringRes;
 
 import com.example.uoftlife.R;
+import com.example.uoftlife.data.DataFacade;
 
 //todo
 public abstract class EventSelectActivity extends PauseDisplayActivity {
 
     @Override
     protected String setTitle() {
-        return String.format(getString(R.string.event), "username");
+        return String.format(getString(R.string.event), DataFacade.getTempData("name"));
     }
 
     @Override

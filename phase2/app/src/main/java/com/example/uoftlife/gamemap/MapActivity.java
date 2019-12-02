@@ -21,7 +21,6 @@ public class MapActivity extends GameBaseActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //todo set find road
         setSchoolButton();
         setShoppingMallButton();
         setHomeButton();

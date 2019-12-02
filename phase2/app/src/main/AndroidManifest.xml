@@ -68,6 +68,8 @@ that I have to declare them again and again manually
         <activity android:name=".gamacard.GameCardActivity" />
         <activity android:name=".gamesleep.GameSleepActivity" />
         <activity android:name=".transpage.SemesterStartPageActivity" />
+        <activity android:name=".transpage.InstructionPageActivity" />
+        <activity android:name=".shoppingmall.ShoppingMallActivity" />
     </application>
 
 </manifest>
