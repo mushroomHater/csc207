@@ -14,18 +14,16 @@ public class GameStudyActivity extends GameBaseActivity {
 
     private GameStudy gameStudy;
     private long time;
-    private int lengthOfWord;
     private CountDownTimer totalTimer;
 
 //    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // setup the textView of the riddle and the button
+        // setup variable
 
         gameStudy = new GameStudy();
         time = gameStudy.getTime();
-        lengthOfWord = gameStudy.getLengthOfWord();
     }
 
     @Override
@@ -37,13 +35,17 @@ public class GameStudyActivity extends GameBaseActivity {
     protected boolean setSavable() {
         return false;
     }
-//
+
     @Override
     protected void onResume() {
         super.onResume();
+
+        // Setup texiview and button
         setScorePrompt();
         setdoneBtn();
         setWordPromp();
+
+        //setup timer
         totalTimer = new CountDownTimer(time, 1000) {
             @Override
             public void onTick(long l) {
@@ -58,6 +60,9 @@ public class GameStudyActivity extends GameBaseActivity {
         }.start();
     }
 
+    /**
+     * end the game
+     */
     private void end() {
         new TransitionPageBuilder(this).setTitle("Congratulations!!")
                 .setDescription("You just finished your course!!")
@@ -105,11 +110,4 @@ public class GameStudyActivity extends GameBaseActivity {
         });
 
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-    }
-//
 }
