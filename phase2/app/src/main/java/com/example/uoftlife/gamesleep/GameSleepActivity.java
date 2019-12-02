@@ -107,6 +107,9 @@ public class GameSleepActivity extends GameBaseActivity implements GameSleepView
         gameSleepPresenter.setTiming(true);
     }
 
+    /**
+     * Specifies the activities once the game is destroyed.
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -128,7 +131,6 @@ public class GameSleepActivity extends GameBaseActivity implements GameSleepView
         return new GameSleepModel((displaymetrics.widthPixels * 0.7f),
                 displaymetrics.heightPixels * 0.7f);
     }
-
 
     /**
      * Sets the character's initial appearance in the game level.
@@ -209,7 +211,6 @@ public class GameSleepActivity extends GameBaseActivity implements GameSleepView
         gameSleepPresenter.setTiming(true);
     }
 
-
     /**
      * Shows the alarm and assigns its location on screen.
      */
@@ -261,6 +262,9 @@ public class GameSleepActivity extends GameBaseActivity implements GameSleepView
         }
     }
 
+    /**
+     * Transfer to the outcome page.
+     */
     void handleRedirection() {
         if (gameSleepPresenter.isPassed()) {
             new TransitionPageBuilder(this).setTitle(getString(R.string.game_sleep_pass))
