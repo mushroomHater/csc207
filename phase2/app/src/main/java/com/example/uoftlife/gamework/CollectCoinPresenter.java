@@ -58,6 +58,9 @@ package com.example.uoftlife.gamework;
         template.increaseHealth();
     }
 
+    /**
+     * Set difficulty level by increasing dropping rate and generating rate.
+     */
     void setDifficulty(){
       template.increaseDropSpeed();
       template.increaseGenerateRate();
