@@ -13,6 +13,7 @@ import android.widget.Toast;
 import android.util.DisplayMetrics;
 
 import com.example.uoftlife.R;
+import com.example.uoftlife.util.TransitionPageBuilder;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -57,8 +58,6 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         setAlarmBtn();
         setInitialCharacter();
         setTimer();
-        setInitialLanguage();
-        setConfigBtn();
         gameSleepPresenter.initializeDifficulty();
     }
 
@@ -98,14 +97,13 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     protected void onRestart() {
         super.onRestart();
         gameSleepPresenter.setTiming(true);
-//        if (GameConfiguration.getConfig().getLanguage().equals("English")) {
-//            ((Button) findViewById(R.id.btnWakeUp)).setText(R.string.wake_up);
-//            ((Button) findViewById(R.id.gameconfig)).setText(R.string.gameconfig);
-//        } else {
-//            ((Button) findViewById(R.id.btnWakeUp)).setText(R.string.wake_up_cn);
-//            ((Button) findViewById(R.id.gameconfig)).setText(R.string.gameconfig_cn);
-//        }
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        gameSleepPresenter.onDestroy();
+        handleRedirection();
     }
 
     @Override
@@ -119,29 +117,10 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     GameSleepModel createGameSleepModel() {
         final DisplayMetrics displaymetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-        // todo
         return new GameSleepModel((displaymetrics.widthPixels * 0.7f),
                 displaymetrics.heightPixels * 0.7f);
     }
 
-
-    /**
-     * Sets the configuration button on top of the game level
-     */
-    @Override
-    public void setConfigBtn() {
-//        if (GameConfiguration.getConfig().getLanguage().equals("English")) {
-        //((Button) findViewById(R.id.gameconfig)).setText(R.string.gameconfig);
-//        } else {
-//            ((Button) findViewById(R.id.gameconfig)).setText(R.string.gameconfig_cn);
-//
-//        }
-//        findViewById(R.id.gameconfig).setOnClickListener((view) -> {
-//            Intent i = new Intent(this, PauseDialogConfig.class);
-//            i.putExtra("from", 'G');
-//            startActivity(i);
-//        });
-    }
 
     /**
      * Sets the character's initial appearance in the game level.
@@ -155,23 +134,6 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         findViewById(R.id.character4).setVisibility(View.VISIBLE);
     }
 
-    /**
-     * Sets the initial language of the game.
-     */
-    @Override
-    public void setInitialLanguage() {
-//        if (GameConfiguration.getConfig().getLanguage().equals("English")) {
-//        ((Button) findViewById(R.id.btnAlarm)).setText(R.string.wake_up);
-//            Toast.makeText(getApplicationContext(), "Wake up Xiao Ming by tapping the button! ",
-//                    Toast.LENGTH_LONG)
-//                    .show();
-//        } else {
-//            ((Button) findViewById(R.id.btnWakeUp)).setText(R.string.wake_up_cn);
-//            Toast.makeText(getApplicationContext(), "不断点击按钮让小明起床！",
-//                    Toast.LENGTH_LONG)
-//                    .show();
-//        }
-    }
 
     /**
      * Sets the functions of the alarm button.
@@ -230,8 +192,8 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
 
             @Override
             public void onFinish() {
-                gameSleepPresenter.onDestroy();
                 finish();
+
             }
 
         }.start();
@@ -258,7 +220,7 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
      */
     @Override
     public void makeToast() {
-        Toast.makeText(getApplicationContext(), R.string.tap,
+        Toast.makeText(getApplicationContext(), getString(R.string.tap),
                 Toast.LENGTH_LONG)
                 .show();
     }
@@ -291,6 +253,28 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         }
     }
 
+    void handleRedirection() {
+        if (gameSleepPresenter.isPassed()) {
+            new TransitionPageBuilder(this).setTitle(getString(R.string.game_sleep_pass))
+                    .setDescription(getString(R.string.game_sleep_pass_description))
+                    .setShowingTime(5)
+                    .addValueChange("time", -12)
+                    .addValueChange("vitality", +50)
+                    .addValueChange("health", +20)
+
+                    .start();
+        } else {
+            new TransitionPageBuilder(this).setTitle(getString(R.string.game_sleep_fail))
+                    .setDescription(getString(R.string.game_sleep_fail_description))
+                    .setShowingTime(5)
+                    .addValueChange("time", -20)
+                    .addValueChange("vitality", +50)
+                    .addValueChange("health", +20)
+
+                    .start();
+        }
+
+    }
 
     /**
      * Shows the outcome of the game level after hiding the elements from display
@@ -303,4 +287,6 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         System.out.println("SCORE: " + gameSleepPresenter.getScore() + "/100");
 
     }
+
+
 }

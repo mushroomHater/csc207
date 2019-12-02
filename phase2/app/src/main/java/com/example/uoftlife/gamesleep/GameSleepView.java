@@ -1,9 +1,6 @@
 package com.example.uoftlife.gamesleep;
 
 public interface GameSleepView {
-    void setConfigBtn();
-
-    void setInitialLanguage();
 
     void setInitialCharacter();
 

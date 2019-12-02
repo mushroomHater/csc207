@@ -3,6 +3,7 @@ package com.example.uoftlife.gamesleep;
 import android.os.CountDownTimer;
 
 import com.example.uoftlife.data.DataFacade;
+import com.example.uoftlife.util.TransitionPageBuilder;
 
 class GameSleepPresenter {
     private GameSleepModel gameSleepModel;
@@ -187,14 +188,6 @@ class GameSleepPresenter {
         gameSleepModel.setAlarmChangePositionInterval(alarmChangePositionInterval);
     }
 
-    /**
-     * Checks if the user passes the game level.
-     *
-     * @return true if the player passes the game level, otherwise return false.
-     */
-    private boolean isPassed() {
-        return getClickAmount() >= getTargetClick();
-    }
 
     /**
      * Makes a toast if click amount reaches 4.
@@ -226,6 +219,16 @@ class GameSleepPresenter {
         }
         return d;
     }
+
+    /**
+     * Checks if the user passes the game level.
+     *
+     * @return true if the player passes the game level, otherwise return false.
+     */
+     boolean isPassed() {
+        return getClickAmount() >= getTargetClick();
+    }
+
 
 
 }
