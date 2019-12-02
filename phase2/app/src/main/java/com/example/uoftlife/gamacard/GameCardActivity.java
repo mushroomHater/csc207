@@ -97,7 +97,8 @@ public class GameCardActivity extends GameBaseActivity {
                             cardGame.checkResult();
                             score.setText("Score: " + cardGame.getScore());
                             if (cardGame.checkEnd()){
-                                onDestroy();
+                                end();
+                                finish();
                             }
                         }
                     }, 1000);
@@ -106,9 +107,7 @@ public class GameCardActivity extends GameBaseActivity {
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    private void end() {
         new TransitionPageBuilder(this).setTitle("Congratulations!!")
                 .setDescription("You just finished your study!!")
                 .setShowingTime(3)
