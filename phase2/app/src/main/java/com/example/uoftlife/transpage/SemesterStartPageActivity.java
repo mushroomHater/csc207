@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.example.uoftlife.R;
 import com.example.uoftlife.data.DataFacade;
+import com.example.uoftlife.data.GameConstants;
 import com.example.uoftlife.gamemap.MapActivity;
 
 @SuppressLint("Registered")
@@ -14,7 +15,7 @@ public class SemesterStartPageActivity extends TransitionPageActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        updateValue("money", -50000);
+        updateValue("money", -GameConstants.TUITION);
         DataFacade.saveProgress();
     }
 

@@ -25,7 +25,7 @@
     <string name="ready">Go</string>
     <string name="clear">Clear all files</string>
     <string name="clear_success">Successfully cleared your game files.</string>
-<!--todo whole instruction-->
+    <!--todo whole instruction-->
     <string name="whole_instruction">
         You act as a student of uoft,…\n用这个换行
     </string>

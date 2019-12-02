@@ -28,6 +28,7 @@ public interface GameConstants {
      * Max values for the below attributes
      */
     int MAX_GENERAL = 100;
+    int TUITION = 50000;
 
 
     /* Clarification:
