@@ -17,6 +17,7 @@ import com.example.uoftlife.floating.DifficultySelectActivity;
 import com.example.uoftlife.gamemap.MapActivity;
 import com.example.uoftlife.transpage.InstructionPageActivity;
 import com.example.uoftlife.util.GameMessenger;
+import com.example.uoftlife.util.TransitionPageBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -103,9 +104,17 @@ public class MainActivity extends AppCompatActivity {
         });
         findViewById(R.id.help).setOnClickListener((view) ->
                 startActivity(new Intent(this, InstructionPageActivity.class)));
-        findViewById(R.id.clear).setOnClickListener((view) ->{
+        findViewById(R.id.clear).setOnClickListener((view) -> {
             DataFacade.clearFile();
             GameMessenger.getMessenger().toastMessage(getString(R.string.clear_success));
+        });
+        findViewById(R.id.logout).setOnClickListener((view) -> {
+            new TransitionPageBuilder(this).setTitle("title")
+                    .setDescription("description")
+                    .setShowingTime(30)
+                    .addValueChange("money", +300)
+                    .addValueChange("repletion", -20)
+                    .start();
         });
     }
 

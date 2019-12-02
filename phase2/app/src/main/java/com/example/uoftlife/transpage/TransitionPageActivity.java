@@ -18,13 +18,13 @@ public abstract class TransitionPageActivity extends GameBaseActivity {
 
     private LayoutInflater inflater;
     private Timer timer;
-    private TimerTask task;
 
-    private int autoDestroyCount = setShowLength();
+    private int autoDestroyCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        autoDestroyCount = setShowLength();
         inflater = LayoutInflater.from(this);
         ((TextView) findViewById(R.id.title_text)).setText(setTitleText());
         ((TextView) findViewById(R.id.description_text)).setText(setDescriptionText());
@@ -44,7 +44,7 @@ public abstract class TransitionPageActivity extends GameBaseActivity {
 
     private void startTask() {
         timer = new Timer();
-        task = new TimerTask() {
+        TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 autoDestroyCount--;
