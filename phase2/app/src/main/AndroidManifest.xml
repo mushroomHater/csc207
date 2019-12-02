@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".gamestudy.GameStudyActivity"></activity>
-        <activity android:name=".transpage.CommonPageActivity" />
+        <activity android:name=".transpage.CommonPageActivity"
+            android:launchMode="singleTop"/>
         <!--
 I don't know why child activity doesn't inherit their father's theme and launchMode,
 that I have to declare them again and again manually
