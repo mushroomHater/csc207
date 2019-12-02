@@ -204,9 +204,9 @@ public class CollectCoinActivity extends AppCompatActivity {
         time.setY(10);
         scoreText = new TextView(this);
         scoreText.setX(0);
-        scoreText.setY(0);
+        scoreText.setY(20);
         scoreText.setTextColor(Color.BLACK);
-        scoreText.setTextSize(30);
+        scoreText.setTextSize(20);
         root.addView(scoreText);
         String scoreDisplay = "Score: ";
         scoreText.setText(scoreDisplay.concat(Integer.toString(score)));
