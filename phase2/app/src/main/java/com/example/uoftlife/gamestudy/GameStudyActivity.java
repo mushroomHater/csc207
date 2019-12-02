@@ -14,10 +14,8 @@ public class GameStudyActivity extends GameBaseActivity {
 
     private GameStudy gameStudy;
     private long time;
-    private int lengthOfWord;
-    private CountDownTimer totalTimer;
 
-//    @Override
+    //    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -25,7 +23,7 @@ public class GameStudyActivity extends GameBaseActivity {
 
         gameStudy = new GameStudy();
         time = gameStudy.getTime();
-        lengthOfWord = gameStudy.getLengthOfWord();
+        int lengthOfWord = gameStudy.getLengthOfWord();
     }
 
     @Override
@@ -37,22 +35,31 @@ public class GameStudyActivity extends GameBaseActivity {
     protected boolean setSavable() {
         return false;
     }
-//
+
+    //
     @Override
     protected void onResume() {
         super.onResume();
         setScorePrompt();
         setdoneBtn();
         setWordPromp();
-        totalTimer = new CountDownTimer(time, 1000) {
+        CountDownTimer totalTimer = new CountDownTimer(time, 1000) {
             @Override
             public void onTick(long l) {
-                setTimePromp((int) l/1000);
+                setTimePromp((int) l / 1000);
             }
 
             @Override
             public void onFinish() {
-                onDestroy();
+                finish();
+                new TransitionPageBuilder(GameStudyActivity.this).setTitle("Congratulations!!")
+                        .setDescription("You just finished your course!!")
+                        .setShowingTime(3)
+                        .addValueChange("practice", (int) Math.floor(gameStudy.getScore() / 20))
+                        .addValueChange("understanding", (int) Math.floor(gameStudy.getScore() / 20))
+                        .addValueChange("time", -12)
+                        .addValueChange("vitality", -gameStudy.getVitalityConsume())
+                        .start();
             }
         }.start();
     }
@@ -64,7 +71,7 @@ public class GameStudyActivity extends GameBaseActivity {
 
     private void setTimePromp(int timeleft) {
         TextView prompt = findViewById(R.id.totalTime);
-        prompt.setText("The time left is " +(int) timeleft);
+        prompt.setText("The time left is " + (int) timeleft);
     }
 
 
@@ -76,6 +83,7 @@ public class GameStudyActivity extends GameBaseActivity {
         the_score.setText("Your score is " + gameStudy.getScore());
     }
 //
+
     /**
      * set up the guessing button
      */
@@ -93,17 +101,5 @@ public class GameStudyActivity extends GameBaseActivity {
 
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        new TransitionPageBuilder(this).setTitle("Congratulations!!")
-                .setDescription("You just finished your course!!")
-                .setShowingTime(3)
-                .addValueChange("practice", (int) Math.floor(gameStudy.getScore() / 20))
-                .addValueChange("understanding", (int) Math.floor(gameStudy.getScore() / 20))
-                .addValueChange("time", -12)
-                .addValueChange("vitality", -gameStudy.getVitalityConsume())
-                .start();
-    }
 //
 }
