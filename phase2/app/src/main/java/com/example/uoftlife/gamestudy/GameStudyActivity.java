@@ -52,9 +52,22 @@ public class GameStudyActivity extends GameBaseActivity {
 
             @Override
             public void onFinish() {
+                end();
                 finish();
             }
         }.start();
+    }
+
+    private void end() {
+        new TransitionPageBuilder(this).setTitle("Congratulations!!")
+                .setDescription("You just finished your course!!")
+                .setShowingTime(3)
+                .addValueChange("practice", (int) Math.floor(gameStudy.getScore() / 20))
+                .addValueChange("understanding", (int) Math.floor(gameStudy.getScore() / 20))
+                .addValueChange("time", -12)
+                .addValueChange("vitality", -gameStudy.getVitalityConsume())
+                .start();
+        totalTimer.cancel();
     }
 
     private void setWordPromp() {
@@ -96,15 +109,7 @@ public class GameStudyActivity extends GameBaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        totalTimer.cancel();
-        new TransitionPageBuilder(this).setTitle("Congratulations!!")
-                .setDescription("You just finished your course!!")
-                .setShowingTime(3)
-                .addValueChange("practice", (int) Math.floor(gameStudy.getScore() / 20))
-                .addValueChange("understanding", (int) Math.floor(gameStudy.getScore() / 20))
-                .addValueChange("time", -12)
-                .addValueChange("vitality", -gameStudy.getVitalityConsume())
-                .start();
+
     }
 //
 }
