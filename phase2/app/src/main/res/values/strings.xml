@@ -17,7 +17,7 @@
     <string name="save_success">Your file is saved successfully!</string>
     <string name="save_error">Error occurred. Please try again later.</string>
     <string name="save_disable">Cannot save during a level of game.</string>
-    <string name="give_up">Give up Current Progress</string>
+    <string name="give_up">If you want to do it now, click on me and give up current progress.</string>
     <string name="start">Start New Game</string>
     <string name="load">Load from Files</string>
     <string name="load_alert">You have not started any game so you do not have game file to load.</string>
@@ -91,7 +91,7 @@ Your GPA is in your hands now. Good luck!
     <string name="status_bad_mood">%1$s is in bad temper.</string>
     <string name="status_good_mood">%1$s feels so happy these days.</string>
     <string name="status_study_alert">%1$s needs to study…</string>
-    <string name="status_has_due">%1$s has at least one deadline upcoming.</string>
+    <string name="status_has_due">%1$s has a deadline upcoming. Click to start.</string>
     <string name="status_default">All is well.   \n—%1$s</string>
 
 
@@ -104,7 +104,7 @@ Your GPA is in your hands now. Good luck!
     <string name="exam">Test %1$s</string>
     <string name="assign"> is posted.</string>
     <string name="worth">It is worth %1$d marks.</string>
-    <string name="due">Deadline is %1$s.</string>
+    <string name="due">Deadline is at %1$d time blocks leave.</string>
     <string name="date">It is to take on %1$s.</string>
     <string name="do_ass">Check and do it now</string>
 

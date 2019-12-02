@@ -14,7 +14,7 @@ class GameProgress implements GameData {
 
     private HashMap<String, Integer> progressData;
 
-    private HashMap<String, Object> tempData;
+    private HashMap<String, String> tempData = new HashMap<>();
 
     private String fileName = GameConstants.STATUS_FILE;
 
@@ -26,26 +26,26 @@ class GameProgress implements GameData {
         initialize();
     }
 
-    protected void setUserName(String userName) {
+    void setUserName(String userName) {
         fileName = GameConstants.CONFIG_FILE + "_" + userName;
     }
 
     @Override
     public void initialize() {
         progressData = new HashMap<>();
-        tempData = new HashMap<>();
         for (Map.Entry<String, Integer> kvEntry : GameConstants.GAME_STATUS_INIT.entrySet()) {
             progressData.put(kvEntry.getKey(), kvEntry.getValue());
         }
     }
 
     @Override
-    public void setValue(String key, int value) throws IllegalArgumentException {
+    public boolean setValue(String key, int value) {
         if (value >= 0 && key != null &&
                 GameConstants.GAME_STATUS_INIT.keySet().contains(key)) {
             progressData.put(key, value);
+            return true;
         } else {
-            throw new IllegalArgumentException();
+            return false;
         }
     }
 
@@ -72,11 +72,11 @@ class GameProgress implements GameData {
         DataPersistence.clearSPData(context, fileName);
     }
 
-    void setTempData(String key, Object value) {
+    void setTempData(String key, String value) {
         tempData.put(key, value);
     }
 
-    Object getTempData(String key) {
+    String getTempData(String key) {
         return tempData.get(key);
     }
 }

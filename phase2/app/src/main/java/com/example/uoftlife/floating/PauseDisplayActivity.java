@@ -12,6 +12,7 @@ import com.example.uoftlife.MainActivity;
 import com.example.uoftlife.R;
 import com.example.uoftlife.data.DataFacade;
 import com.example.uoftlife.data.GameConstants;
+import com.example.uoftlife.transpage.AssignmentPageActivity;
 import com.example.uoftlife.util.GameMessenger;
 
 public class PauseDisplayActivity extends FloatingActivity {
@@ -41,7 +42,7 @@ public class PauseDisplayActivity extends FloatingActivity {
     protected void initializeView() {
         setSaveButton();
         setExitButton();
-        ((TextView) findViewById(R.id.status)).setText(getRandomStatusDisplay());
+        getStatusDisplay();
         setTimeBar();
     }
 
@@ -59,22 +60,23 @@ public class PauseDisplayActivity extends FloatingActivity {
         timeBar.setProgress(DataFacade.getValue(TIME_KEY), true);
     }
 
-    private String getRandomStatusDisplay() {
-        /*Object statusList = DataFacade.getTempData("status");
-        if (statusList instanceof List) {
-            int index = (int) (((List) statusList).size() * Math.random());
-            Object statusString = ((List) statusList).get(index);
-            if (statusString instanceof String) {
-                return (String) statusString;
-            }
-        }
-        return String.format(getString(R.string.status_default), DataFacade.getTempData("name"));*/
-        Object status = DataFacade.getTempData("status");
-        if (status instanceof String) {
-            return String.format((String) status, DataFacade.getTempData("name"));
+    private void getStatusDisplay() {
+        String status = DataFacade.getTempData("status");
+        String display;
+        if (status != null) {
+            display = String.format(status, DataFacade.getTempData("name"));
         } else {
-            return String.format(getString(R.string.status_default), DataFacade.getTempData("name"));
+            display = String.format(getString(R.string.status_default), DataFacade.getTempData("name"));
         }
+        TextView statusText = findViewById(R.id.status);
+        statusText.setText(display);
+        if (DataFacade.getValue("due") > 0) {
+            statusText.setOnClickListener((view) -> {
+                finish();
+                PauseDisplayActivity.this.startActivity(new Intent(PauseDisplayActivity.this, AssignmentPageActivity.class));
+            });
+        }
+
     }
 
     @Override

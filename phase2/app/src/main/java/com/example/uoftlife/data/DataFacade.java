@@ -21,15 +21,8 @@ public class DataFacade {
     }
 
     static public boolean setValue(String key, int value) {
-        try {
-            GameProgress.getProgress().setValue(key, value);
-        } catch (IllegalArgumentException e) {
-            try {
-                GameConfiguration.configure().setValue(key, value);
-            } catch (IllegalArgumentException ex) {
-                ex.printStackTrace();
-                return false;
-            }
+        if (!GameProgress.getProgress().setValue(key, value)) {
+            return GameConfiguration.configure().setValue(key, value);
         }
         return true;
     }
@@ -65,11 +58,11 @@ public class DataFacade {
         return true;
     }
 
-    static public void setTempData(String key, Object value) {
+    static public void setTempData(String key, String value) {
         GameProgress.getProgress().setTempData(key, value);
     }
 
-    static public Object getTempData(String key) {
+    static public String getTempData(String key) {
         return GameProgress.getProgress().getTempData(key);
     }
 

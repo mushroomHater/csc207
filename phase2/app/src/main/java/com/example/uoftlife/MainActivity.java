@@ -31,14 +31,13 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
-        } else {
-            String name = myPreference.getString("name", null);
-            UserManager.setCurrentUser(UserManager.getUsers().get(name));
-            DataFacade.setTempData("name", name);
-            DataFacade.setUserName(name);
-            initializeApplication();
-            setListeners();
         }
+        String name = myPreference.getString("name", "You");
+        UserManager.setCurrentUser(UserManager.getUsers().get(name));
+        initializeApplication();
+        setListeners();
+        DataFacade.setTempData("name", name);
+        DataFacade.setUserName(name);
     }
 
     private void logout() {

@@ -97,7 +97,7 @@ public class GameCardActivity extends GameBaseActivity {
                             cardGame.checkResult();
                             score.setText("Score: " + cardGame.getScore());
                             if (cardGame.checkEnd()){
-                                onDestroy();
+                                finish();
                             }
                         }
                     }, 1000);

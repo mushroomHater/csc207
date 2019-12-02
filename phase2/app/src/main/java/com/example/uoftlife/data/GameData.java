@@ -9,7 +9,7 @@ interface GameData {
 
     void initialize();
 
-    void setValue(String key, int value) throws IllegalArgumentException;
+    boolean setValue(String key, int value) throws IllegalArgumentException;
 
     // return -1 if not valid;
     // otherwise the value need to be positive integer in this game

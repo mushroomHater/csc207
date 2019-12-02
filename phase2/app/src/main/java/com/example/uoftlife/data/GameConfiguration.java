@@ -54,7 +54,7 @@ class GameConfiguration implements GameData {
         }
     }
 
-    protected void setUserName(String userName) {
+    void setUserName(String userName) {
         fileName = GameConstants.CONFIG_FILE + "_" + userName;
     }
 
@@ -68,15 +68,15 @@ class GameConfiguration implements GameData {
     }
 
     @Override
-    public void setValue(String key, int value) throws IllegalArgumentException {
+    public boolean setValue(String key, int value) {
         if (key != null && value >= 0) {
             List<String> lst = Arrays.asList(GameConstants.INNATE_ATTRIBUTES);
             if (lst.contains(key)) {
                 innatePointsAllocation.put(key, value);
-                return;
+                return true;
             }
         }
-        throw new IllegalArgumentException();
+        return false;
     }
 
     @Override

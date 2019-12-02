@@ -75,6 +75,9 @@ public interface GameConstants {
         put("ch1", 0);
         put("ch2", 0);
         put("started", 0);
+        put("due", 0);
+        put("worth", 0);
+        put("takes", 0);
     }};
     String STATUS_FILE = "game_progress";
 
