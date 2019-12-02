@@ -2,7 +2,7 @@ package com.example.uoftlife.data;
 
 import android.content.Context;
 
-import com.example.uoftlife.UserManager;
+import com.example.uoftlife.user.UserManager;
 import com.example.uoftlife.util.DataPersistence;
 
 import java.util.HashMap;

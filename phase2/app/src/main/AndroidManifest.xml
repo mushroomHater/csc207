@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".transpage.CommonPageActivity"></activity>
+        <activity android:name=".gamestudy.GameStudyActivity"></activity>
+        <activity android:name=".transpage.CommonPageActivity" />
         <!--
 I don't know why child activity doesn't inherit their father's theme and launchMode,
 that I have to declare them again and again manually
@@ -59,8 +60,11 @@ that I have to declare them again and again manually
         <activity
             android:name=".gamemap.MapActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".user.LoginActivity" />
+        <activity android:name=".user.RegisterActivity" />
+        <activity android:name=".gamacard.GameCardActivity" />
+        <activity android:name=".gamesleep.GameSleepActivity" />
+        <activity android:name=".transpage.SemesterStartPageActivity" />
     </application>
 
 </manifest>

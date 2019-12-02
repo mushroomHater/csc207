@@ -1,23 +1,22 @@
 package com.example.uoftlife.gamesleep;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.util.DisplayMetrics;
 
+import com.example.uoftlife.GameBaseActivity;
 import com.example.uoftlife.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class GameSleepActivity extends AppCompatActivity implements GameSleepView {
+public class GameSleepActivity extends GameBaseActivity implements GameSleepView {
 
     //private GameConfiguration config = GameConfiguration.getConfig();
 
@@ -49,7 +48,6 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_sleep);
         ImageView gameSleepBackground = findViewById(R.id.gameSleepBG);
 
         GameSleepModel gameSleepModel = createGameSleepModel();
@@ -60,6 +58,16 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
         setInitialLanguage();
         setConfigBtn();
         gameSleepPresenter.initializeDifficulty();
+    }
+
+    @Override
+    protected int setContentLayout() {
+        return R.layout.activity_game_sleep;
+    }
+
+    @Override
+    protected boolean setSavable() {
+        return false;
     }
 
     /**

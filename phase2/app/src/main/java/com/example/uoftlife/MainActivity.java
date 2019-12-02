@@ -13,6 +13,8 @@ import com.example.uoftlife.data.GameConstants;
 import com.example.uoftlife.floating.DifficultySelectActivity;
 import com.example.uoftlife.gamemap.MapActivity;
 import com.example.uoftlife.transpage.InstructionPageActivity;
+import com.example.uoftlife.user.LoginActivity;
+import com.example.uoftlife.user.UserManager;
 import com.example.uoftlife.util.GameMessenger;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,10 +24,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initializeApplication();
-        setListeners();
-
-
         UserManager.loadUsers(this);
         SharedPreferences myPreference = getSharedPreferences(GameConstants.USER_FILE, Context.MODE_PRIVATE);
         boolean flag = myPreference.getBoolean("login", false);
@@ -33,12 +31,12 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
+        } else {
+            String name = myPreference.getString("name", null);
+            UserManager.setCurrentUser(UserManager.getUsers().get(name));
+            initializeApplication();
+            setListeners();
         }
-
-        String name = myPreference.getString("name", null);
-        UserManager.setCurrentUser(UserManager.getUsers().get(name));
-
-
     }
 
     private void logout() {

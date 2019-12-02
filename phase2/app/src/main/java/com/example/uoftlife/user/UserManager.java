@@ -1,8 +1,10 @@
-package com.example.uoftlife;
+package com.example.uoftlife.user;
 
 
 import android.content.Context;
 import android.util.Log;
+
+import com.example.uoftlife.data.GameConstants;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -57,7 +59,7 @@ public class UserManager {
             outputStream.writeObject(users);
             outputStream.close();
             for (Map.Entry<String,User> entry : users.entrySet())
-                Log.e("user", "save " + entry.getKey());
+                Log.e(GameConstants.USER_FILE, "save " + entry.getKey());
 
         } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());

@@ -2,24 +2,13 @@ package com.example.uoftlife.data;
 
 import android.content.Context;
 
-import com.example.uoftlife.UserManager;
+import com.example.uoftlife.user.UserManager;
 import com.example.uoftlife.util.DataPersistence;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-// singleton class
-// todo save the user name+ image in user.class because they are not integer that need
-//  extra method or classes to IO that may cause duplicate codes
-
-// todo ? may need cleaning the existing shared-preference
-
-/**
- * GameProcessorStrategyDecorator ........
- * todo a list of decorator that represents the characteristics
- * develop later after the frame is built
- */
 
 // store a context reference in this class that the context can be reached everywhere outside activity
 // always need to initialize this context at start of app

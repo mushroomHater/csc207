@@ -1,19 +1,18 @@
 package com.example.uoftlife.gamacard;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.uoftlife.GameBaseActivity;
 import com.example.uoftlife.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class GameCardActivity extends AppCompatActivity {
+public class GameCardActivity extends GameBaseActivity {
 
     private GameCard cardGame;
     private TextView score;
@@ -21,7 +20,6 @@ public class GameCardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card_game_acticity);
 
         //Initialize all the images
         int backImage = R.drawable.question;
@@ -61,6 +59,16 @@ public class GameCardActivity extends AppCompatActivity {
 
         //Initialize the game
         cardGame = new GameCard(cardArray, listOfImageView,backImage);
+    }
+
+    @Override
+    protected int setContentLayout() {
+        return R.layout.activity_card_game_acticity;
+    }
+
+    @Override
+    protected boolean setSavable() {
+        return false;
     }
 
     @SuppressLint("SetTextI18n")
