@@ -53,9 +53,15 @@ package com.example.uoftlife.gamework;
     /**
      * Increase the health and update in view and template.
      */
-     void increaseHealth(){
+    void increaseHealth(){
         view.increaseHealth();
         template.increaseHealth();
+    }
+
+    void setDifficulty(){
+      template.increaseDropSpeed();
+      template.increaseGenerateRate();
+
     }
 
 

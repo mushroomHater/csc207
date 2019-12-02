@@ -10,17 +10,25 @@ import java.util.Random;
 
     private int bound;
     private long lastTime;
+    private double speed;
+    private int rate;
+
+     public void setRate(int rate) {
+         this.rate = rate;
+     }
 
      RandomItemGenerator(int bound) {
         this.bound = bound;
         lastTime = System.currentTimeMillis();
+        speed = 0.7;
+        rate = 300;
     }
 
      ArrayList<DropItems> generateItems(){
         ArrayList<DropItems> result = new ArrayList<>();
         long now = System.currentTimeMillis();
         long pass = now - lastTime;
-        if(pass < 300){
+        if(pass < rate){
             return result;
         }
         Random rand = new Random();
@@ -38,15 +46,19 @@ import java.util.Random;
         return result;
     }
 
-    private DropItems generateSingleItem(){
+     public void setSpeed(double speed) {
+         this.speed = speed;
+     }
+
+     private DropItems generateSingleItem(){
         Random rand = new Random();
         int choice = rand.nextInt(50);
         if(choice < 35){
-            return new DropItems("coin", rand.nextInt(bound));
+            return new DropItems("coin", rand.nextInt(bound), speed);
         }else if(choice < 49){
-            return new DropItems("bomb", rand.nextInt(bound));
+            return new DropItems("bomb", rand.nextInt(bound), speed);
         }else{
-            return new DropItems("health", rand.nextInt(bound));
+            return new DropItems("health", rand.nextInt(bound), speed);
         }
     }
 }

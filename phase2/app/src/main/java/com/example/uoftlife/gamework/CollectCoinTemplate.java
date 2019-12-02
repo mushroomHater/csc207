@@ -93,4 +93,12 @@ import java.util.ArrayList;
         }
         items = newList;
     }
+
+    public void increaseDropSpeed(){
+         generator.setSpeed(2);
+    }
+
+    public void increaseGenerateRate(){
+         generator.setRate(100);
+    }
 }

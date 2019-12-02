@@ -6,11 +6,11 @@ package com.example.uoftlife.gamework;
     private int locationY;
     private double speed;
 
-     DropItems(String type, int locationX) {
+     DropItems(String type, int locationX, double speed) {
         this.type = type;
         this.locationX = locationX;
         locationY = 0;
-        speed = 0.7;
+        this.speed = speed;
 
     }
 
