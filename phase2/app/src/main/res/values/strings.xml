@@ -27,7 +27,9 @@
     <string name="clear_success">Successfully cleared your game files.</string>
     <!--todo whole instruction-->
     <string name="whole_instruction">
-        You act as a student of uoft,…\n用这个换行
+        Welcome to your life at University of Toronto!
+You can adjust the game difficulty and allocate your talent points to customize your game experience, and your academic performance will be assessed at the end of the semester.
+Your GPA is in your hands now. Good luck!
     </string>
 
 
@@ -117,7 +119,7 @@
     <string name="lecture">Take courses</string>
     <string name="review">Review</string>
     <string name="sleep">Sleep</string>
-    <string name="shopping">Eat or purchase stuffs</string>
+    <string name="shopping">Shopping</string>
     <string name="work">Do part time job</string>
 
     <string name="activity_spend_time">Doing this will take %1$d time blocks.</string>
@@ -140,7 +142,6 @@
     <string name="game_sleep_pass_description">You successfully got up</string>
     <string name="game_sleep_fail">Uh oh</string>
     <string name="game_sleep_fail_description">Your failed to get up</string>
-
 
 
     <string name="logout">logout</string>
