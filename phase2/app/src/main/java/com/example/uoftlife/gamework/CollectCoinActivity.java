@@ -288,15 +288,22 @@ public class CollectCoinActivity extends AppCompatActivity {
         long curr = System.currentTimeMillis();
         long pass = curr - lastTime;
         if (health == 0 || pass > 30000){
-            new TransitionPageBuilder(this).setTitle(getString(R.string.gamework))
-                    .setDescription(getString(R.string.summary))
-                    .setShowingTime(5)
-                    .addValueChange("time", -16)
-                    .addValueChange("vitality", -30)
-                    .addValueChange("money", score*10)
-                    .start();
+            onDestroy();
             finish();
+
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        new TransitionPageBuilder(this).setTitle(getString(R.string.gamework))
+                .setDescription(getString(R.string.summary))
+                .setShowingTime(5)
+                .addValueChange("time", -16)
+                .addValueChange("vitality", -30)
+                .addValueChange("money", score*10)
+                .start();
     }
 
     void initializeDifficulty() {
