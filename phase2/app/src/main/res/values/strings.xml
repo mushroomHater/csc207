@@ -170,5 +170,11 @@ Your GPA is in your hands now. Good luck!
     <string name="gamework">Work Summary</string>
     <string name="summary">Good job!</string>
 
+    <!-- ShoppingMall-->
+    <string name="bread"> item bread, costs you 5 dollars and helps you to gain 20 repletion :</string>
+    <string name="coffee"> item coffee,costs 3 dollars and helps you to gain 10 vitality:</string>
+    <string name="bubbletea"> item bubbletea, costs 8 dollars and helps you to gain 10 happiness:</string>
+    <string name="book"> item book, costs you 100, helps you to gain 5 knowledge but loses 20 happiness:</string>
+    <string name="lipstick"> item lipstick, costs 50 dollars and gains 15 happiness:</string>
 
 </resources>
