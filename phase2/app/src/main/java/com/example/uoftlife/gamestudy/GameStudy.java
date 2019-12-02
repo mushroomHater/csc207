@@ -53,10 +53,6 @@ class GameStudy {
         return time;
     }
 
-    int getLengthOfWord() {
-        return lengthOfWord;
-    }
-
     int getScore() {
         return score;
     }
@@ -69,7 +65,6 @@ class GameStudy {
         }else {
             score += Math.floor (25 * correctRate(word));
         }
-        System.out.println("score is: " + score);
     }
     private double correctRate(String wordInput){
         int numberLetterCorrect = 0;
@@ -79,8 +74,6 @@ class GameStudy {
                 numberLetterCorrect++;
             }
         }
-        System.out.println("numberLetterCorrect: "+numberLetterCorrect);
-        System.out.println(numberLetterCorrect / lengthOfWord);
         return numberLetterCorrect /(double) lengthOfWord;
     }
 

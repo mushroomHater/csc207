@@ -14,18 +14,16 @@ public class GameStudyActivity extends GameBaseActivity {
 
     private GameStudy gameStudy;
     private long time;
-    private int lengthOfWord;
     private CountDownTimer totalTimer;
 
 //    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // setup the textView of the riddle and the button
+        // setup variable
 
         gameStudy = new GameStudy();
         time = gameStudy.getTime();
-        lengthOfWord = gameStudy.getLengthOfWord();
     }
 
     @Override
@@ -37,16 +35,21 @@ public class GameStudyActivity extends GameBaseActivity {
     protected boolean setSavable() {
         return false;
     }
-//
+
     @Override
     protected void onResume() {
         super.onResume();
+
+        // Setup texiview and button
         setScorePrompt();
         setdoneBtn();
         setWordPromp();
+
+        //setup timer
         totalTimer = new CountDownTimer(time, 1000) {
             @Override
             public void onTick(long l) {
+                time = l;
                 setTimePromp((int) l/1000);
             }
 
@@ -58,12 +61,21 @@ public class GameStudyActivity extends GameBaseActivity {
         }.start();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        totalTimer.cancel();
+    }
+
+    /**
+     * end the game
+     */
     private void end() {
         new TransitionPageBuilder(this).setTitle("Congratulations!!")
                 .setDescription("You just finished your course!!")
                 .setShowingTime(3)
-                .addValueChange("practice", (int) Math.floor(gameStudy.getScore() / 20))
-                .addValueChange("understanding", (int) Math.floor(gameStudy.getScore() / 20))
+                .addValueChange("practice", (int) Math.floor(gameStudy.getScore() / 5))
+                .addValueChange("understanding", (int) Math.floor(gameStudy.getScore() / 5))
                 .addValueChange("time", -12)
                 .addValueChange("vitality", -gameStudy.getVitalityConsume())
                 .start();
@@ -77,7 +89,7 @@ public class GameStudyActivity extends GameBaseActivity {
 
     private void setTimePromp(int timeleft) {
         TextView prompt = findViewById(R.id.totalTime);
-        prompt.setText("The time left is " +(int) timeleft);
+        prompt.setText("The time left is " + timeleft);
     }
 
 
@@ -105,11 +117,4 @@ public class GameStudyActivity extends GameBaseActivity {
         });
 
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-    }
-//
 }
