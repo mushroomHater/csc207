@@ -10,8 +10,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.uoftlife.GameBaseActivity;
 import com.example.uoftlife.R;
 import com.example.uoftlife.data.DataFacade;
 import com.example.uoftlife.util.TransitionPageBuilder;
@@ -23,7 +22,7 @@ import java.util.TimerTask;
 /**
  * A class represents items in game collectcoin.
  */
-public class CollectCoinActivity extends AppCompatActivity {
+public class CollectCoinActivity extends GameBaseActivity {
 
     /**
      * The bag's location.
@@ -90,6 +89,8 @@ public class CollectCoinActivity extends AppCompatActivity {
      */
     long lastTime;
 
+    private Timer timer;
+
     /**
      * The ArrayList contains dropping items.
      */
@@ -107,7 +108,6 @@ public class CollectCoinActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_collect_coin);
         dropItems = new ArrayList<>();
         healths = new ArrayList<>();
         handler = new Handler();
@@ -117,29 +117,28 @@ public class CollectCoinActivity extends AppCompatActivity {
         presenter = new CollectCoinPresenter(this);
         initView();
         initializeDifficulty();
-
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        presenter.updateGraph();
-                        endGame();
-                    }
-                });
-            }
-        }, 0, 10);
+        findViewById(R.id.pause).setVisibility(View.GONE);
     }
+
+
+    @Override
+    protected int setContentLayout() {
+        return R.layout.activity_collect_coin;
+    }
+
+    @Override
+    protected boolean setSavable() {
+        return false;
+    }
+
 
     /**
      * React on the touch event of the user who plays the game.
      */
-    private final class ChoiceTouchListener implements View.OnTouchListener{
+    private final class ChoiceTouchListener implements View.OnTouchListener {
         @Override
         public boolean onTouch(View view, MotionEvent event) {
-            switch (event.getAction() & MotionEvent.ACTION_MASK){
+            switch (event.getAction() & MotionEvent.ACTION_MASK) {
                 case MotionEvent.ACTION_DOWN:
                     bagLastLocation = (int) event.getRawX();
                     break;
@@ -160,14 +159,20 @@ public class CollectCoinActivity extends AppCompatActivity {
     /**
      * Return the bag's location.
      */
-    public int getBagLocation(){
+    public int getBagLocation() {
         return bagLocation;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        timer.cancel();
     }
 
     /**
      * Return the bag's height.
      */
-    public int getBagHeight(){
+    public int getBagHeight() {
         return bagHeight;
     }
 
@@ -181,22 +186,22 @@ public class CollectCoinActivity extends AppCompatActivity {
     /**
      * Initialize the items in display.
      */
-    private void initView(){
+    private void initView() {
         root = findViewById(R.id.root);
         bag = findViewById(R.id.bag);
         root.setOnTouchListener(new ChoiceTouchListener());
-        for(int i = 0; i < maxNumItem; i++){
+        for (int i = 0; i < maxNumItem; i++) {
             ImageView imageView = new ImageView(this);
             dropItems.add(imageView);
             imageView.setImageResource(R.drawable.coin1);
             imageView.setVisibility(View.GONE);
             root.addView(imageView);
         }
-        for(int i = 0; i < health; i++){
+        for (int i = 0; i < health; i++) {
             ImageView imageView = new ImageView(this);
             imageView.setImageResource(R.drawable.heart1);
             imageView.setX(0);
-            imageView.setX(650 + 130*i);
+            imageView.setX(650 + 130 * i);
             healths.add(imageView);
             root.addView(imageView);
         }
@@ -213,6 +218,24 @@ public class CollectCoinActivity extends AppCompatActivity {
         root.addView(scoreText);
         String scoreDisplay = "Score: ";
         scoreText.setText(scoreDisplay.concat(Integer.toString(score)));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        presenter.updateGraph();
+                        endGame();
+                    }
+                });
+            }
+        }, 0, 10);
     }
 
     /**
@@ -238,7 +261,7 @@ public class CollectCoinActivity extends AppCompatActivity {
             itemView.setVisibility(View.VISIBLE);
             i++;
         }
-        while(i < maxNumItem){
+        while (i < maxNumItem) {
             dropItems.get(i).setVisibility(View.GONE);
             i++;
         }
@@ -247,16 +270,16 @@ public class CollectCoinActivity extends AppCompatActivity {
     /**
      * Update the progress bar.
      */
-    public void updateProgressBar(){
+    public void updateProgressBar() {
         long curr = System.currentTimeMillis();
-        time.setProgress((int)((curr - lastTime)/300));
+        time.setProgress((int) ((curr - lastTime) / 300));
     }
 
     /**
      * Increase health by 1 and display the change.
      */
-    public void increaseHealth(){
-        if(health < 3){
+    public void increaseHealth() {
+        if (health < 3) {
             healths.get(health).setImageResource(R.drawable.heart1);
             health += 1;
         }
@@ -265,9 +288,9 @@ public class CollectCoinActivity extends AppCompatActivity {
     /**
      * Decrease health by 1 and display the change.
      */
-    public void decreaseHealth(){
-        if(health > 0){
-            healths.get(health-1).setImageResource(R.drawable.heart2);
+    public void decreaseHealth() {
+        if (health > 0) {
+            healths.get(health - 1).setImageResource(R.drawable.heart2);
             health -= 1;
         }
     }
@@ -275,7 +298,7 @@ public class CollectCoinActivity extends AppCompatActivity {
     /**
      * Increase score by 1 and display the change.
      */
-    public void increaseScore(){
+    public void increaseScore() {
         score += 1;
         String scoreDisplay = "Score: ";
         scoreText.setText(scoreDisplay.concat(Integer.toString(score)));
@@ -284,24 +307,24 @@ public class CollectCoinActivity extends AppCompatActivity {
     /**
      * End the game when losing all healths or time's up (30 seconds).
      */
-    public void endGame(){
+    public void endGame() {
         long curr = System.currentTimeMillis();
         long pass = curr - lastTime;
-        if (health == 0 || pass > 30000){
-            onDestroy();
+        if (health == 0 || pass > 30000) {
+            new TransitionPageBuilder(this).setTitle(getString(R.string.gamework))
+                    .setDescription(getString(R.string.summary))
+                    .setShowingTime(3)
+                    .addValueChange("time", -16)
+                    .addValueChange("vitality", -30)
+                    .addValueChange("money", score * 10)
+                    .start();
+            finish();
         }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        new TransitionPageBuilder(this).setTitle(getString(R.string.gamework))
-                .setDescription(getString(R.string.summary))
-                .setShowingTime(5)
-                .addValueChange("time", -16)
-                .addValueChange("vitality", -30)
-                .addValueChange("money", score*10)
-                .start();
     }
 
     void initializeDifficulty() {
