@@ -1,34 +1,34 @@
 package com.example.uoftlife.gamework;
 
-public class CollectCoinPresenter {
+ class CollectCoinPresenter {
 
-    CollectCoinActivity view;
-    CollectCoinTemplate template;
+    private CollectCoinActivity view;
+    private CollectCoinTemplate template;
 
-    public CollectCoinPresenter(CollectCoinActivity view){
+     CollectCoinPresenter(CollectCoinActivity view){
         this.view = view;
         template = new CollectCoinTemplate(view.getBagLocation(),
                 view.getBagHeight(), view.getMaxNumItem(), this);
     }
 
-    public void updateGraph(){
+     void updateGraph(){
         template.setBagLocation(view.getBagLocation());
         template.checkCollision();
         template.refresh();
         view.updateGraph(template.getItems());
     }
 
-    public void increaseScore(){
+     void increaseScore(){
         view.increaseScore();
         template.increaseScore();
     }
 
-    public void decreaseHealth(){
+     void decreaseHealth(){
         view.decreaseHealth();
         template.decreaseHealth();
     }
 
-    public void increaseHealth(){
+     void increaseHealth(){
         view.increaseHealth();
         template.increaseHealth();
     }

@@ -1,10 +1,10 @@
-package com.example.uoftlife.cardgame;
+package com.example.uoftlife.gamacard;
 
 import android.widget.ImageView;
 
 import java.util.List;
 
-class CardGame {
+class GameCard {
     private List<Card> cardArray;
     private ImageView[] listOfImageView;
     private int numCardOver;
@@ -14,7 +14,7 @@ class CardGame {
     private int numberOfFlipTime;
 
 
-    CardGame(List<Card> cards, ImageView[] listOfImageView, int backImage) {
+    GameCard(List<Card> cards, ImageView[] listOfImageView, int backImage) {
         this.cardArray = cards;
         this.listOfImageView = listOfImageView;
         for (int i = 0; i < this.listOfImageView.length; i++) {
@@ -40,13 +40,10 @@ class CardGame {
             cardArray.get(firstCard).setCovered(true);
             cardArray.get(secondCard).setCovered(true);
             numberOfFlipTime++;
-
         } else {
             updateScore(numberOfFlipTime);
             numberOfFlipTime = 0;
         }
-
-
         for (int i = 0; i < cardArray.size(); i++) {
             if (cardArray.get(i).isCovered()) {
                 listOfImageView[i].setImageResource(backImage);
@@ -56,10 +53,18 @@ class CardGame {
         numCardOver = 0;
     }
 
+    /**
+     *
+     * @return the current score of the player
+     */
     int getScore() {
         return score;
     }
 
+    /**
+     *
+     * @return how many cards are turned over
+     */
     int getNumCardOver() {
         return numCardOver;
     }
@@ -67,7 +72,7 @@ class CardGame {
     /**
      * @param imageView  The imageView that has been clicked
      * @param cardNumber The index of the card that has been click
-     *                   This method will flip card that the player has clicked.
+     * This method will flip card that the player has clicked.
      */
     void flipCard(ImageView imageView, int cardNumber) {
         imageView.setImageResource(cardArray.get(cardNumber).getValue());
@@ -85,7 +90,11 @@ class CardGame {
         }
     }
 
-
+    /**
+     *
+     * @param numberOfFlipTime
+     * update the score
+     */
     private void updateScore(int numberOfFlipTime) {
         score += 10 + Math.floor(30 / numberOfFlipTime);
     }

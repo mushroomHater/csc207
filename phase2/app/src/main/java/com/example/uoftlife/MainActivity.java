@@ -1,8 +1,15 @@
 package com.example.uoftlife;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.uoftlife.data.DataFacade;
@@ -18,9 +25,67 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        UserManager.loadUsers(this);
+
+        SharedPreferences myPreference=getSharedPreferences("uoft_life", Context.MODE_PRIVATE);
+        boolean flag = myPreference.getBoolean("login", false);
+        if(!flag) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+        String name = myPreference.getString("name", null);
+        UserManager.setCurrentUser(UserManager.getUsers().get(name));
+
         initializeApplication();
         setListeners();
+
+
+
     }
+
+    private void logout() {
+        new AlertDialog.Builder(this)
+                .setMessage(getString(R.string.logout_info))
+                .setPositiveButton(R.string.logout, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences myPreference=getSharedPreferences("uoft_life", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = myPreference.edit();
+                        editor.putBoolean("login", false);
+                        editor.commit();
+
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                })
+                .setNegativeButton("no", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_logout) {
+            logout();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     private void initializeApplication() {
         DataFacade.setContext(getApplicationContext());
@@ -49,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         GameMessenger.getMessenger().clearAll();
+
+
     }
 }
 

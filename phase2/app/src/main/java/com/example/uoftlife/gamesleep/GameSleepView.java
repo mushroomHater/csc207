@@ -9,13 +9,13 @@ public interface GameSleepView {
 
     void setAlarmBtn();
 
-    void showAlarmAnimation(float dx, float dy);
+    void showAlarmAnimation(float windowWidth, float windowHeight);
 
     void setTimer();
 
     void setTimerText(String timerText);
 
-    void startTimer();
+    void startTimer(long timeLeft);
 
     void makeToast();
 

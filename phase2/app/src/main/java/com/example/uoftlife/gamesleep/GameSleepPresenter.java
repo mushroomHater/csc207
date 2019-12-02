@@ -130,6 +130,7 @@ public class GameSleepPresenter {
      * Updates the countdown timer.
      */
     void updateTimer() {
+        if (isTiming()){
         int seconds = (int) getTimeLeftInMilliseconds() / 1000;
 
         String timeLeftText;
@@ -142,23 +143,23 @@ public class GameSleepPresenter {
         gameSleepView.setTimerText(timeLeftText);
 
         if (seconds == 0) {
-            stopTimer();
             gameSleepView.showOutcome();
             gameSleepModel.setTiming(false);
+            cancelTimer();
             //UserManager.getCurrentUser().setLevelScore(1, gameSleepModel.getScore());
-
+        }
         }
     }
 
     /**
      * Stops the countdown timer.
      */
-    void stopTimer() {
+    void pauseTimer() {
         gameSleepModel.setTiming(false);
     }
 
     /**
-     * Cancles the countdown timer.
+     * Cancels the countdown timer.
      */
     public void cancelTimer() {
         gameSleepModel.cancelTimer();

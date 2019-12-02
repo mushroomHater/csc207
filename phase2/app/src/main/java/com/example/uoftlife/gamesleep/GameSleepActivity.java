@@ -76,8 +76,8 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     @Override
     protected void onPause() {
         super.onPause();
-        gameSleepPresenter.setTiming(false);
-        startTimer();
+        gameSleepPresenter.pauseTimer();
+        gameSleepPresenter.cancelTimer();
     }
 
     /**
@@ -86,8 +86,8 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     @Override
     protected void onResume() {
         super.onResume();
-        gameSleepPresenter.setTiming(false);
-        startTimer();
+        startTimer(gameSleepPresenter.getTimeLeftInMilliseconds());
+        gameSleepPresenter.setTimer(timer);
     }
 
     /**
@@ -217,9 +217,9 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
     /**
      * Starts the countdown timer.
      */
-    public void startTimer() {
+    public void startTimer(long timeLeft) {
 
-        timer = new CountDownTimer(gameSleepPresenter.getTimeLeftInMilliseconds(), 1000) {
+        timer = new CountDownTimer(timeLeft, 1000) {
             @Override
             public void onTick(long l) {
                 gameSleepPresenter.setTimeLeftInMilliseconds(l);
@@ -233,7 +233,7 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
 
         }.start();
 
-//        timing = true;
+        gameSleepPresenter.setTiming(true);
     }
 
 
