@@ -9,5 +9,5 @@
     <color name="attr_name">#594E66</color>
     <color name="highlight">#CEAD49</color>
     <color name="subtitle">#862D4C</color>
-    <color name="grids">#343834</color>
+    <color name="trans_event_bg">#14151D</color>
 </resources>

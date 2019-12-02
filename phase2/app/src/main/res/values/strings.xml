@@ -20,8 +20,13 @@
     <string name="give_up">Give up Current Progress</string>
     <string name="start">Start New Game</string>
     <string name="load">Load from Files</string>
+    <string name="load_alert">You have not started any game so you do not have game file to load.</string>
     <string name="help">Instruction</string>
     <string name="ready">Go</string>
+<!--todo whole instruction-->
+    <string name="whole_instruction">
+        You act as a student of uoft,…\n用这个换行
+    </string>
 
 
     <string name="pause">Status</string>
@@ -114,6 +119,10 @@
     <string name="work">Do part time job</string>
 
     <string name="activity_spend_time">Doing this will take %1$d time blocks.</string>
+
+    <!--    transition pages texts-->
+    <string name="semester">Semester start…</string>
+    <string name="tuition">The new semester is coming. As we all know, tuition fee for international students is really high… \n Anyway, good luck and survive!</string>
 
     <!-- GameSleep  -->
     <string name="todo" />

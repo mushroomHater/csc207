@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.uoftlife.data.DataFacade;
 import com.example.uoftlife.floating.DifficultySelectActivity;
-import com.example.uoftlife.floating.PauseDisplayActivity;
 import com.example.uoftlife.gamemap.MapActivity;
+import com.example.uoftlife.transpage.InstructionPageActivity;
 import com.example.uoftlife.util.GameMessenger;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,13 +31,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void setListeners() {
         findViewById(R.id.start).setOnClickListener((view) ->
-                startActivity(new Intent(this, PauseDisplayActivity.class).putExtra("savable", true)));
-
+                startActivity(new Intent(this, DifficultySelectActivity.class)));
         findViewById(R.id.load).setOnClickListener((view) -> {
-            startActivity(new Intent(this, DifficultySelectActivity.class));
+            DataFacade.loadConfig();
+            DataFacade.loadProgress();
+            if(DataFacade.getValue("started")==1){
+                startActivity(new Intent(this, MapActivity.class));
+            } else {
+                GameMessenger.getMessenger().toastMessage(getString(R.string.load_alert));
+            }
         });
         findViewById(R.id.help).setOnClickListener((view) ->
-                startActivity(new Intent(this, MapActivity.class)));
+                startActivity(new Intent(this, InstructionPageActivity.class)));
     }
 
     @Override

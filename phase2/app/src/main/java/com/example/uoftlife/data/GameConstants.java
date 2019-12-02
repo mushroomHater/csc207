@@ -1,7 +1,5 @@
 package com.example.uoftlife.data;
 
-import com.example.uoftlife.util.calculator.GameProcessorStrategy;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +19,7 @@ public interface GameConstants {
     int VERTICAL_GRIDS = 6;
     double ROAD_WIDTH = 0.4;
     //GREEN: 0xff009f45, LIGHT_GREY: 0xffe6e6e5
-    int GRID_COLOR =  0xffc4c6c3;
+    int GRID_COLOR = 0xffc4c6c3;
     int STREET_COLOR = 0xff343834;
     int RESERVE_HEIGHT = 260;
 
@@ -42,7 +40,7 @@ public interface GameConstants {
             "wealth", "stamina", "aspiration", "intellect", "fortune"
     };
     String[] MAP_BUILDINGS = {
-            "school","home","mall"
+            "school", "home", "mall"
     };
     String CONFIG_FILE = "game_config";
 
@@ -52,9 +50,9 @@ public interface GameConstants {
     String[] GAME_STATUS = {
             "money",
             "split line",
-            "understanding","practice","mark",
+            "understanding", "practice", "mark",
             "split line",
-            "repletion","vitality"
+            "repletion", "vitality"
     };
 
     /**
@@ -72,28 +70,11 @@ public interface GameConstants {
         put("health", 100);
         put("mood", 100);
         put("GPA", 4);
+        put("ch1", 0);
+        put("ch2", 0);
+        put("started", 0);
     }};
     String STATUS_FILE = "game_progress";
-
-
-
-
-    GameProcessorStrategy<String, Integer> virtualPlaceholder = null;
-    HashMap<String, GameProcessorStrategy<String, Integer>> GAME_CALCULATOR = new HashMap<String, GameProcessorStrategy<String, Integer>>() {{
-        put("health", virtualPlaceholder);
-        put("mood", virtualPlaceholder);
-        put("GPA", virtualPlaceholder);
-    }};
-
-    // todo description of these characteristics effects and implement corresponding calculator/decorator
-    // ..... to think, design, and improve it as more rigorous structure
-    HashMap<String, GameProcessorStrategy<String, Integer>> CHARACTERISTICS = new HashMap<String, GameProcessorStrategy<String, Integer>>() {{
-        put("procrastinator", virtualPlaceholder);
-        put("optimist", virtualPlaceholder);
-        put("unstable mood", virtualPlaceholder);
-        put("insomnia", virtualPlaceholder);
-        put("money-grubber", virtualPlaceholder);
-    }};
 
 
     /**

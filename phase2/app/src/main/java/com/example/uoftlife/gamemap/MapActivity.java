@@ -13,7 +13,6 @@ import com.example.uoftlife.data.GameConstants;
 import com.example.uoftlife.floating.HomeEventActivity;
 import com.example.uoftlife.floating.MallEventActivity;
 import com.example.uoftlife.floating.SchoolEventActivity;
-import com.example.uoftlife.util.calculator.GameProcessorStrategy;
 
 public class MapActivity extends GameBaseActivity {
 
@@ -47,11 +46,6 @@ public class MapActivity extends GameBaseActivity {
     @Override
     protected boolean setSavable() {
         return true;
-    }
-
-    @Override
-    protected GameProcessorStrategy setSceneStrategy() {
-        return null;
     }
 
 
