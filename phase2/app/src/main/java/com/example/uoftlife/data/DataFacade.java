@@ -34,6 +34,11 @@ public class DataFacade {
         return true;
     }
 
+    static public void setUserName(String userName) {
+        GameProgress.getProgress().setUserName(userName);
+        GameConfiguration.configure().setUserName(userName);
+    }
+
     static public int getValue(String key) {
         int v = GameProgress.getProgress().getValue(key);
         if (v == -1) {
