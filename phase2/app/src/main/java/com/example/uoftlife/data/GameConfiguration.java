@@ -2,7 +2,6 @@ package com.example.uoftlife.data;
 
 import android.content.Context;
 
-import com.example.uoftlife.user.UserManager;
 import com.example.uoftlife.util.DataPersistence;
 
 import java.util.Arrays;
@@ -24,7 +23,7 @@ class GameConfiguration implements GameData {
         initialize();
     }
 
-    private String fileName = GameConstants.CONFIG_FILE + "_" + UserManager.getCurrentUser().getUserid();
+    private String fileName = GameConstants.CONFIG_FILE;
 
     static GameConfiguration configure() {
         return configuration;
@@ -53,6 +52,10 @@ class GameConfiguration implements GameData {
             innatePointsAllocation.put(key + "_x", x);
             innatePointsAllocation.put(key + "_y", y);
         }
+    }
+
+    protected void setUserName(String userName) {
+        fileName = GameConstants.CONFIG_FILE + "_" + userName;
     }
 
     private boolean isRepeatedCoordinates(int x, int y) {

@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             String name = myPreference.getString("name", null);
             UserManager.setCurrentUser(UserManager.getUsers().get(name));
+            DataFacade.setUserName(name);
             initializeApplication();
             setListeners();
         }

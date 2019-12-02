@@ -2,7 +2,6 @@ package com.example.uoftlife.data;
 
 import android.content.Context;
 
-import com.example.uoftlife.user.UserManager;
 import com.example.uoftlife.util.DataPersistence;
 
 import java.util.HashMap;
@@ -17,7 +16,7 @@ class GameProgress implements GameData {
 
     private HashMap<String, Object> tempData;
 
-    private String fileName = GameConstants.STATUS_FILE + "_" + UserManager.getCurrentUser().getUserid();
+    private String fileName = GameConstants.STATUS_FILE;
 
     static GameProgress getProgress() {
         return progress;
@@ -25,6 +24,10 @@ class GameProgress implements GameData {
 
     private GameProgress() {
         initialize();
+    }
+
+    protected void setUserName(String userName) {
+        fileName = GameConstants.CONFIG_FILE + "_" + userName;
     }
 
     @Override
@@ -66,14 +69,14 @@ class GameProgress implements GameData {
 
     @Override
     public void clearFile(Context context) {
-        DataPersistence.clearSPData(context,fileName);
+        DataPersistence.clearSPData(context, fileName);
     }
 
-    void setTempData(String key, Object value){
+    void setTempData(String key, Object value) {
         tempData.put(key, value);
     }
 
-    Object getTempData(String key){
+    Object getTempData(String key) {
         return tempData.get(key);
     }
 }
