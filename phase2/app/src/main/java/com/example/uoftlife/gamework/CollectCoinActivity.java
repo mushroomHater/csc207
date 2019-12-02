@@ -60,6 +60,7 @@ public class CollectCoinActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         presenter.updateGraph();
+                        endGame();
                     }
                 });
             }
@@ -181,6 +182,14 @@ public class CollectCoinActivity extends AppCompatActivity {
         score += 1;
         String scoreDisplay = "Score: ";
         scoreText.setText(scoreDisplay.concat(Integer.toString(score)));
+    }
+
+    public void endGame(){
+        long curr = System.currentTimeMillis();
+        long pass = curr - lastTime;
+        if (health == 0 || pass > 30000){
+            finish();
+        }
     }
 
 

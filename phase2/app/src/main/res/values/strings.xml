@@ -123,4 +123,9 @@
     <string name="_00_15" />
     <string name="gameconfig" />
 
+    <!-- transition page for gamework  -->
+    <string name="gamework">Work Summary</string>
+    <string name="summary">Good job!</string>
+
+
 </resources>
