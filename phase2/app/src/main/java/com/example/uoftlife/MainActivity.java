@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +14,6 @@ import com.example.uoftlife.floating.DifficultySelectActivity;
 import com.example.uoftlife.gamemap.MapActivity;
 import com.example.uoftlife.transpage.InstructionPageActivity;
 import com.example.uoftlife.util.GameMessenger;
-import com.example.uoftlife.util.TransitionPageBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         UserManager.loadUsers(this);
-        SharedPreferences myPreference = getSharedPreferences("user", Context.MODE_PRIVATE);
+        SharedPreferences myPreference = getSharedPreferences(GameConstants.USER_FILE, Context.MODE_PRIVATE);
         boolean flag = myPreference.getBoolean("login", false);
         if (!flag) {
             Intent intent = new Intent(this, LoginActivity.class);
@@ -59,22 +55,6 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 })
                 .setNegativeButton("no", (dialog, which) -> dialog.dismiss()).show();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_logout) {
-            logout();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 
@@ -109,12 +89,7 @@ public class MainActivity extends AppCompatActivity {
             GameMessenger.getMessenger().toastMessage(getString(R.string.clear_success));
         });
         findViewById(R.id.logout).setOnClickListener((view) -> {
-            new TransitionPageBuilder(this).setTitle("title")
-                    .setDescription("description")
-                    .setShowingTime(30)
-                    .addValueChange("money", +300)
-                    .addValueChange("repletion", -20)
-                    .start();
+            logout();
         });
     }
 

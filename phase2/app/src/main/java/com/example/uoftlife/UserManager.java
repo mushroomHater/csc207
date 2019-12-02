@@ -100,7 +100,7 @@ public class UserManager {
     /**
      * Return current user.
      */
-    static User getCurrentUser(){
+    public static User getCurrentUser(){
         return currentUser;
     }
 

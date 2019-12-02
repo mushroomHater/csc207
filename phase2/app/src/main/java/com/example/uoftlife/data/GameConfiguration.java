@@ -2,6 +2,7 @@ package com.example.uoftlife.data;
 
 import android.content.Context;
 
+import com.example.uoftlife.UserManager;
 import com.example.uoftlife.util.DataPersistence;
 
 import java.util.Arrays;
@@ -33,6 +34,8 @@ class GameConfiguration implements GameData {
     private GameConfiguration() {
         initialize();
     }
+
+    private String fileName = GameConstants.CONFIG_FILE + "_" + UserManager.getCurrentUser().getUserid();
 
     static GameConfiguration configure() {
         return configuration;
@@ -95,17 +98,17 @@ class GameConfiguration implements GameData {
 
     @Override
     public boolean save(Context context) throws NullPointerException {
-        return DataPersistence.saveMapData(innatePointsAllocation, context, GameConstants.CONFIG_FILE);
+        return DataPersistence.saveMapData(innatePointsAllocation, context, fileName);
     }
 
     @Override
     public void load(Context context) throws NullPointerException {
-        innatePointsAllocation = DataPersistence.readMapData(context, GameConstants.CONFIG_FILE);
+        innatePointsAllocation = DataPersistence.readMapData(context, fileName);
     }
 
     @Override
     public void clearFile(Context context) {
-        DataPersistence.clearSPData(context, GameConstants.CONFIG_FILE);
+        DataPersistence.clearSPData(context, fileName);
     }
 
 

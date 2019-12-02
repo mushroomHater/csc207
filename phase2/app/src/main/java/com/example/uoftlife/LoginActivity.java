@@ -94,6 +94,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
                 editor.apply();
 
                 finish();
+                startActivity(new Intent(this, MainActivity.class));
             }
         } else if (view == register) {
             Intent intent = new Intent(this, RegisterActivity.class);

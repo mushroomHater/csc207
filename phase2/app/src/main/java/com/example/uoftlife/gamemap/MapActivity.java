@@ -52,6 +52,7 @@ public class MapActivity extends GameBaseActivity {
     private void setRealCoordinates(int x, int y, Button button) {
         button.setX(((int) (x * gridWidth * (1 + GameConstants.ROAD_WIDTH) + gridWidth * GameConstants.ROAD_WIDTH)));
         button.setY(((int) (y * gridHeight * (1 + GameConstants.ROAD_WIDTH) + gridHeight * GameConstants.ROAD_WIDTH)));
+
     }
 
     //we create the home button here, when this activity is been called
