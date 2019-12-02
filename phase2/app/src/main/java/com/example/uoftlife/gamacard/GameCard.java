@@ -17,7 +17,7 @@ class GameCard {
     private int char1, char2;
     private int vitalityConsume;
 
-    public int getVitalityConsume() {
+    int getVitalityConsume() {
         return vitalityConsume;
     }
 
@@ -45,10 +45,10 @@ class GameCard {
      * This method check whether the two cards matches
      */
     void checkResult() {
+        numberOfFlipTime++;
         if (!(cardArray.get(firstCard).equals(cardArray.get(secondCard)))) {
             cardArray.get(firstCard).setCovered(true);
             cardArray.get(secondCard).setCovered(true);
-            numberOfFlipTime++;
         } else {
             updateScore(numberOfFlipTime);
             numberOfFlipTime = 0;
