@@ -2,35 +2,38 @@ package com.example.uoftlife.gamesleep;
 
 import android.os.CountDownTimer;
 
+import com.example.uoftlife.data.DataFacade;
+
 class GameSleepPresenter {
     private GameSleepModel gameSleepModel;
     private GameSleepView gameSleepView;
 
-
+    /**
+     * GameSleepPresenter constructor.
+     */
     GameSleepPresenter(GameSleepModel gameSleepModel, GameSleepView gameSleepView) {
         this.gameSleepModel = gameSleepModel;
         this.gameSleepView = gameSleepView;
 
     }
 
-
+    /**
+     * Sets the difficulty of the game according to the characteristics
+     */
     void initializeDifficulty() {
-        //todo set difficulty
 
-        //       int d = (int)GameConfiguration.getConfig().getDifficulty();
-        int d = 1;
-        if (d == 1) {
+        int char1 = DataFacade.getValue("char1");
+        int char2 = DataFacade.getValue("char2");
+
+        // Game becomes hard if the character has the characteristic of insomnia.
+        if (char1 == 4 || char2 == 4) {
+            setTimeLeftInMilliseconds(14000);
+            setTargetClick(60);
+            setAlarmChangePositionInterval(4000);
+        } else {
             setTimeLeftInMilliseconds(16000);
             setTargetClick(45);
             setAlarmChangePositionInterval(5000);
-        } else if (d == 2) {
-            setTimeLeftInMilliseconds(15000);
-            setTargetClick(50);
-            setAlarmChangePositionInterval(4000);
-        } else {
-            setTimeLeftInMilliseconds(14000);
-            setTargetClick(60);
-            setAlarmChangePositionInterval(3000);
         }
     }
 
@@ -44,7 +47,7 @@ class GameSleepPresenter {
     /**
      * Sets the target number of clicks in this game level.
      */
-    private void setTargetClick(int targetClick) {
+    void setTargetClick(int targetClick) {
         gameSleepModel.setTargetClick(targetClick);
     }
 
@@ -180,7 +183,7 @@ class GameSleepPresenter {
         return gameSleepModel.getAlarmChangePositionInterval();
     }
 
-    private void setAlarmChangePositionInterval(int alarmChangePositionInterval) {
+    void setAlarmChangePositionInterval(int alarmChangePositionInterval) {
         gameSleepModel.setAlarmChangePositionInterval(alarmChangePositionInterval);
     }
 

@@ -8,7 +8,7 @@ class GameSleepModel {
     /**
      * The target number of click to pass the game level.
      */
-    private int targetClick = 45;
+    private int targetClick;
 
     /**
      * The tag of the game level.
@@ -39,7 +39,7 @@ class GameSleepModel {
     /**
      * The time left in this game level in milliseconds.
      */
-    private long timeLeftInMilliseconds = 16000; // 16 seconds
+    private long timeLeftInMilliseconds;
 
     /**
      * The x coordinate of the alarm button.
@@ -54,11 +54,11 @@ class GameSleepModel {
     /**
      * The time interval for the button to change position.
      */
-    private int alarmChangePositionInterval = 4000;
+    private int alarmChangePositionInterval;
 
 
     /**
-     * Creates a LevelOne instance.
+     * GameSleepMode constructor.
      */
     GameSleepModel(float windowWidth, float windowHeight) {
         this.windowWidth = windowWidth;
