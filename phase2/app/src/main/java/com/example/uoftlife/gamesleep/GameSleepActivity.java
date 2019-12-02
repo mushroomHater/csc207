@@ -1,12 +1,12 @@
 package com.example.uoftlife.gamesleep;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,9 +17,8 @@ import com.example.uoftlife.util.TransitionPageBuilder;
 import java.util.Timer;
 import java.util.TimerTask;
 
+@SuppressLint("Registered")
 public class GameSleepActivity extends GameBaseActivity implements GameSleepView {
-
-    //private GameConfiguration config = GameConfiguration.getConfig();
 
     /**
      * The countdown timer of the game level.
@@ -49,8 +48,6 @@ public class GameSleepActivity extends GameBaseActivity implements GameSleepView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ImageView gameSleepBackground = findViewById(R.id.gameSleepBG);
-
         GameSleepModel gameSleepModel = createGameSleepModel();
         gameSleepPresenter = new GameSleepPresenter(gameSleepModel, this);
         gameSleepPresenter.initializeDifficulty();

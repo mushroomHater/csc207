@@ -13,7 +13,7 @@ import com.example.uoftlife.data.GameConstants;
 import com.example.uoftlife.floating.HomeEventActivity;
 import com.example.uoftlife.floating.MallEventActivity;
 import com.example.uoftlife.floating.SchoolEventActivity;
-import com.example.uoftlife.util.TransitionPageBuilder;
+import com.example.uoftlife.util.calculator.GameUpdateCalculator;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -28,62 +28,14 @@ public class MapActivity extends GameBaseActivity {
     private void startTask() {
         timer = new Timer();
         TimerTask task = new TimerTask() {
-            private TransitionPageBuilder builder = new TransitionPageBuilder(MapActivity.this).setShowingTime(8);
-            private int frequencySpliter = 5;
+            private GameUpdateCalculator calculator = new GameUpdateCalculator(MapActivity.this);
 
             @Override
             public void run() {
-                checkEndding();
-                if (DataFacade.getValue("repletion") <= 20 || DataFacade.getValue("vitality") <= 20) {
-                    DataFacade.addToValue("health", -1);
-                }
-                DataFacade.addToValue("time", -1);
-                frequencySpliter--;
-                if (frequencySpliter == 0) {
-                    frequencySpliter = 5;
-                    DataFacade.addToValue("practice", -1);
-                }
-                if (DataFacade.getValue("mood") <= 20) {
-                    DataFacade.setTempData("status", String.format(getString(R.string.status_bad_mood), "username"));
-                } else if (DataFacade.getValue("mood") >= 90) {
-                    DataFacade.setTempData("status", String.format(getString(R.string.status_good_mood), "username"));
-                }
-
-            }
-
-            private void checkEndding() {
-                if (DataFacade.getValue("time") <= 0) {
-                    double mark = DataFacade.getValue("mark");
-                    int diff = (100 - DataFacade.getValue("practice")) + (100 - DataFacade.getValue("understanding"));
-                    if (diff < 0) {
-                        diff = 0;
-                    }
-                    mark -= diff * 0.4;
-
-                    builder.setDescription(DataFacade
-                            .getTempData("name") +
-                            " have to take final exam! According to the body condition and mastering of knowledge, get final exam "
-                            + (100 - diff) + ". And Overall mark is " + mark + ".");
-
-                    if (mark >= 60) {
-                        builder.setTitle("The semester is over...Congratulations!");
-                    } else {
-                        builder.setTitle("The semester is over...You failed.");
-                    }
-                    builder.start();
-                    finish();
-                }
-                if (DataFacade.getValue("health") <= 0) {
-                    builder.setTitle("You died").setDescription("Because starving or staying up too long... please try again.").start();
-                    finish();
-                }
-                if (DataFacade.getValue("mood") <= 0) {
-                    builder.setTitle("You suicide.").setDescription("Your feel so frustrated... please try again.").start();
-                    finish();
-                }
+                calculator.update();
             }
         };
-        timer.schedule(task, 0, 1000);
+        timer.schedule(task, 0, 500);
     }
 
     @Override

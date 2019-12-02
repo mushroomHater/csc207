@@ -14,8 +14,6 @@ import com.example.uoftlife.data.DataFacade;
 import com.example.uoftlife.data.GameConstants;
 import com.example.uoftlife.util.GameMessenger;
 
-import java.util.List;
-
 public class PauseDisplayActivity extends FloatingActivity {
 
     private LayoutInflater inflater;
@@ -62,7 +60,7 @@ public class PauseDisplayActivity extends FloatingActivity {
     }
 
     private String getRandomStatusDisplay() {
-        Object statusList = DataFacade.getTempData("status");
+        /*Object statusList = DataFacade.getTempData("status");
         if (statusList instanceof List) {
             int index = (int) (((List) statusList).size() * Math.random());
             Object statusString = ((List) statusList).get(index);
@@ -70,7 +68,13 @@ public class PauseDisplayActivity extends FloatingActivity {
                 return (String) statusString;
             }
         }
-        return String.format(getString(R.string.status_default), DataFacade.getTempData("name"));
+        return String.format(getString(R.string.status_default), DataFacade.getTempData("name"));*/
+        Object status = DataFacade.getTempData("status");
+        if (status instanceof String) {
+            return String.format((String) status, DataFacade.getTempData("name"));
+        } else {
+            return String.format(getString(R.string.status_default), DataFacade.getTempData("name"));
+        }
     }
 
     @Override

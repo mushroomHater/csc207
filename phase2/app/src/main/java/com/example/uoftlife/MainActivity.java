@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         DataFacade.setContext(getApplicationContext());
         DataFacade.initialize();
         GameMessenger.getMessenger().initialize();
-        DataFacade.setTempData("status", String.format(getString(R.string.status_has_due), "username"));
     }
 
     private void setListeners() {
