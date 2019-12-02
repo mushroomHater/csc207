@@ -18,27 +18,90 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * A class represents items in game collectcoin.
+ */
 public class CollectCoinActivity extends AppCompatActivity {
 
+    /**
+     * The bag's location.
+     */
     private int bagLocation = 150;
+
+    /**
+     * The height of the bag.
+     */
     private int bagHeight = 1560;
+
+    /**
+     * The last location of the bag.
+     */
     private int bagLastLocation;
+
+    /**
+     * The max number of items displayed on screen.
+     */
     private int maxNumItem = 20;
+
+    /**
+     * The player's health in this game.
+     */
     private int health;
+
+    /**
+     * The score player gets in this game.
+     */
     private int score;
+
+    /**
+     * The text view represents the score.
+     */
     private TextView scoreText;
+
+    /**
+     * The image view presents the bag.
+     */
     private ImageView bag;
+
+    /**
+     * The layout of the game's display.
+     */
     private ViewGroup root;
+
+    /**
+     * The progress bar representing elapsed time in game.
+     */
     private ProgressBar time;
+
+    /**
+     * The handler is used to create thread by runnable.
+     */
     private Handler handler;
+
+    /**
+     * The CollectCoinPresenter class used in the game.
+     */
     private CollectCoinPresenter presenter;
+
+    /**
+     * The time that the activity was created.
+     */
     long lastTime;
 
+    /**
+     * The ArrayList contains dropping items.
+     */
     private ArrayList<ImageView> dropItems;
+
+    /**
+     * The ArrayList contains image view of healths.
+     */
     private ArrayList<ImageView> healths;
 
 
-
+    /**
+     * When activity starts, onCreate is called first.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,12 +123,16 @@ public class CollectCoinActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         presenter.updateGraph();
+                        endGame();
                     }
                 });
             }
         }, 0, 10);
     }
 
+    /**
+     * React on the touch event of the user who plays the game.
+     */
     private final class ChoiceTouchListener implements View.OnTouchListener{
         @Override
         public boolean onTouch(View view, MotionEvent event) {
@@ -87,18 +154,30 @@ public class CollectCoinActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Return the bag's location.
+     */
     public int getBagLocation(){
         return bagLocation;
     }
 
+    /**
+     * Return the bag's height.
+     */
     public int getBagHeight(){
         return bagHeight;
     }
 
+    /**
+     * Return the maximum number of items displayed on screen.
+     */
     public int getMaxNumItem() {
         return maxNumItem;
     }
 
+    /**
+     * Initialize the items in display.
+     */
     private void initView(){
         root = findViewById(R.id.root);
         bag = findViewById(R.id.bag);
@@ -125,14 +204,17 @@ public class CollectCoinActivity extends AppCompatActivity {
         time.setY(10);
         scoreText = new TextView(this);
         scoreText.setX(0);
-        scoreText.setY(0);
+        scoreText.setY(20);
         scoreText.setTextColor(Color.BLACK);
-        scoreText.setTextSize(30);
+        scoreText.setTextSize(20);
         root.addView(scoreText);
         String scoreDisplay = "Score: ";
         scoreText.setText(scoreDisplay.concat(Integer.toString(score)));
     }
 
+    /**
+     * Update the positions of items in display.
+     */
     public void updateGraph(ArrayList<DropItems> items) {
         updateProgressBar();
         bag.setX(bagLocation);
@@ -158,11 +240,18 @@ public class CollectCoinActivity extends AppCompatActivity {
             i++;
         }
     }
+
+    /**
+     * Update the progress bar.
+     */
     public void updateProgressBar(){
         long curr = System.currentTimeMillis();
         time.setProgress((int)((curr - lastTime)/300));
     }
 
+    /**
+     * Increase health by 1 and display the change.
+     */
     public void increaseHealth(){
         if(health < 3){
             healths.get(health).setImageResource(R.drawable.heart1);
@@ -170,6 +259,9 @@ public class CollectCoinActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Decrease health by 1 and display the change.
+     */
     public void decreaseHealth(){
         if(health > 0){
             healths.get(health-1).setImageResource(R.drawable.heart2);
@@ -177,10 +269,24 @@ public class CollectCoinActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Increase score by 1 and display the change.
+     */
     public void increaseScore(){
         score += 1;
         String scoreDisplay = "Score: ";
         scoreText.setText(scoreDisplay.concat(Integer.toString(score)));
+    }
+
+    /**
+     * End the game when losing all healths or time's up (30 seconds).
+     */
+    public void endGame(){
+        long curr = System.currentTimeMillis();
+        long pass = curr - lastTime;
+        if (health == 0 || pass > 30000){
+            finish();
+        }
     }
 
 

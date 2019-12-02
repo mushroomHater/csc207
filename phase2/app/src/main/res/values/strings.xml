@@ -164,4 +164,10 @@
     <string name="practice_value">Your practice value has increased by</string>
     <string name="time_value">Your time has decreased by</string>
     <string name="energy_value">Your energy has decreased by</string>
+
+    <!-- gamework  -->
+    <string name="gamework">Work Summary</string>
+    <string name="summary">Good job!</string>
+
+
 </resources>
