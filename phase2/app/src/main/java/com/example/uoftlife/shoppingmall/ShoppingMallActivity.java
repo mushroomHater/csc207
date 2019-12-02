@@ -1,10 +1,13 @@
 package com.example.uoftlife.shoppingmall;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
 import com.example.uoftlife.GameBaseActivity;
 import com.example.uoftlife.R;
+import com.example.uoftlife.floating.MallEventActivity;
+import com.example.uoftlife.gamemap.MapActivity;
 import com.example.uoftlife.util.TransitionPageBuilder;
 
 public class ShoppingMallActivity extends GameBaseActivity {
@@ -18,11 +21,17 @@ public class ShoppingMallActivity extends GameBaseActivity {
         setLipstickButton();
         setBubbleTeaButton();
         setBookButton();
+        setBackButton();
     }
-
-    @Override
+    //exit shop and return to layout MapActivity
     protected int setContentLayout() {
         return R.layout.activity_purchase_item;
+    }
+
+    protected void setBackButton(){
+        Button back = findViewById(R.id.nextPage);
+        back.setOnClickListener((view) ->
+                startActivity(new Intent(this, MapActivity.class)));
     }
 
     @Override
