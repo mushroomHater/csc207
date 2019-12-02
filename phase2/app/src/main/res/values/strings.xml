@@ -154,7 +154,7 @@
     <string name="time_value">Your time has decreased by</string>
     <string name="energy_value">Your energy has decreased by</string>
 
-    <!-- transition page for gamework  -->
+    <!-- gamework  -->
     <string name="gamework">Work Summary</string>
     <string name="summary">Good job!</string>
 
