@@ -50,19 +50,21 @@ public class DataFacade {
         }
     }
 
-    static private void load(GameData data) {
+    static private boolean load(GameData data) {
         try {
             data.load(getContext());
         } catch (NullPointerException e) {
             e.printStackTrace();
+            return false;
         }
+        return true;
     }
 
     static public void setTempData(String key, Object value) {
-        GameProgress.getProgress().setTempData(key,value);
+        GameProgress.getProgress().setTempData(key, value);
     }
 
-    static public Object getTempData(String key){
+    static public Object getTempData(String key) {
         return GameProgress.getProgress().getTempData(key);
     }
 
@@ -74,12 +76,17 @@ public class DataFacade {
         return save(GameProgress.getProgress());
     }
 
-    static public void loadConfig() {
-        load(GameConfiguration.configure());
+    static public boolean loadConfig() {
+        return load(GameConfiguration.configure());
     }
 
-    static public void loadProgress() {
-        load(GameProgress.getProgress());
+    static public boolean loadProgress() {
+        return load(GameProgress.getProgress());
+    }
+
+    static public void clearFile() {
+        GameConfiguration.configure().clearFile(getContext());
+        GameProgress.getProgress().clearFile(getContext());
     }
 
     static public void initialize() {

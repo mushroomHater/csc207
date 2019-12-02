@@ -19,4 +19,6 @@ interface GameData {
 
     void load(Context context);
 
+    void clearFile(Context context);
+
 }

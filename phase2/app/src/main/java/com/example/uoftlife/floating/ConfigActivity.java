@@ -8,10 +8,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.uoftlife.R;
+import com.example.uoftlife.data.Characteristics;
 import com.example.uoftlife.data.DataFacade;
 import com.example.uoftlife.data.GameConstants;
-import com.example.uoftlife.gamemap.MapActivity;
+import com.example.uoftlife.transpage.SemesterStartPageActivity;
 import com.example.uoftlife.util.GameMessenger;
+import com.example.uoftlife.util.calculator.InitProgressGenerator;
 
 public class ConfigActivity extends FloatingActivity {
 
@@ -42,21 +44,29 @@ public class ConfigActivity extends FloatingActivity {
         ((Button) findViewById(R.id.saveButton)).setText(R.string.randomize);
         ((Button) findViewById(R.id.exitButton)).setText(R.string.ready);
         pointView.setText(String.valueOf(point));
-        findViewById(R.id.exitButton).setOnClickListener((view) -> {
-            if(point>0){
+        setStartAction();
+        setRandomizeButton();
+    }
+
+    private void setRandomizeButton() {
+        findViewById(R.id.saveButton).setOnClickListener((view) -> {
+            if (point > 0) {
                 GameMessenger.getMessenger().toastMessage(getString(R.string.ch_alert));
-            }else{
-                DataFacade.saveConfig();
-                DataFacade.saveProgress();
-                finish();
-                startActivity(new Intent(this, MapActivity.class));
+            } else {
+                updateCharacteristics();
             }
         });
-        findViewById(R.id.saveButton).setOnClickListener((view) -> {
-            if(point>0){
+    }
+
+    private void setStartAction() {
+        findViewById(R.id.exitButton).setOnClickListener((view) -> {
+            if (point > 0) {
                 GameMessenger.getMessenger().toastMessage(getString(R.string.ch_alert));
-            }else{
-                updateCharacteristics();
+            } else {
+                DataFacade.saveConfig();
+                new InitProgressGenerator().generate();
+                finish();
+                startActivity(new Intent(this, SemesterStartPageActivity.class));
             }
         });
     }
@@ -105,16 +115,28 @@ public class ConfigActivity extends FloatingActivity {
                 DataFacade.addToValue(key, 1);
                 point--;
                 updateDisplayValue(line, key);
-                if(point==0){
+                if (point == 0) {
                     updateCharacteristics();
                 }
             }
         });
     }
 
-    private void updateCharacteristics(){
-        //todo
-        System.out.println("todo");
+    private void updateCharacteristics() {
+        Characteristics ch1 = Characteristics.randomize();
+        Characteristics ch2;
+        do {
+            ch2 = Characteristics.randomize();
+        } while (ch2 == ch1);
+        setCharacteristicsListener(ch1, findViewById(R.id.ch1));
+        setCharacteristicsListener(ch2, findViewById(R.id.ch2));
+        DataFacade.setValue("ch1", ch1.getIndex());
+        DataFacade.setValue("ch2", ch2.getIndex());
+    }
+
+    private void setCharacteristicsListener(Characteristics ch, Button chButton) {
+        chButton.setText(ch.getTextDisplay());
+        chButton.setOnClickListener((view) -> GameMessenger.getMessenger().toastMessage(ch.getDescription()));
     }
 
     private void updateDisplayValue(View line, String key) {

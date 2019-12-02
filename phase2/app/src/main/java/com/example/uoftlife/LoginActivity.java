@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.uoftlife.data.GameConstants;
+
 public class LoginActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
 
     EditText name;
@@ -85,14 +87,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnTouchList
             } else {
                 showToast(getString(R.string.login_success));
 
-                SharedPreferences myPreference=getSharedPreferences("uoft_life", Context.MODE_PRIVATE);
+                SharedPreferences myPreference=getSharedPreferences(GameConstants.USER_FILE, Context.MODE_PRIVATE);
                 Editor editor = myPreference.edit();
                 editor.putBoolean("login", true);
                 editor.putString("name", name);
-                editor.commit();
+                editor.apply();
 
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
                 finish();
             }
         } else if (view == register) {
