@@ -8,17 +8,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-// singleton class
-// todo save the user name+ image in user.class because they are not integer that need
-//  extra method or classes to IO that may cause duplicate codes
-
-// todo ? may need cleaning the existing shared-preference
-
-/**
- * GameProcessorStrategyDecorator ........
- * todo a list of decorator that represents the characteristics
- * develop later after the frame is built
- */
 
 // store a context reference in this class that the context can be reached everywhere outside activity
 // always need to initialize this context at start of app
@@ -33,6 +22,8 @@ class GameConfiguration implements GameData {
     private GameConfiguration() {
         initialize();
     }
+
+    private String fileName = GameConstants.CONFIG_FILE;
 
     static GameConfiguration configure() {
         return configuration;
@@ -61,6 +52,10 @@ class GameConfiguration implements GameData {
             innatePointsAllocation.put(key + "_x", x);
             innatePointsAllocation.put(key + "_y", y);
         }
+    }
+
+    protected void setUserName(String userName) {
+        fileName = GameConstants.CONFIG_FILE + "_" + userName;
     }
 
     private boolean isRepeatedCoordinates(int x, int y) {
@@ -95,17 +90,17 @@ class GameConfiguration implements GameData {
 
     @Override
     public boolean save(Context context) throws NullPointerException {
-        return DataPersistence.saveMapData(innatePointsAllocation, context, GameConstants.CONFIG_FILE);
+        return DataPersistence.saveMapData(innatePointsAllocation, context, fileName);
     }
 
     @Override
     public void load(Context context) throws NullPointerException {
-        innatePointsAllocation = DataPersistence.readMapData(context, GameConstants.CONFIG_FILE);
+        innatePointsAllocation = DataPersistence.readMapData(context, fileName);
     }
 
     @Override
     public void clearFile(Context context) {
-        DataPersistence.clearSPData(context, GameConstants.CONFIG_FILE);
+        DataPersistence.clearSPData(context, fileName);
     }
 
 

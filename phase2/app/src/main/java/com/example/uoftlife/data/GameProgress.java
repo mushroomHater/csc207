@@ -16,12 +16,18 @@ class GameProgress implements GameData {
 
     private HashMap<String, Object> tempData;
 
+    private String fileName = GameConstants.STATUS_FILE;
+
     static GameProgress getProgress() {
         return progress;
     }
 
     private GameProgress() {
         initialize();
+    }
+
+    protected void setUserName(String userName) {
+        fileName = GameConstants.CONFIG_FILE + "_" + userName;
     }
 
     @Override
@@ -53,24 +59,24 @@ class GameProgress implements GameData {
 
     @Override
     public boolean save(Context context) {
-        return DataPersistence.saveMapData(progressData, context, GameConstants.STATUS_FILE);
+        return DataPersistence.saveMapData(progressData, context, fileName);
     }
 
     @Override
     public void load(Context context) {
-        progressData = DataPersistence.readMapData(context, GameConstants.STATUS_FILE);
+        progressData = DataPersistence.readMapData(context, fileName);
     }
 
     @Override
     public void clearFile(Context context) {
-        DataPersistence.clearSPData(context,GameConstants.STATUS_FILE);
+        DataPersistence.clearSPData(context, fileName);
     }
 
-    void setTempData(String key, Object value){
+    void setTempData(String key, Object value) {
         tempData.put(key, value);
     }
 
-    Object getTempData(String key){
+    Object getTempData(String key) {
         return tempData.get(key);
     }
 }

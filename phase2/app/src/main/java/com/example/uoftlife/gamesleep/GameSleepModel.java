@@ -1,23 +1,14 @@
 package com.example.uoftlife.gamesleep;
 
 import android.os.CountDownTimer;
-import android.util.Pair;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 class GameSleepModel {
     /**
      * The target number of click to pass the game level.
      */
-    private int targetClick = 45;
-
-    /**
-     * The tag of the game level.
-     */
-    private static final String TAG = "LevelOne";
+    private int targetClick;
 
     /**
      * The number of clicks entered by the user.
@@ -42,10 +33,10 @@ class GameSleepModel {
     /**
      * The time left in this game level in milliseconds.
      */
-    private long timeLeftInMilliseconds = 16000; // 16 seconds
+    private long timeLeftInMilliseconds;
 
     /**
-     * The x coordinate of the alarm button.
+     * The width input of the alarm button.
      */
     private float windowWidth;
 
@@ -57,11 +48,10 @@ class GameSleepModel {
     /**
      * The time interval for the button to change position.
      */
-    private int alarmChangePositionInterval = 4000;
-
+    private int alarmChangePositionInterval;
 
     /**
-     * Creates a LevelOne instance.
+     * GameSleepMode constructor.
      */
     GameSleepModel(float windowWidth, float windowHeight) {
         this.windowWidth = windowWidth;
@@ -113,44 +103,54 @@ class GameSleepModel {
     /**
      * @return the if the timer is timing.
      */
-    public boolean isTiming() {
+    boolean isTiming() {
         return timing;
     }
 
     /**
      * Sets if the timer should be timing.
      */
-    public void setTiming(boolean timing) {
+    void setTiming(boolean timing) {
         this.timing = timing;
     }
 
-    public void setTimer(CountDownTimer timer) {
+    /**
+     * Sets the timer of the game.
+     */
+    void setTimer(CountDownTimer timer) {
         this.timer = timer;
     }
 
-    public void cancelTimer() {
+    /**
+     * Cancels the timer of the game.
+     */
+    void cancelTimer() {
         timer.cancel();
+
     }
 
     /**
      * @return the time left for the game level in milliseconds.
      */
-    public long getTimeLeftInMilliseconds() {
+    long getTimeLeftInMilliseconds() {
         return timeLeftInMilliseconds;
     }
 
     /**
      * Sets the time left for the game level in milliseconds.
      */
-    public void setTimeLeftInMilliseconds(long timeLeftInMilliseconds) {
+    void setTimeLeftInMilliseconds(long timeLeftInMilliseconds) {
         this.timeLeftInMilliseconds = timeLeftInMilliseconds;
     }
 
-    public int getAlarmChangePositionInterval() {
+    /**
+     * @return the timer of the game.
+     */
+    int getAlarmChangePositionInterval() {
         return alarmChangePositionInterval;
     }
 
-    public void setAlarmChangePositionInterval(int alarmChangePositionInterval) {
+    void setAlarmChangePositionInterval(int alarmChangePositionInterval) {
         this.alarmChangePositionInterval = alarmChangePositionInterval;
     }
 
@@ -166,5 +166,3 @@ class GameSleepModel {
 
 
 }
-
-

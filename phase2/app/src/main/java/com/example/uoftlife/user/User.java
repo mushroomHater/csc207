@@ -1,4 +1,4 @@
-package com.example.uoftlife;
+package com.example.uoftlife.user;
 
 import java.io.Serializable;
 

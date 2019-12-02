@@ -1,19 +1,19 @@
 package com.example.uoftlife.gamacard;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.uoftlife.GameBaseActivity;
 import com.example.uoftlife.R;
+import com.example.uoftlife.util.TransitionPageBuilder;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class GameCardActivity extends AppCompatActivity {
+public class GameCardActivity extends GameBaseActivity {
 
     private GameCard cardGame;
     private TextView score;
@@ -21,7 +21,6 @@ public class GameCardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card_game_acticity);
 
         //Initialize all the images
         int backImage = R.drawable.question;
@@ -63,6 +62,16 @@ public class GameCardActivity extends AppCompatActivity {
         cardGame = new GameCard(cardArray, listOfImageView,backImage);
     }
 
+    @Override
+    protected int setContentLayout() {
+        return R.layout.activity_card_game_acticity;
+    }
+
+    @Override
+    protected boolean setSavable() {
+        return false;
+    }
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onResume(){
@@ -87,6 +96,9 @@ public class GameCardActivity extends AppCompatActivity {
                         public void run() {
                             cardGame.checkResult();
                             score.setText("Score: " + cardGame.getScore());
+                            if (cardGame.checkEnd()){
+                                onDestroy();
+                            }
                         }
                     }, 1000);
                 }
@@ -94,4 +106,16 @@ public class GameCardActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        new TransitionPageBuilder(this).setTitle("Congratulations!!")
+                .setDescription("You just finished your study!!")
+                .setShowingTime(3)
+                .addValueChange("practice", (int) Math.floor(cardGame.getScore() / 20))
+                .addValueChange("understanding", (int) Math.floor(cardGame.getScore() / 20))
+                .addValueChange("time", -12)
+                .addValueChange("vitality", -cardGame.getVitalityConsume())
+                .start();
+    }
 }
