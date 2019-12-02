@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.uoftlife.R;
+import com.example.uoftlife.data.DataFacade;
+import com.example.uoftlife.util.TransitionPageBuilder;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -114,6 +116,7 @@ public class CollectCoinActivity extends AppCompatActivity {
         lastTime = System.currentTimeMillis();
         presenter = new CollectCoinPresenter(this);
         initView();
+        initializeDifficulty();
 
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -285,7 +288,25 @@ public class CollectCoinActivity extends AppCompatActivity {
         long curr = System.currentTimeMillis();
         long pass = curr - lastTime;
         if (health == 0 || pass > 30000){
+            new TransitionPageBuilder(this).setTitle(getString(R.string.gamework))
+                    .setDescription(getString(R.string.summary))
+                    .setShowingTime(5)
+                    .addValueChange("time", -16)
+                    .addValueChange("vitality", -30)
+                    .addValueChange("money", score*10)
+                    .start();
             finish();
+        }
+    }
+
+    void initializeDifficulty() {
+
+        int char1 = DataFacade.getValue("char1");
+        int char2 = DataFacade.getValue("char2");
+
+        // Game becomes hard if the character has the characteristic of insomnia.
+        if (char1 == 5 || char2 == 5) {
+            presenter.setDifficulty();
         }
     }
 
