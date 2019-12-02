@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.example.uoftlife.GameBaseActivity;
 import com.example.uoftlife.R;
+import com.example.uoftlife.util.TransitionPageBuilder;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -95,6 +96,9 @@ public class GameCardActivity extends GameBaseActivity {
                         public void run() {
                             cardGame.checkResult();
                             score.setText("Score: " + cardGame.getScore());
+                            if (cardGame.checkEnd()){
+                                onDestroy();
+                            }
                         }
                     }, 1000);
                 }
@@ -102,4 +106,16 @@ public class GameCardActivity extends GameBaseActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        new TransitionPageBuilder(this).setTitle("Congratulations!!")
+                .setDescription("You just finished your study!!")
+                .setShowingTime(3)
+                .addValueChange("practice", (int) Math.floor(cardGame.getScore() / 20))
+                .addValueChange("understanding", (int) Math.floor(cardGame.getScore() / 20))
+                .addValueChange("time", -12)
+                .addValueChange("vitality", -cardGame.getVitalityConsume())
+                .start();
+    }
 }

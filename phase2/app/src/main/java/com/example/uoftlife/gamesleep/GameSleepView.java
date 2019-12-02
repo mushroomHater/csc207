@@ -1,15 +1,12 @@
 package com.example.uoftlife.gamesleep;
 
 public interface GameSleepView {
-    void setConfigBtn();
-
-    void setInitialLanguage();
 
     void setInitialCharacter();
 
     void setAlarmBtn();
 
-    void showAlarmAnimation(float windowWidth, float windowHeight);
+    void showAlarmAnimation(float dx, float dy);
 
     void setTimer();
 

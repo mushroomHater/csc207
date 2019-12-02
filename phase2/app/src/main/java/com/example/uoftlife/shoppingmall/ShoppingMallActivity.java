@@ -1,14 +1,22 @@
 package com.example.uoftlife.shoppingmall;
 
-import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.uoftlife.GameBaseActivity;
 import com.example.uoftlife.R;
 
-public class ShoppingMallActivity extends AppCompatActivity {
+public class ShoppingMallActivity extends GameBaseActivity {
 
     AllItem item;
+
+    @Override
+    protected int setContentLayout() {
+        return R.layout.activity_purchase_item;
+    }
+
+    @Override
+    protected boolean setSavable() {
+        return false;
+    }
+/*
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +45,7 @@ public class ShoppingMallActivity extends AppCompatActivity {
         findViewById(R.id.button3).setOnClickListener((view) -> {
         });
     }
+*/
 
 
     // if click on the item button, the user purchases it immediately
