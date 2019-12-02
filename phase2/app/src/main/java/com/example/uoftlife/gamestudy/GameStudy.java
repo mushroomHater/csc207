@@ -75,7 +75,7 @@ class GameStudy {
         int numberLetterCorrect = 0;
         int length = Math.min(lengthOfWord, wordInput.length());
         for (int i = 0; i < length; i++){
-            if (wordInput.charAt(i) == word.charAt(i));{
+            if (wordInput.charAt(i) == word.charAt(i)){
                 numberLetterCorrect++;
             }
         }
