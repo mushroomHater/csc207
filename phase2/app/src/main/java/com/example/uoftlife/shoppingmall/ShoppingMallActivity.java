@@ -23,14 +23,15 @@ public class ShoppingMallActivity extends GameBaseActivity {
         setBookButton();
         setBackButton();
     }
+    //exit shop and return to layout MapActivity
+    protected int setContentLayout() {
+        return R.layout.activity_purchase_item;
+    }
 
     protected void setBackButton(){
         Button back = findViewById(R.id.nextPage);
         back.setOnClickListener((view) ->
                 startActivity(new Intent(this, MapActivity.class)));
-    }
-    protected int setContentLayout() {
-        return R.layout.activity_purchase_item;
     }
 
     @Override
