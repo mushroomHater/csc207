@@ -76,6 +76,7 @@ public interface GameConstants {
     }};
     String STATUS_FILE = "game_progress";
 
+    String USER_FILE = "user";
 
     /**
      * Game channel configuration

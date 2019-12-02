@@ -84,6 +84,11 @@ public class DataFacade {
         return load(GameProgress.getProgress());
     }
 
+    static public void clearFile() {
+        GameConfiguration.configure().clearFile(getContext());
+        GameProgress.getProgress().clearFile(getContext());
+    }
+
     static public void initialize() {
         GameConfiguration.configure().initialize();
         GameProgress.getProgress().initialize();

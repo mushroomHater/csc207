@@ -1,7 +1,6 @@
 package com.example.uoftlife;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +12,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.uoftlife.data.DataFacade;
+import com.example.uoftlife.data.GameConstants;
 import com.example.uoftlife.floating.DifficultySelectActivity;
 import com.example.uoftlife.gamemap.MapActivity;
 import com.example.uoftlife.transpage.InstructionPageActivity;
@@ -25,12 +25,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initializeApplication();
+        setListeners();
+
 
         UserManager.loadUsers(this);
-
-        SharedPreferences myPreference=getSharedPreferences("uoft_life", Context.MODE_PRIVATE);
+        SharedPreferences myPreference = getSharedPreferences("user", Context.MODE_PRIVATE);
         boolean flag = myPreference.getBoolean("login", false);
-        if(!flag) {
+        if (!flag) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
@@ -39,35 +41,23 @@ public class MainActivity extends AppCompatActivity {
         String name = myPreference.getString("name", null);
         UserManager.setCurrentUser(UserManager.getUsers().get(name));
 
-        initializeApplication();
-        setListeners();
-
-
 
     }
 
     private void logout() {
         new AlertDialog.Builder(this)
                 .setMessage(getString(R.string.logout_info))
-                .setPositiveButton(R.string.logout, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        SharedPreferences myPreference=getSharedPreferences("uoft_life", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = myPreference.edit();
-                        editor.putBoolean("login", false);
-                        editor.commit();
+                .setPositiveButton(R.string.logout, (dialog, which) -> {
+                    SharedPreferences myPreference = getSharedPreferences(GameConstants.USER_FILE, Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = myPreference.edit();
+                    editor.putBoolean("login", false);
+                    editor.apply();
 
-                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
                 })
-                .setNegativeButton("no", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                }).show();
+                .setNegativeButton("no", (dialog, which) -> dialog.dismiss()).show();
     }
 
     @Override
@@ -87,6 +77,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Initialize the background data of whole application. Important for future functionality.
+     * If don't execute this step, will cause some nullPointerExceptions (although many of them are
+     * caught, he behavior will still be undesirable)
+     */
     private void initializeApplication() {
         DataFacade.setContext(getApplicationContext());
         DataFacade.initialize();
@@ -100,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.load).setOnClickListener((view) -> {
             DataFacade.loadConfig();
             DataFacade.loadProgress();
-            if(DataFacade.getValue("started")==1){
+            if (DataFacade.getValue("started") == 1) {
                 startActivity(new Intent(this, MapActivity.class));
             } else {
                 GameMessenger.getMessenger().toastMessage(getString(R.string.load_alert));
@@ -108,14 +103,16 @@ public class MainActivity extends AppCompatActivity {
         });
         findViewById(R.id.help).setOnClickListener((view) ->
                 startActivity(new Intent(this, InstructionPageActivity.class)));
+        findViewById(R.id.clear).setOnClickListener((view) ->{
+            DataFacade.clearFile();
+            GameMessenger.getMessenger().toastMessage(getString(R.string.clear_success));
+        });
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         GameMessenger.getMessenger().clearAll();
-
-
     }
 }
 
