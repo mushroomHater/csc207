@@ -18,7 +18,6 @@ public abstract class TransitionPageActivity extends GameBaseActivity {
 
     private LayoutInflater inflater;
     private Timer timer;
-    private TimerTask task;
 
     private int autoDestroyCount;
 
@@ -45,7 +44,7 @@ public abstract class TransitionPageActivity extends GameBaseActivity {
 
     private void startTask() {
         timer = new Timer();
-        task = new TimerTask() {
+        TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 autoDestroyCount--;
