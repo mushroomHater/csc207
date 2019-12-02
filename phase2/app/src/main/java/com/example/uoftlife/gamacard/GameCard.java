@@ -40,13 +40,10 @@ class GameCard {
             cardArray.get(firstCard).setCovered(true);
             cardArray.get(secondCard).setCovered(true);
             numberOfFlipTime++;
-
         } else {
             updateScore(numberOfFlipTime);
             numberOfFlipTime = 0;
         }
-
-
         for (int i = 0; i < cardArray.size(); i++) {
             if (cardArray.get(i).isCovered()) {
                 listOfImageView[i].setImageResource(backImage);
@@ -56,10 +53,18 @@ class GameCard {
         numCardOver = 0;
     }
 
+    /**
+     *
+     * @return the current score of the player
+     */
     int getScore() {
         return score;
     }
 
+    /**
+     *
+     * @return how many cards are turned over
+     */
     int getNumCardOver() {
         return numCardOver;
     }
@@ -67,7 +72,7 @@ class GameCard {
     /**
      * @param imageView  The imageView that has been clicked
      * @param cardNumber The index of the card that has been click
-     *                   This method will flip card that the player has clicked.
+     * This method will flip card that the player has clicked.
      */
     void flipCard(ImageView imageView, int cardNumber) {
         imageView.setImageResource(cardArray.get(cardNumber).getValue());
@@ -85,7 +90,11 @@ class GameCard {
         }
     }
 
-
+    /**
+     *
+     * @param numberOfFlipTime
+     * update the score
+     */
     private void updateScore(int numberOfFlipTime) {
         score += 10 + Math.floor(30 / numberOfFlipTime);
     }

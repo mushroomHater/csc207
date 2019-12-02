@@ -2,6 +2,7 @@ package com.example.uoftlife.gamacard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
@@ -21,6 +22,8 @@ public class GameCardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_game_acticity);
+
+        //Initialize all the images
         int backImage = R.drawable.question;
         Card card1 = new Card(R.drawable.cow1);
         Card card2 = new Card(R.drawable.cow2);
@@ -28,8 +31,11 @@ public class GameCardActivity extends AppCompatActivity {
         Card card4 = new Card(R.drawable.cow4);
         Card card5 = new Card(R.drawable.cow5);
         Card card6 = new Card(R.drawable.cow6);
+
+        //Initialize score textView
         score = findViewById(R.id.score);
 
+        //Initialize the cardArray and randomly shuffle it
         Card[] cards = {card1, card2, card3, card4, card5, card6};
         ArrayList<Card> cardArray = new ArrayList<>();
         for (Card card: cards){
@@ -37,6 +43,8 @@ public class GameCardActivity extends AppCompatActivity {
             cardArray.add(card);
         }
         Collections.shuffle(cardArray);
+
+        //Initialize all the imageViews
         ImageView[] listOfImageView = new ImageView[12];
         listOfImageView[0] = findViewById(R.id.pic1);
         listOfImageView[1] = findViewById(R.id.pic2);
@@ -51,9 +59,11 @@ public class GameCardActivity extends AppCompatActivity {
         listOfImageView[10] = findViewById(R.id.pic11);
         listOfImageView[11] = findViewById(R.id.pic12);
 
+        //Initialize the game
         cardGame = new GameCard(cardArray, listOfImageView,backImage);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onResume(){
         super.onResume();
@@ -61,6 +71,9 @@ public class GameCardActivity extends AppCompatActivity {
         score.setText("Score: 0");
     }
 
+    /**
+     * set up all the Image Views
+     */
     private void setViews(){
         for (ImageView imageView: cardGame.getListOfImageView()){
             imageView.setOnClickListener((view)->{
@@ -69,6 +82,7 @@ public class GameCardActivity extends AppCompatActivity {
                 if (cardGame.getNumCardOver() == 2){
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
+                        @SuppressLint("SetTextI18n")
                         @Override
                         public void run() {
                             cardGame.checkResult();
