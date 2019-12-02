@@ -62,6 +62,7 @@ that I have to declare them again and again manually
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".util.TransitionPageBuilder$PageActivity" />
+        <activity android:name=".gamacard.GameCardActivity" />
     </application>
 
 </manifest>

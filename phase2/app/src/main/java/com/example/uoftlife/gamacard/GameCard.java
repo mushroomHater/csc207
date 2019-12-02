@@ -2,6 +2,8 @@ package com.example.uoftlife.gamacard;
 
 import android.widget.ImageView;
 
+import com.example.uoftlife.data.DataFacade;
+
 import java.util.List;
 
 class GameCard {
@@ -12,7 +14,12 @@ class GameCard {
     private int backImage;
     private int score;
     private int numberOfFlipTime;
+    private int char1, char2;
+    private int vitalityConsume;
 
+    public int getVitalityConsume() {
+        return vitalityConsume;
+    }
 
     GameCard(List<Card> cards, ImageView[] listOfImageView, int backImage) {
         this.cardArray = cards;
@@ -26,6 +33,8 @@ class GameCard {
         this.backImage = backImage;
         score = 0;
         numberOfFlipTime = 0;
+        char1 = DataFacade.getValue("char1");
+        char2 = DataFacade.getValue("char2");
     }
 
     ImageView[] getListOfImageView() {
@@ -93,9 +102,30 @@ class GameCard {
     /**
      *
      * @param numberOfFlipTime
-     * update the score
+     * update the score based on the characteristic of the player
      */
     private void updateScore(int numberOfFlipTime) {
-        score += 10 + Math.floor(30 / numberOfFlipTime);
+        if (char1 == 6 || char2 == 6) {
+            score += 5 + Math.floor(20 / numberOfFlipTime);
+            vitalityConsume = 10;
+        }else if (char1 == 7 || char2 == 7){
+            score += 10 + Math.floor(30 / numberOfFlipTime);
+            vitalityConsume = 5;
+        }else{
+            score += 7 + Math.floor(25 / numberOfFlipTime);
+            vitalityConsume = 7;
+        }
+    }
+    /**
+     * return true if the game finished
+     */
+    boolean checkEnd() {
+        boolean end = true;
+        for (Card card: cardArray){
+            if (card.isCovered()){
+                end = false;
+            }
+        }
+        return end;
     }
 }
