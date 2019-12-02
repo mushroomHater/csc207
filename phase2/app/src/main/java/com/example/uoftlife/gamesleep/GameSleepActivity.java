@@ -258,7 +258,7 @@ public class GameSleepActivity extends AppCompatActivity implements GameSleepVie
      */
     @Override
     public void makeToast() {
-        Toast.makeText(getApplicationContext(), "Keep tapping! ",
+        Toast.makeText(getApplicationContext(), R.string.tap,
                 Toast.LENGTH_LONG)
                 .show();
     }

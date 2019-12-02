@@ -122,12 +122,23 @@
     <string name="blanket" />
     <string name="_00_15" />
     <string name="gameconfig" />
+    <string name="tap">Keep Tapping!</string>
+
+    <string name="game_sleep_title">Get Up! </string>
+    <string name="game_sleep_description"> Keep tapping the alarm to wake up! /n
+        *Alarm might change position.</string>
+    <string name="game_sleep_pass">Congratulations! </string>
+    <string name="game_sleep_pass_description">You successfully got up</string>
+    <string name="game_sleep_fail">Uh oh</string>
+    <string name="game_sleep_fail_description">Your failed to get up</string>
+
+
 
     <!-- GameCard -->
     <string name="sccore">Score:</string>
     <string name="card">Try to find all matched cards</string>
-    <string name="understanding_value">Your understaning value has increased by</string>
-    <string name="practice_value">Your practice value has incresed by</string>
+    <string name="understanding_value">Your understanding value has increased by</string>
+    <string name="practice_value">Your practice value has increased by</string>
     <string name="time_value">Your time has decreased by</string>
     <string name="energy_value">Your energy has decreased by</string>
 </resources>
