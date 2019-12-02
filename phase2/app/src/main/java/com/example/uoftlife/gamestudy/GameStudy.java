@@ -1,127 +1,90 @@
 package com.example.uoftlife.gamestudy;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.example.uoftlife.data.DataFacade;
 
-class GameStudy{
+class GameStudy {
 
-    private int health;
-
+    private String word;
+    private String alphabet;
+    private int lengthOfWord;
+    private long time;
     private int score;
+    private int char1, char2;
+    private int vitalityConsume;
 
-    private Iterator<String> riddleIterator;
-
-    private Map<String, String> riddles;
-
-    private int scoreAmount;
-
-    private final Map<String, String> riddlesEazy = new HashMap<String, String>(){{
-        put("8/2(2+2) = ?", "16");
-        put("0, 1, 3, 9, 33, ( ? )","153");
-        put("2, 2, 8, -1, -2, 5, 1, 1, 2, -1, 1, (?) ", "2");
-        put("204, 180, 12, 84, -36, (?) ", "60");
-        put("2, 12, 30, (?)","56");
-        put("-7, 0, 1, 2, 9","28");
-        put("8 * ? = ? * 2 * ?, ? = ___", "4");
-        put("20, 22, 25, 30, 37", "48");
-        put("1, 3, 4, 8, 16, (?)", "32");
-        put("1, 1, 3, 7, 17, 41, (?)", "99");
-    }};
-
-    private final Map<String, String> riddlesMiddle = new HashMap<String, String>(){{
-        put("1/2, 1, 1, (?), 9/11, 11/13","1");
-        put("1, 7, 8, 57, (?)", "121");
-        put("82, 98, 102, 118, 62, 138, (?)", "82");
-        put("4, 12, 8, 10, (?)", "9");
-        put("4, 2, 2, 3, 6, (?)", "15");
-        put("12, 9 18, 33, 96, 21, 36, (?)", "51");
-        put("3, 4, 8, 24, 88, (?）","344");
-
-    }};
-
-    private final Map<String, String> riddlesHard = new HashMap<String, String>(){{
-        put("1, 2, 8, 28, (?)", "100");
-        put("0, 4, 18, (?), 100","48");
-        put("1, 2, 5, 29, (?)","866");
-        put("2, 5, 14, 29, 86, (?)", "173");
-        put("2, 6, 13, 39, 15, 45, 23, (?)", "69");
-        put("95, 88, 71, 61, 50, (?)","40");
-        put("6, 15, 32, 77, (?)", "163");
-        put("3, 10, 29, 66, (?)","127");
-    }};
-    private String currentRiddle;
-
-
-    private int getDifficulty(){
-        return 1;
-    }
-    GameStudy(int score) {
-        if (getDifficulty() == 1){
-            riddles = riddlesEazy;
-            scoreAmount = 4;
+    GameStudy() {
+        word = "";
+        alphabet = "abcdefghigklmnopqrstuvwxyz";
+        char1 = DataFacade.getValue("char1");
+        char2 = DataFacade.getValue("char2");
+        if (char1 == 6 || char2 == 6){
+            lengthOfWord = 30;
+            time = 30000;
+            vitalityConsume = 10;
         }
-        else if (getDifficulty() == 2){
-            riddles = riddlesMiddle;
-            scoreAmount = 6;
+        else if (char1 == 7 || char2 == 7){
+            lengthOfWord = 20;
+            time = 50000;
+            vitalityConsume = 5;
+        }else {
+            lengthOfWord = 25;
+            time = 40000;
+            vitalityConsume = 7;
         }
-        else {
-            riddles = riddlesHard;
-            scoreAmount = 10;
+        score = 0;
+    }
+
+    String randomGenerateWord(){
+        StringBuilder sb = new StringBuilder(lengthOfWord);
+        for (int i = 0; i < lengthOfWord; i++) {
+
+            // generate a random number between
+            // 0 to AlphaNumericString variable length
+            int index = (int)(alphabet.length() * Math.random());
+
+            // add Character one by one in end of sb
+            sb.append(alphabet.charAt(index));
         }
-        this.score = score;
-        List<String> riddleKeys = new ArrayList<>(riddles.keySet());
-        Collections.shuffle(riddleKeys);
-        riddleIterator = riddleKeys.iterator();
-        health = 3;
+        word = sb.toString();
+        return word;
     }
 
-    /**
-     * get which riddle is the player gueesting right now
-     * @return the current riddle
-     */
-    String getCurrentRiddle() {
-        if (riddleIterator.hasNext())
-            currentRiddle = riddleIterator.next();
-        return currentRiddle;
+    long getTime() {
+        return time;
     }
 
-
-    /**
-     * check if the player's guess matches the actual answer.
-     * @param answer
-     * @return true if matches false otherwise.
-     */
-    boolean checkIfMatch(String answer){
-        if (getAnswer().equals(answer)){
-            return true;
-        }
-        else return false;
+    int getLengthOfWord() {
+        return lengthOfWord;
     }
 
-    String getAnswer(){
-        return riddles.get(currentRiddle);
-    }
-
-    int getHealth() {
-        return health;
-    }
-
-    /**
-     *  add or delete the score of the player.
-     */
-    void updateScore(){
-        score += scoreAmount;
-    }
-
-    int getScore(){
+    int getScore() {
         return score;
     }
 
-    void updateHealth(){
-        health -= 1;
+    void  updateScore(String word){
+        if (char2 == 6 || char1 == 6){
+            score += Math.floor(20 * correctRate(word));
+        }else if (char1 == 7 || char2 == 7){
+            score += Math.floor(30 * correctRate(word));
+        }else {
+            score += Math.floor (25 * correctRate(word));
+        }
+        System.out.println("score is: " + score);
+    }
+    private double correctRate(String wordInput){
+        int numberLetterCorrect = 0;
+        int length = Math.min(lengthOfWord, wordInput.length());
+        for (int i = 0; i < length; i++){
+            if (wordInput.charAt(i) == word.charAt(i));{
+                numberLetterCorrect++;
+            }
+        }
+        System.out.println("numberLetterCorrect: "+numberLetterCorrect);
+        System.out.println(numberLetterCorrect / lengthOfWord);
+        return numberLetterCorrect /(double) lengthOfWord;
+    }
+
+    int getVitalityConsume() {
+        return vitalityConsume;
     }
 }
