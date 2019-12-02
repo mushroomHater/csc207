@@ -49,6 +49,7 @@ public class GameStudyActivity extends GameBaseActivity {
         totalTimer = new CountDownTimer(time, 1000) {
             @Override
             public void onTick(long l) {
+                time = l;
                 setTimePromp((int) l/1000);
             }
 
@@ -58,6 +59,12 @@ public class GameStudyActivity extends GameBaseActivity {
                 finish();
             }
         }.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        totalTimer.cancel();
     }
 
     /**
