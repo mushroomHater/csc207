@@ -82,7 +82,7 @@ public class GameStudyActivity extends GameBaseActivity {
 
     private void setTimePromp(int timeleft) {
         TextView prompt = findViewById(R.id.totalTime);
-        prompt.setText("The time left is " +(int) timeleft);
+        prompt.setText("The time left is " + timeleft);
     }
 
 
