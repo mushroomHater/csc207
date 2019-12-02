@@ -262,12 +262,16 @@ public class CollectCoinActivity extends GameBaseActivity {
             itemView.setX(item.getLocationX());
             itemView.setY(item.getLocationY());
 
-            if (item.getType().equals("coin")) {
-                itemView.setImageResource(R.drawable.coin1);
-            } else if (item.getType().equals("bomb")) {
-                itemView.setImageResource(R.drawable.shit);
-            } else if (item.getType().equals("health")) {
-                itemView.setImageResource(R.drawable.health);
+            switch (item.getType()) {
+                case "coin":
+                    itemView.setImageResource(R.drawable.coin1);
+                    break;
+                case "bomb":
+                    itemView.setImageResource(R.drawable.shit);
+                    break;
+                case "health":
+                    itemView.setImageResource(R.drawable.health);
+                    break;
             }
             itemView.setVisibility(View.VISIBLE);
             i++;
@@ -318,10 +322,11 @@ public class CollectCoinActivity extends GameBaseActivity {
     /**
      * End the game when losing all healths or time's up (30 seconds).
      */
-    public void endGame() {
+    synchronized public void endGame() {
         long curr = System.currentTimeMillis();
         long pass = curr - lastTime;
-        if (health == 0 || pass > 30000) {
+        if (health == 0 || pass >= 30000) {
+            finish();
             new TransitionPageBuilder(this).setTitle(getString(R.string.gamework))
                     .setDescription(getString(R.string.summary))
                     .setShowingTime(3)
@@ -329,7 +334,6 @@ public class CollectCoinActivity extends GameBaseActivity {
                     .addValueChange("vitality", -30)
                     .addValueChange("money", score * 10)
                     .start();
-            finish();
         }
     }
 
