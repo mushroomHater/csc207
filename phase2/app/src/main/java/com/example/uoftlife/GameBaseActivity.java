@@ -9,18 +9,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.uoftlife.floating.PauseDisplayActivity;
 import com.example.uoftlife.util.GameMessenger;
-import com.example.uoftlife.util.calculator.GameProcessorStrategy;
 
 public abstract class GameBaseActivity extends AppCompatActivity {
 
-    private GameProcessorStrategy sceneStrategy;
+
     private boolean savable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         savable = setSavable();
-        sceneStrategy = setSceneStrategy();
         setContentView(R.layout.activity_game_base);
         inflateLayout();
         setCommonListeners();
@@ -36,14 +34,11 @@ public abstract class GameBaseActivity extends AppCompatActivity {
 
     abstract protected boolean setSavable();
 
-    abstract protected GameProcessorStrategy setSceneStrategy();
-
     private void setCommonListeners() {
         findViewById(R.id.pause).setOnClickListener((view) ->
                 startActivity(new Intent(this, PauseDisplayActivity.class)
                         .putExtra("savable", savable)));
     }
-
 
     /**
      * Disable the back operation from navigation bar
@@ -52,7 +47,6 @@ public abstract class GameBaseActivity extends AppCompatActivity {
     public void onBackPressed() {
     }
 
-
     /**
      * Avoid clicking any notification outside of app and causing undesirable behavior.
      */
@@ -60,17 +54,5 @@ public abstract class GameBaseActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         GameMessenger.getMessenger().clearAll();
-    }
-
-    private void updateProgress() {
-        // todo some calculation and introduce some new structure
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // todo .....
-        updateProgress();
-        System.out.println("destroyed this base");
     }
 }

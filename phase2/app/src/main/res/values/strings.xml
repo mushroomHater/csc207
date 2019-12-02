@@ -20,8 +20,15 @@
     <string name="give_up">Give up Current Progress</string>
     <string name="start">Start New Game</string>
     <string name="load">Load from Files</string>
+    <string name="load_alert">You have not started any game so you do not have game file to load.</string>
     <string name="help">Instruction</string>
     <string name="ready">Go</string>
+    <string name="clear">Clear all files</string>
+    <string name="clear_success">Successfully cleared your game files.</string>
+    <!--todo whole instruction-->
+    <string name="whole_instruction">
+        You act as a student of uoft,…\n用这个换行
+    </string>
 
 
     <string name="pause">Status</string>
@@ -100,11 +107,9 @@
     <string name="do_ass">Check and do it now</string>
 
     <!--    把自己事件要显示的用语写在下方，不要写在 activity 内部，到时候方便统一翻译-->
-    <string name="scene_library">Library</string>
     <string name="scene_home">Home</string>
-    <string name="scene_restaurant">Restaurant</string>
-    <string name="scene_lecture">Lecture</string>
-    <string name="scene_exam">Exam Center</string>
+    <string name="scene_mall">Mall</string>
+    <string name="scene_school">UofT</string>
 
     <string name="walk_spend_time">Walk to %1$s will take %2$d time blocks.</string>
 
@@ -116,6 +121,10 @@
     <string name="work">Do part time job</string>
 
     <string name="activity_spend_time">Doing this will take %1$d time blocks.</string>
+
+    <!--    transition pages texts-->
+    <string name="semester">Semester start…</string>
+    <string name="tuition">The new semester is coming. As we all know, tuition fee for international students is really high… \n Anyway, good luck and survive!</string>
 
     <!-- GameSleep  -->
     <string name="todo" />

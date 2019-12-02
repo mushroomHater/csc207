@@ -8,41 +8,73 @@
     android:background="@drawable/itemshelves"
     tools:context=".shoppingmall.ShoppingMallActivity">
 
+
     <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/bread"
+        android:layout_width="102dp"
+        android:layout_height="129dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="304dp"
+        android:layout_marginTop="260dp"
         android:layout_marginRight="16dp"
-        android:text="button1"
-        app:layout_constraintHorizontal_bias="0.046"
+        android:background="@drawable/bread"
+        android:text="bread"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/bubbleTea"
+        android:layout_width="92dp"
+        android:layout_height="125dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="304dp"
+        android:layout_marginTop="104dp"
         android:layout_marginRight="16dp"
-        android:text="button2"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:background="@drawable/bubble_tea"
+        android:text="bubbleTea"
+        app:layout_constraintHorizontal_bias="0.944"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/book"
+        android:layout_width="87dp"
+        android:layout_height="121dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="304dp"
+        android:layout_marginTop="104dp"
         android:layout_marginRight="16dp"
-        android:text="button3"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:background="@drawable/book"
+        android:text="book"
+        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/lipstick"
+        android:layout_width="83dp"
+        android:layout_height="107dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/lipstick"
+        android:text="lipstick"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/coffee"
+        android:layout_width="90dp"
+        android:layout_height="123dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/coffee"
+        android:text="coffee"
+        app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

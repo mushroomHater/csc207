@@ -103,5 +103,10 @@ class GameConfiguration implements GameData {
         innatePointsAllocation = DataPersistence.readMapData(context, GameConstants.CONFIG_FILE);
     }
 
+    @Override
+    public void clearFile(Context context) {
+        DataPersistence.clearSPData(context, GameConstants.CONFIG_FILE);
+    }
+
 
 }

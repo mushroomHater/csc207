@@ -61,6 +61,11 @@ class GameProgress implements GameData {
         progressData = DataPersistence.readMapData(context, GameConstants.STATUS_FILE);
     }
 
+    @Override
+    public void clearFile(Context context) {
+        DataPersistence.clearSPData(context,GameConstants.STATUS_FILE);
+    }
+
     void setTempData(String key, Object value){
         tempData.put(key, value);
     }
