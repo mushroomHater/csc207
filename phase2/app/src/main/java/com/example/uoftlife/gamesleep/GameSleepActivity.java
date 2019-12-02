@@ -53,10 +53,11 @@ public class GameSleepActivity extends GameBaseActivity implements GameSleepView
 
         GameSleepModel gameSleepModel = createGameSleepModel();
         gameSleepPresenter = new GameSleepPresenter(gameSleepModel, this);
+        gameSleepPresenter.initializeDifficulty();
         setAlarmBtn();
         setInitialCharacter();
         setTimer();
-        gameSleepPresenter.initializeDifficulty();
+
     }
 
     @Override
@@ -114,7 +115,7 @@ public class GameSleepActivity extends GameBaseActivity implements GameSleepView
     protected void onDestroy() {
         super.onDestroy();
         gameSleepPresenter.onDestroy();
-        handleRedirection();
+
     }
 
     @Override
@@ -202,6 +203,7 @@ public class GameSleepActivity extends GameBaseActivity implements GameSleepView
 
             @Override
             public void onFinish() {
+                handleRedirection();
                 finish();
 
             }
