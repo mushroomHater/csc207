@@ -61,6 +61,8 @@ public class CollectCoinActivity extends GameBaseActivity {
                 });
             }
         }, 0, 10);
+        // disable pausing
+        findViewById(R.id.pause).setVisibility(View.GONE);
     }
 
     @Override

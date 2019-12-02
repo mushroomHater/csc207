@@ -29,18 +29,21 @@ public class ShoppingMallActivity extends GameBaseActivity {
     }
 
 
-    private void setNextPageButton(){
+    private void setNextPageButton() {
         findViewById(R.id.nextPage).setOnClickListener((view) -> {
         });
     }
+
     private void setItem1Button() {
         findViewById(R.id.button1).setOnClickListener((view) -> {
         });
     }
+
     private void setItem2Button() {
         findViewById(R.id.button2).setOnClickListener((view) -> {
         });
     }
+
     private void setItem3Button() {
         findViewById(R.id.button3).setOnClickListener((view) -> {
         });
@@ -51,5 +54,5 @@ public class ShoppingMallActivity extends GameBaseActivity {
     // if click on the item button, the user purchases it immediately
     // and its status changes accordingly.
 
-    }
+}
 

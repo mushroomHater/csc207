@@ -11,11 +11,6 @@ class GameSleepModel {
     private int targetClick;
 
     /**
-     * The tag of the game level.
-     */
-    private static final String TAG = "LevelOne";
-
-    /**
      * The number of clicks entered by the user.
      */
     private int clickAmount = 0;
@@ -35,14 +30,13 @@ class GameSleepModel {
      */
     private boolean timing;
 
-
     /**
      * The time left in this game level in milliseconds.
      */
     private long timeLeftInMilliseconds;
 
     /**
-     * The x coordinate of the alarm button.
+     * The width input of the alarm button.
      */
     private float windowWidth;
 
@@ -55,7 +49,6 @@ class GameSleepModel {
      * The time interval for the button to change position.
      */
     private int alarmChangePositionInterval;
-
 
     /**
      * GameSleepMode constructor.
@@ -121,10 +114,16 @@ class GameSleepModel {
         this.timing = timing;
     }
 
+    /**
+     * Sets the timer of the game.
+     */
     void setTimer(CountDownTimer timer) {
         this.timer = timer;
     }
 
+    /**
+     * Cancels the timer of the game.
+     */
     void cancelTimer() {
         timer.cancel();
 
@@ -144,6 +143,9 @@ class GameSleepModel {
         this.timeLeftInMilliseconds = timeLeftInMilliseconds;
     }
 
+    /**
+     * @return the timer of the game.
+     */
     int getAlarmChangePositionInterval() {
         return alarmChangePositionInterval;
     }

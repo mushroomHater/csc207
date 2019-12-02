@@ -49,6 +49,9 @@ that I have to declare them again and again manually
             android:theme="@style/Float" />
         <activity android:name=".GameBaseActivity" />
         <activity
+            android:name=".gamework.CollectCoinActivity"
+            android:launchMode="singleTask"/>
+        <activity
             android:name=".MainActivity"
             android:launchMode="singleTask">
             <intent-filter>
@@ -66,7 +69,6 @@ that I have to declare them again and again manually
         <activity android:name=".gamesleep.GameSleepActivity" />
         <activity android:name=".transpage.SemesterStartPageActivity" />
         <activity android:name=".transpage.InstructionPageActivity" />
-        <activity android:name=".gamework.CollectCoinActivity" />
     </application>
 
 </manifest>

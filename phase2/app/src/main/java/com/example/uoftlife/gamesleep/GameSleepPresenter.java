@@ -151,6 +151,9 @@ class GameSleepPresenter {
 
     }
 
+    /**
+     * Specifies actions when game is destroyed.
+     */
     void onDestroy() {
         gameSleepView.showOutcome();
         setTiming(false);
@@ -179,15 +182,19 @@ class GameSleepPresenter {
         gameSleepView.showAlarmAnimation(coordinate[0], coordinate[1]);
     }
 
-
+    /**
+     * @return the time interval for the alarm to change position.
+     */
     int getAlarmChangePositionInterval() {
         return gameSleepModel.getAlarmChangePositionInterval();
     }
 
-    void setAlarmChangePositionInterval(int alarmChangePositionInterval) {
+    /**
+     * Sets the time interval for the alarm to change position.
+     */
+    private void setAlarmChangePositionInterval(int alarmChangePositionInterval) {
         gameSleepModel.setAlarmChangePositionInterval(alarmChangePositionInterval);
     }
-
 
     /**
      * Makes a toast if click amount reaches 4.
@@ -225,10 +232,9 @@ class GameSleepPresenter {
      *
      * @return true if the player passes the game level, otherwise return false.
      */
-     boolean isPassed() {
+    boolean isPassed() {
         return getClickAmount() >= getTargetClick();
     }
-
 
 
 }
