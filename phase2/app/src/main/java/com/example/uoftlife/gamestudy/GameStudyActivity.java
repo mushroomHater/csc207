@@ -1,20 +1,32 @@
 package com.example.uoftlife.gamestudy;
 
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import com.example.uoftlife.GameBaseActivity;
 import com.example.uoftlife.R;
+import com.example.uoftlife.util.TransitionPageBuilder;
 
 public class GameStudyActivity extends GameBaseActivity {
-//
-//    private GameStudy game;
-//
+
+    private GameStudy gameStudy;
+    private long time;
+    private int lengthOfWord;
+    private CountDownTimer totalTimer;
+
 //    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//
-//        // setup the textView of the riddle and the button
-//
-//        game = new GameStudy(0);
-//    }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // setup the textView of the riddle and the button
+
+        gameStudy = new GameStudy();
+        time = gameStudy.getTime();
+        lengthOfWord = gameStudy.getLengthOfWord();
+    }
 
     @Override
     protected int setContentLayout() {
@@ -26,62 +38,72 @@ public class GameStudyActivity extends GameBaseActivity {
         return false;
     }
 //
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        setScorePrompt();
-//        setRiddlePrompt();
-//        setdoneBtn();
-//        setHealthPrompt();
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setScorePrompt();
+        setdoneBtn();
+        setWordPromp();
+        totalTimer = new CountDownTimer(time, 1000) {
+            @Override
+            public void onTick(long l) {
+                setTimePromp((int) l/1000);
+            }
+
+            @Override
+            public void onFinish() {
+                onDestroy();
+            }
+        }.start();
+    }
+
+    private void setWordPromp() {
+        TextView promp = findViewById(R.id.word);
+        promp.setText(gameStudy.randomGenerateWord());
+    }
+
+    private void setTimePromp(int timeleft) {
+        TextView prompt = findViewById(R.id.totalTime);
+        prompt.setText("The time left is " +(int) timeleft);
+    }
+
+
+    /**
+     * set the textview of the score.
+     */
+    void setScorePrompt() {
+        TextView the_score = findViewById(R.id.the_score);
+        the_score.setText("Your score is " + gameStudy.getScore());
+    }
 //
-//
-//    void setHealthPrompt() {
-//        TextView prompt = findViewById(R.id.health);
-//        prompt.setText("Your health left: " + (game.getHealth()));
-//    }
-//
-//    /**
-//     * set the textView of current riddle
-//     */
-//    void setRiddlePrompt() {
-//        TextView prompt = findViewById(R.id.riddle);
-//        prompt.setText(game.getCurrentRiddle());
-//    }
-//
-//    /**
-//     * set the textview of the score.
-//     */
-//    void setScorePrompt() {
-//        TextView the_score = findViewById(R.id.the_score);
-//        the_score.setText("Your score is " + game.getScore());
-//    }
-//
-//    /**
-//     * set up the guessing button
-//     */
-//    void setdoneBtn() {
-//        Button doneBtn = findViewById(R.id.doneBtn);
-//
-//        doneBtn.setText("Guess!");
-//        doneBtn.setOnClickListener(v -> {
-//            EditText playerInput = findViewById(R.id.playerInput);
-//            String answer = playerInput.getText().toString();
-//            if (game.checkIfMatch(answer)) {
-//                Toast.makeText(getApplicationContext(), "Bingo!", Toast.LENGTH_SHORT).show();
-//                game.updateScore();
-//            } else {
-//                Toast.makeText(getApplicationContext(), "Wrong Answer, Right Answer is " + game.getAnswer(), Toast.LENGTH_SHORT)
-//                        .show();
-//            }
-//            game.updateHealth();
-//            setHealthPrompt();
-//
-//        });
-//        setRiddlePrompt();
-//        setScorePrompt();
-//
-//
-//    }
+    /**
+     * set up the guessing button
+     */
+    void setdoneBtn() {
+        Button doneBtn = findViewById(R.id.doneBtn);
+
+        doneBtn.setText("Confirm!");
+        doneBtn.setOnClickListener(v -> {
+            EditText playerInput = findViewById(R.id.playerInput);
+            String answer = playerInput.getText().toString();
+            gameStudy.updateScore(answer);
+            setWordPromp();
+            setScorePrompt();
+        });
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        new TransitionPageBuilder(this).setTitle("Congratulations!!")
+                .setDescription("You just finished your course!!")
+                .setShowingTime(3)
+                .addValueChange("practice", (int) Math.floor(gameStudy.getScore() / 20))
+                .addValueChange("understanding", (int) Math.floor(gameStudy.getScore() / 20))
+                .addValueChange("time", -12)
+                .addValueChange("vitality", -gameStudy.getVitalityConsume())
+                .start();
+    }
 //
 }
