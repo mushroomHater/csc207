@@ -2,23 +2,72 @@ package com.example.uoftlife.gamework;
 
 import java.util.ArrayList;
 
- class CollectCoinTemplate {
+/**
+ * Template class of the mvp structure, used for view.
+ */
+class CollectCoinTemplate {
 
+    /**
+     * The player's life.
+     */
     private int life;
+
+    /**
+     * The player's score.
+     */
     private int score;
+
+    /**
+     * The bag location.
+     */
     private int bagLoction;
+
+    /**
+     * The last drop.
+     */
     private long lastDrop;
+
+    /**
+     * The x coordinate of border.
+     */
     private int borderX = 930;
+
+    /**
+     * The y coordinate of border.
+     */
     private int borderY = 1700;
+
+    /**
+     * The max number of items.
+     */
     private int maxNumItem;
     //Since the actual size of screen is actually smaller than that is directly
     // get from WindowManager, so we have to hardcode the size of screen.
+
+    /**
+     * The height of bag.
+     */
     private int bagHeight;
+
+    /**
+     * The CollectCoinPresenter class.
+     */
     private CollectCoinPresenter presenter;
+
+    /**
+     * The RandomItemGenerator used to generate dropping items.
+     */
     private RandomItemGenerator generator;
+
+    /**
+     * The ArrayList containing items.
+     */
     private ArrayList<DropItems> items;
 
-     CollectCoinTemplate(int bagLoction, int bagHeight,
+    /**
+     * Instantiates a new Collect coin template.
+     */
+    CollectCoinTemplate(int bagLoction, int bagHeight,
                                int maxNumItem, CollectCoinPresenter presenter) {
         this.presenter = presenter;
         this.maxNumItem = maxNumItem;
@@ -31,11 +80,17 @@ import java.util.ArrayList;
         life = 3;
     }
 
-     ArrayList<DropItems> getItems() {
+    /**
+     * Gets items.
+     */
+    ArrayList<DropItems> getItems() {
         return items;
     }
 
-     void refresh(){
+    /**
+     * Refresh the game.
+     */
+    void refresh(){
         long now = System.currentTimeMillis();
         long pass = now-lastDrop;
         ArrayList<DropItems> newList = new ArrayList<>();
@@ -54,23 +109,38 @@ import java.util.ArrayList;
 
     }
 
-     void setBagLocation(int location){
+    /**
+     * Set bag location.
+     */
+    void setBagLocation(int location){
         bagLoction = location;
     }
 
-     void increaseScore(){
+    /**
+     * Increase score.
+     */
+    void increaseScore(){
         score ++;
     }
 
-     void increaseHealth(){
+    /**
+     * Increase health.
+     */
+    void increaseHealth(){
         life ++;
     }
 
-     void decreaseHealth(){
+    /**
+     * Decrease health.
+     */
+    void decreaseHealth(){
         life --;
     }
 
-     void checkCollision(){
+    /**
+     * Check collision to see whether the bag catches a coin, a shit or a health pack .
+     */
+    void checkCollision(){
         ArrayList<DropItems> newList = new ArrayList<>();
         for(DropItems item: items){
             if(item.getLocationX() > bagLoction-90 && item.getLocationX() < bagLoction + 110){
@@ -94,11 +164,17 @@ import java.util.ArrayList;
         items = newList;
     }
 
-    public void increaseDropSpeed(){
+    /**
+     * Increase drop speed.
+     */
+     void increaseDropSpeed(){
          generator.setSpeed(2);
     }
 
-    public void increaseGenerateRate(){
+    /**
+     * Increase generate rate.
+     */
+     void increaseGenerateRate(){
          generator.setRate(100);
     }
 }

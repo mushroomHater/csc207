@@ -52,7 +52,7 @@ public class GameStudyActivity extends GameBaseActivity {
 
             @Override
             public void onFinish() {
-                finish();
+                onDestroy();
             }
         }.start();
     }

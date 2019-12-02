@@ -121,16 +121,21 @@ public class CollectCoinActivity extends GameBaseActivity {
     }
 
 
+    /**
+     * Set content layout.
+     */
     @Override
     protected int setContentLayout() {
         return R.layout.activity_collect_coin;
     }
 
+    /**
+     * Return false when called.
+     */
     @Override
     protected boolean setSavable() {
         return false;
     }
-
 
     /**
      * React on the touch event of the user who plays the game.
@@ -163,6 +168,9 @@ public class CollectCoinActivity extends GameBaseActivity {
         return bagLocation;
     }
 
+    /**
+     * .
+     */
     @Override
     protected void onPause() {
         super.onPause();
@@ -220,6 +228,9 @@ public class CollectCoinActivity extends GameBaseActivity {
         scoreText.setText(scoreDisplay.concat(Integer.toString(score)));
     }
 
+    /**
+     * Specifies the activities once the game is resumed.
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -322,11 +333,17 @@ public class CollectCoinActivity extends GameBaseActivity {
         }
     }
 
+    /**
+     * Specifies the activities once the game is destroyed.
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
     }
 
+    /**
+     * Set difficulty level if the player is money-grubber.
+     */
     void initializeDifficulty() {
 
         int char1 = DataFacade.getValue("char1");

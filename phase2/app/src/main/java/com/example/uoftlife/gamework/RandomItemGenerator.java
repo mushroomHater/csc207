@@ -6,25 +6,52 @@ import java.util.Random;
 //This is a random generator, we use rand.nextInt to get probability,
 //so hard coding cannot be avoid
 
- class RandomItemGenerator {
+/**
+ * The class represents RandomItemGenerator.
+ */
+class RandomItemGenerator {
 
+    /**
+     * The bound of display.
+     */
     private int bound;
+
+    /**
+     * The last time.
+     */
     private long lastTime;
+
+    /**
+     * The speed of dropping items.
+     */
     private double speed;
+
+    /**
+     * The rate of dropping coins.
+     */
     private int rate;
 
-     public void setRate(int rate) {
+    /**
+     * Sets rate.
+     */
+     void setRate(int rate) {
          this.rate = rate;
      }
 
-     RandomItemGenerator(int bound) {
+    /**
+     * Instantiates a new Randomitemgenerator.
+     */
+    RandomItemGenerator(int bound) {
         this.bound = bound;
         lastTime = System.currentTimeMillis();
         speed = 0.7;
         rate = 300;
     }
 
-     ArrayList<DropItems> generateItems(){
+    /**
+     * Generate items ArrayList.
+     */
+    ArrayList<DropItems> generateItems(){
         ArrayList<DropItems> result = new ArrayList<>();
         long now = System.currentTimeMillis();
         long pass = now - lastTime;
@@ -46,10 +73,16 @@ import java.util.Random;
         return result;
     }
 
-     public void setSpeed(double speed) {
+    /**
+     * Sets speed.
+     */
+     void setSpeed(double speed) {
          this.speed = speed;
      }
 
+    /**
+     * Generate a single item.
+     */
      private DropItems generateSingleItem(){
         Random rand = new Random();
         int choice = rand.nextInt(50);

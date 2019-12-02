@@ -36,7 +36,7 @@ public class SemesterStartPageActivity extends TransitionPageActivity {
 
     @Override
     protected int setShowLength() {
-        return 3;
+        return 6;
     }
 
 }

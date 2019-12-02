@@ -1,12 +1,34 @@
 package com.example.uoftlife.gamework;
 
- class DropItems {
+/**
+ * The class represents dropping items.
+ */
+class DropItems {
+
+    /**
+     * The type of drop items.
+     */
     private String type;
+
+    /**
+     * The x coordinate of location.
+     */
     private int locationX;
+
+    /**
+     * The y coordinate of location.
+     */
     private int locationY;
+
+    /**
+     * The dropping item speed.
+     */
     private double speed;
 
-     DropItems(String type, int locationX, double speed) {
+    /**
+     * Instantiates a new Drop items.
+     */
+    DropItems(String type, int locationX, double speed) {
         this.type = type;
         this.locationX = locationX;
         locationY = 0;
@@ -14,19 +36,32 @@ package com.example.uoftlife.gamework;
 
     }
 
-     String getType() {
+    /**
+     * Gets type.
+     */
+    String getType() {
         return type;
     }
 
-     int getLocationX() {
+    /**
+     * Gets location x.
+     */
+    int getLocationX() {
         return locationX;
     }
 
-     void drop(int time) {
+    /**
+     * Drop.
+     */
+    void drop(int time) {
         locationY += time * speed;
 
     }
-     int getLocationY() {
+
+    /**
+     * Gets location y.
+    */
+    int getLocationY() {
         return locationY;
     }
 }
