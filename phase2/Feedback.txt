@@ -1,0 +1,38 @@
+Dear group_0549
+
+This semester, we talked about MVP, the Model-View-Presenter architecture. It has many advantages, particularly when working with Android. As you can see from your project, your activity classes have methods that are specific to Android. If you encapsulate the rest of your code sufficiently, it is possible to port it to another platform simply by creating a new UI (for example, a website).
+
+Encapsulation can take on many forms. You can package your View classes together. You can ensure that your dependencies go one-way, towards the inner more abstract layers. You can incorporate SOLID principles as much as possible and design patterns where they make sense.
+Here is feedback that is specific to your project:
+
+You made good use of…
++ The facade design pattern for constructing complex GameData
++ The iterator design pattern for controlling the way shop items are presented
++ Consistent application of the MVP pattern throughout the entire application for separating view logic and model logic
++ Creating a base game activity class so any new games only had to extend GameBaseActivity to be registered as a game
++ The dependency inversion principle: all games depended on an abstract game activity instead of a concrete activity
++ The strategy pattern for using different strategies to present test items
++ Designing an appropriate GameBaseActivity which keeps track of common state such as whether the game is saved, paused, etc. 
++ Good use of dependency injection in most of the classes
+
+The user sees…
++ A great UI with very interesting features and games
++ Tons of customization options
++ Randomly generated games and user path which is pretty cool.
+
+A good next step would be to…
++ Ensure there is javadoc for all of your public methods 
++ Remove commented code
++ Please consider the social impact of any game you upload to the Google Play store, or any other public forum. For example, what effect will your game endings have on other players.
++ Have more comments to explain confusing code
+  - For example, one of the methods had two consecutive calls to cancelPendingAction(), and it wasn’t clear why the method had to be called twice 
+  - GameProgress could really use some documation too. What progress are you storing? What are the valid key/value pairs?
++ Method DataPersistence.readMapData’s return type should be Map<String, Integer> — types should always be as abstract as possible while avoiding having to cast. (Your parameter type for saveMapData follows this rule, at least.)
++ In LoginActivity,onTouch, the first two if branches are identical and should be combined to avoid duplicate code.
++ There are some magic numbers in the code. For example, in AssignmentPageActivity, why is 2 used? And in ShoppingMallActivity, what are -5 and 20 and -8 and so on? Those should be constants. How were these numbers decided? That’s the kind of thing that should be in a comment.
+
+We hope that you enjoyed working on this project and found it a useful learning experience.
+
+Cheers,
+The CSC207 Instructional Team
+
